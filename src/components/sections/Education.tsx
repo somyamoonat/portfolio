@@ -12,17 +12,14 @@ export function Education() {
         {/* Section Header */}
         <FadeIn>
           <div className="mb-12 md:mb-16">
-            <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-accent mb-3">
-              <span>[04]</span>
-              <span className="text-text-muted">/</span>
-              <span className="text-text-secondary">EDUCATION & CREDENTIALS</span>
+            <div className="flex items-center gap-2.5 font-mono text-xs uppercase tracking-wider text-text-muted mb-3">
+              <span className="text-text-secondary font-medium">04</span>
+              <span className="text-border-subtle">/</span>
+              <span className="tracking-widest">Education</span>
             </div>
             <Heading as="h2" size="xl">
-              Academic Background & Recognition
+              Foundations & Credentials
             </Heading>
-            <p className="mt-3 text-sm md:text-base text-text-secondary max-w-[65ch] leading-relaxed">
-              Formal computer science foundations, continuous coursework, and technical milestones.
-            </p>
           </div>
         </FadeIn>
 
@@ -30,14 +27,14 @@ export function Education() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
           {/* Left Column: Education */}
           <div className="lg:col-span-7 space-y-8">
-            <span className="font-mono text-xs uppercase tracking-widest text-accent block pb-2 border-b border-border-hairline">
+            <span className="font-mono text-xs uppercase tracking-wider text-text-primary font-medium block pb-2 border-b border-border-hairline">
               Degree & Studies
             </span>
 
             <div className="space-y-8">
               {education.map((edu, idx) => (
                 <FadeIn key={idx} delay={idx * 0.05}>
-                  <div className="border border-border-hairline bg-surface/50 p-6 sm:p-8 corner-ticks space-y-3">
+                  <div className="border border-border-hairline bg-surface/50 p-6 sm:p-8 space-y-3">
                     <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
                       <span className="text-text-primary font-medium">{edu.period}</span>
                       {edu.location && (
@@ -70,7 +67,7 @@ export function Education() {
             {/* Certifications */}
             {certifications && certifications.length > 0 && (
               <div>
-                <span className="font-mono text-xs uppercase tracking-widest text-accent block pb-2 border-b border-border-hairline mb-6">
+                <span className="font-mono text-xs uppercase tracking-wider text-text-primary font-medium block pb-2 border-b border-border-hairline mb-6">
                   Certifications
                 </span>
 
@@ -103,7 +100,7 @@ export function Education() {
             {/* Achievements */}
             {achievements && achievements.length > 0 && (
               <div className="pt-4">
-                <span className="font-mono text-xs uppercase tracking-widest text-accent block pb-2 border-b border-border-hairline mb-6">
+                <span className="font-mono text-xs uppercase tracking-wider text-text-primary font-medium block pb-2 border-b border-border-hairline mb-6">
                   Recognitions & Milestones
                 </span>
 

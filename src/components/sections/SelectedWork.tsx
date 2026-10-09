@@ -19,16 +19,16 @@ export function SelectedWork() {
         {/* Section Header */}
         <FadeIn>
           <div className="mb-12 md:mb-16">
-            <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-accent mb-3">
-              <span>[01]</span>
-              <span className="text-text-muted">/</span>
-              <span className="text-text-secondary">SELECTED WORK</span>
+            <div className="flex items-center gap-2.5 font-mono text-xs uppercase tracking-wider text-text-muted mb-3">
+              <span className="text-text-secondary font-medium">01</span>
+              <span className="text-border-subtle">/</span>
+              <span className="tracking-widest">Selected Work</span>
             </div>
             <Heading as="h2" size="xl">
-              Projects & Technical Systems
+              Featured Systems & Architecture
             </Heading>
             <p className="mt-3 text-sm md:text-base text-text-secondary max-w-[65ch] leading-relaxed">
-              Full-stack web applications and machine learning implementations. Select a project to review technical constraints, architecture, and outcomes.
+              Selected production builds, distributed architectures, and machine learning implementations exploring concrete technical trade-offs.
             </p>
           </div>
         </FadeIn>
@@ -40,7 +40,7 @@ export function SelectedWork() {
             const previewImage = hasPreview ? project.images[0] : null;
 
             return (
-              <FadeIn key={project.slug} delay={idx * 0.05}>
+              <FadeIn key={project.slug} delay={idx * 0.04}>
                 <Link
                   href={`/work/${project.slug}`}
                   onMouseEnter={() => setActiveProject(project)}
@@ -53,10 +53,10 @@ export function SelectedWork() {
                     {/* Left: Number + Title + Tagline */}
                     <div className="space-y-3 max-w-3xl">
                       <div className="flex flex-wrap items-center gap-3 font-mono text-xs">
-                        <span className="text-accent uppercase tracking-wider font-medium">
-                          [{String(idx + 1).padStart(2, "0")}]
+                        <span className="text-text-muted group-hover:text-accent uppercase tracking-wider font-medium transition-colors">
+                          {String(idx + 1).padStart(2, "0")}
                         </span>
-                        <span className="text-text-muted">•</span>
+                        <span className="text-border-subtle">•</span>
                         <span className="text-text-secondary uppercase tracking-wider">
                           {project.category}
                         </span>

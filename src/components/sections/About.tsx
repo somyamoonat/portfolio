@@ -39,24 +39,21 @@ export function About() {
         {/* Section Header */}
         <FadeIn>
           <div className="mb-12 md:mb-16">
-            <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-accent mb-3">
-              <span>[02]</span>
-              <span className="text-text-muted">/</span>
-              <span className="text-text-secondary">ABOUT</span>
+            <div className="flex items-center gap-2.5 font-mono text-xs uppercase tracking-wider text-text-muted mb-3">
+              <span className="text-text-secondary font-medium">02</span>
+              <span className="text-border-subtle">/</span>
+              <span className="tracking-widest">About</span>
             </div>
             <Heading as="h2" size="xl">
-              Background & Current Focus
+              Engineering Practice & Focus
             </Heading>
-            <p className="mt-3 text-sm md:text-base text-text-secondary max-w-[65ch] leading-relaxed">
-              Engineering philosophy, personal background, and current technical investigations.
-            </p>
           </div>
         </FadeIn>
 
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={{ once: true, margin: "0px 0px 250px 0px" }}
           variants={containerVariants}
           className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start"
         >
@@ -83,9 +80,9 @@ export function About() {
                   /* Refined Typographic Portrait when no image is supplied */
                   <>
                     {/* Top indicator */}
-                    <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-text-muted">
-                      <span>FIGURE 01</span>
-                      <span className="text-accent">• IST UTC+5:30</span>
+                    <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-wider text-text-muted">
+                      <span>Monogram Profile</span>
+                      <span className="text-text-secondary">• IST UTC+5:30</span>
                     </div>
 
                     {/* Architectural Monogram Centerpiece */}
@@ -101,7 +98,7 @@ export function About() {
                     {/* Bottom Technical Caption */}
                     <div className="pt-4 border-t border-border-hairline font-mono text-[10px] uppercase tracking-wider text-text-muted flex items-center justify-between">
                       <span>{personal.primaryRole}</span>
-                      <span className="text-text-secondary">INDEX 2026</span>
+                      <span className="text-text-secondary">2026</span>
                     </div>
                   </>
                 )}
@@ -112,26 +109,36 @@ export function About() {
           {/* Column 2: Human Bio & Compact Currently List */}
           <motion.div variants={itemVariants} className="lg:col-span-7 space-y-10">
             {/* Short, human bio */}
-            <div className="space-y-5 text-base sm:text-lg text-text-secondary leading-relaxed max-w-[65ch]">
+            <div className="space-y-6 max-w-[65ch]">
               {personal.bioLong.map((paragraph, idx) => (
-                <p key={idx} className="last:mb-0">
+                <p
+                  key={idx}
+                  className={
+                    idx === 0
+                      ? "text-lg sm:text-xl text-text-primary leading-relaxed font-normal"
+                      : "text-base text-text-secondary leading-relaxed"
+                  }
+                >
                   {paragraph}
                 </p>
               ))}
             </div>
 
             {/* Compact "Currently" List */}
-            <div className="border border-border-hairline bg-surface/60 p-6 sm:p-8 corner-ticks">
+            <div className="border border-border-hairline bg-surface/60 p-6 sm:p-8">
               <div className="flex items-center justify-between pb-3 border-b border-border-hairline mb-6 font-mono text-xs uppercase tracking-wider">
-                <span className="text-text-primary">Currently Working On & Learning</span>
-                <span className="text-accent">[ACTIVE]</span>
+                <span className="text-text-primary font-medium">Currently Investigating</span>
+                <span className="flex items-center gap-1.5 text-text-muted text-[10px]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block" />
+                  Active
+                </span>
               </div>
 
-              <ul className="space-y-4 font-mono text-xs">
+              <ul className="space-y-3.5 font-mono text-xs">
                 {personal.currently.map((item, idx) => (
                   <li key={idx} className="flex items-start gap-3">
-                    <span className="text-accent uppercase tracking-wider select-none shrink-0">
-                      [{String(idx + 1).padStart(2, "0")}]
+                    <span className="text-text-muted select-none shrink-0 pt-0.5">
+                      {String(idx + 1).padStart(2, "0")}
                     </span>
                     <span className="text-text-secondary leading-relaxed font-sans text-sm">
                       {item}

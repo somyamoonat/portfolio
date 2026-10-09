@@ -65,11 +65,11 @@ export function Header() {
   }, [mobileMenuOpen]);
 
   const navLinks = [
-    { href: "#work", label: "Work" },
-    { href: "#about", label: "About" },
-    { href: "#experience", label: "Background" },
-    { href: "#skills", label: "Skills" },
-    { href: "#contact", label: "Contact" },
+    { href: "/#work", label: "Work" },
+    { href: "/#about", label: "About" },
+    { href: "/#experience", label: "Background" },
+    { href: "/#skills", label: "Skills" },
+    { href: "/#contact", label: "Contact" },
   ];
 
   const closeMobileMenu = () => {

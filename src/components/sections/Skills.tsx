@@ -11,17 +11,14 @@ export function Skills() {
         {/* Section Header */}
         <FadeIn>
           <div className="mb-12 md:mb-16">
-            <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-accent mb-3">
-              <span>[05]</span>
-              <span className="text-text-muted">/</span>
-              <span className="text-text-secondary">SKILLS & DISCIPLINES</span>
+            <div className="flex items-center gap-2.5 font-mono text-xs uppercase tracking-wider text-text-muted mb-3">
+              <span className="text-text-secondary font-medium">05</span>
+              <span className="text-border-subtle">/</span>
+              <span className="tracking-widest">Capabilities</span>
             </div>
             <Heading as="h2" size="xl">
-              Technical Capabilities
+              Technical Disciplines
             </Heading>
-            <p className="mt-3 text-sm md:text-base text-text-secondary max-w-[65ch] leading-relaxed">
-              Proficiencies across client architecture, backend systems, machine learning workflows, and deployment tooling.
-            </p>
           </div>
         </FadeIn>
 
@@ -33,7 +30,7 @@ export function Skills() {
                 {/* Category Header with item count */}
                 <div className="font-mono text-xs uppercase tracking-wider pb-2 border-b border-border-hairline flex items-center justify-between">
                   <span className="text-text-primary font-medium">{group.category}</span>
-                  <span className="text-text-muted font-normal">[{String(idx + 1).padStart(2, "0")}]</span>
+                  <span className="text-text-muted font-normal">{String(idx + 1).padStart(2, "0")}</span>
                 </div>
 
                 {/* Plain Text List with refined typographic bullets */}
@@ -41,10 +38,10 @@ export function Skills() {
                   {group.skills.map((skill) => (
                     <li
                       key={skill}
-                      className="flex items-baseline gap-2.5 font-sans leading-relaxed"
+                      className="group flex items-baseline gap-2.5 font-sans leading-relaxed cursor-default"
                     >
-                      <span className="text-accent font-mono text-xs select-none">—</span>
-                      <span className="hover:text-text-primary transition-colors">{skill}</span>
+                      <span className="text-border-strong group-hover:text-accent font-mono text-xs select-none transition-colors">—</span>
+                      <span className="group-hover:text-text-primary transition-colors">{skill}</span>
                     </li>
                   ))}
                 </ul>

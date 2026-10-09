@@ -179,110 +179,106 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </FadeIn>
 
             {/* Deep Dive: The Problem, What I Built, and Outcome */}
-            <FadeIn delay={0.15}>
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
-                {/* Problem Statement */}
-                <div className="lg:col-span-5 space-y-4">
-                  <div className="font-mono text-xs uppercase tracking-widest text-accent">
-                    [01] The Problem
+            {/* Deep Dive: The Problem, What I Built, and Outcome */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
+              {/* Problem Statement */}
+              <div className="lg:col-span-5 space-y-4">
+                <div className="font-mono text-xs uppercase tracking-wider text-text-muted">
+                  <span className="text-text-secondary font-medium">01</span> / The Problem
+                </div>
+                <h2 className="font-serif text-2xl text-text-primary font-normal">
+                  Technical Constraints & Motivation
+                </h2>
+                <p className="text-sm sm:text-base text-text-secondary leading-relaxed max-w-[65ch]">
+                  {project.problem}
+                </p>
+              </div>
+
+              {/* What I Built & Outcome */}
+              <div className="lg:col-span-7 space-y-8 lg:border-l lg:border-border-hairline lg:pl-10">
+                <div className="space-y-4">
+                  <div className="font-mono text-xs uppercase tracking-wider text-text-muted">
+                    <span className="text-text-secondary font-medium">02</span> / What I Built
                   </div>
                   <h2 className="font-serif text-2xl text-text-primary font-normal">
-                    Technical Constraints & Motivation
+                    Architecture & Implementation
                   </h2>
                   <p className="text-sm sm:text-base text-text-secondary leading-relaxed max-w-[65ch]">
-                    {project.problem}
+                    {project.description}
+                  </p>
+
+                  {/* Highlights Bullet List */}
+                  {project.highlights && project.highlights.length > 0 && (
+                    <ul className="space-y-2 pt-2 max-w-[65ch]">
+                      {project.highlights.map((highlight, idx) => (
+                        <li
+                          key={idx}
+                          className="flex items-start gap-3 text-xs sm:text-sm text-text-secondary leading-relaxed"
+                        >
+                          <span className="text-border-strong font-mono select-none shrink-0">—</span>
+                          <span>{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+
+                <div className="space-y-4 pt-6 border-t border-border-hairline">
+                  <div className="font-mono text-xs uppercase tracking-wider text-text-muted">
+                    <span className="text-text-secondary font-medium">03</span> / Outcome & Results
+                  </div>
+                  <h2 className="font-serif text-2xl text-text-primary font-normal">
+                    Delivered System
+                  </h2>
+                  <p className="text-sm sm:text-base text-text-secondary leading-relaxed max-w-[65ch]">
+                    {project.outcome}
                   </p>
                 </div>
-
-                {/* What I Built & Outcome */}
-                <div className="lg:col-span-7 space-y-8 lg:border-l lg:border-border-hairline lg:pl-10">
-                  <div className="space-y-4">
-                    <div className="font-mono text-xs uppercase tracking-widest text-accent">
-                      [02] What I Built
-                    </div>
-                    <h2 className="font-serif text-2xl text-text-primary font-normal">
-                      Architecture & Implementation
-                    </h2>
-                    <p className="text-sm sm:text-base text-text-secondary leading-relaxed max-w-[65ch]">
-                      {project.description}
-                    </p>
-
-                    {/* Highlights Bullet List */}
-                    {project.highlights && project.highlights.length > 0 && (
-                      <ul className="space-y-2 pt-2 max-w-[65ch]">
-                        {project.highlights.map((highlight, idx) => (
-                          <li
-                            key={idx}
-                            className="flex items-start gap-3 text-xs sm:text-sm text-text-muted leading-relaxed"
-                          >
-                            <span className="text-accent font-mono select-none shrink-0">—</span>
-                            <span>{highlight}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-
-                  <div className="space-y-4 pt-6 border-t border-border-hairline">
-                    <div className="font-mono text-xs uppercase tracking-widest text-accent">
-                      [03] Outcome & Results
-                    </div>
-                    <h2 className="font-serif text-2xl text-text-primary font-normal">
-                      Delivered System
-                    </h2>
-                    <p className="text-sm sm:text-base text-text-secondary leading-relaxed max-w-[65ch]">
-                      {project.outcome}
-                    </p>
-                  </div>
-                </div>
               </div>
-            </FadeIn>
+            </div>
 
             {/* Image Gallery */}
             {project.images && project.images.length > 0 && (
-              <FadeIn delay={0.2}>
-                <div className="mb-20">
-                  <div className="flex items-center justify-between pb-3 border-b border-border-hairline mb-6 font-mono text-xs uppercase tracking-wider">
-                    <span className="text-text-primary">System Interface & Wireframes</span>
-                    <span className="text-text-muted">
-                      {project.images.length} {project.images.length === 1 ? "Image" : "Images"}
-                    </span>
-                  </div>
-
-                  <div className="space-y-8">
-                    {project.images.map((image, idx) => (
-                      <div
-                        key={idx}
-                        className="border border-border-hairline bg-surface p-2 sm:p-4 corner-ticks"
-                      >
-                        <div className="relative aspect-[16/10] w-full overflow-hidden border border-border-hairline bg-surface-subtle">
-                          <Image
-                            src={image.src}
-                            alt={image.alt}
-                            fill
-                            sizes="(max-width: 1024px) 100vw, 1152px"
-                            className="object-contain"
-                            priority={idx === 0}
-                          />
-                        </div>
-                        <div className="pt-3 px-1 flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-mono text-[11px] text-text-muted">
-                          <span>{image.alt}</span>
-                          {project.placeholder && (
-                            <span className="text-accent uppercase tracking-wider">
-                              [Placeholder Preview — Real Screenshot to be Added]
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+              <div className="mb-20">
+                <div className="flex items-center justify-between pb-3 border-b border-border-hairline mb-6 font-mono text-xs uppercase tracking-wider">
+                  <span className="text-text-primary font-medium">System Interface & Wireframes</span>
+                  <span className="text-text-muted">
+                    {project.images.length} {project.images.length === 1 ? "Image" : "Images"}
+                  </span>
                 </div>
-              </FadeIn>
+
+                <div className="space-y-8">
+                  {project.images.map((image, idx) => (
+                    <div
+                      key={idx}
+                      className="border border-border-hairline bg-surface p-2 sm:p-4"
+                    >
+                      <div className="relative aspect-[16/10] w-full overflow-hidden border border-border-hairline bg-surface-subtle">
+                        <Image
+                          src={image.src}
+                          alt={image.alt}
+                          fill
+                          sizes="(max-width: 1024px) 100vw, 1152px"
+                          className="object-contain"
+                          priority={idx === 0}
+                        />
+                      </div>
+                      <div className="pt-3 px-1 flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-mono text-[11px] text-text-muted">
+                        <span>{image.alt}</span>
+                        {project.placeholder && (
+                          <span className="text-accent uppercase tracking-wider">
+                            [Placeholder Preview — Real Screenshot to be Added]
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             )}
 
             {/* Project Navigation: Previous & Next */}
-            <FadeIn delay={0.25}>
-              <div className="pt-10 border-t border-border-hairline flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-6">
+            <div className="pt-10 border-t border-border-hairline flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-6">
                 {prevProject ? (
                   <Link
                     href={`/work/${prevProject.slug}`}
@@ -322,7 +318,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   <div />
                 )}
               </div>
-            </FadeIn>
           </Container>
         </Section>
       </main>

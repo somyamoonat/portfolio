@@ -12,17 +12,14 @@ export function Experience() {
         {/* Section Header */}
         <FadeIn>
           <div className="mb-12 md:mb-16">
-            <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-accent mb-3">
-              <span>[03]</span>
-              <span className="text-text-muted">/</span>
-              <span className="text-text-secondary">EXPERIENCE</span>
+            <div className="flex items-center gap-2.5 font-mono text-xs uppercase tracking-wider text-text-muted mb-3">
+              <span className="text-text-secondary font-medium">03</span>
+              <span className="text-border-subtle">/</span>
+              <span className="tracking-widest">Experience</span>
             </div>
             <Heading as="h2" size="xl">
-              Work & Engineering Milestones
+              Professional Trajectory
             </Heading>
-            <p className="mt-3 text-sm md:text-base text-text-secondary max-w-[65ch] leading-relaxed">
-              Chronological record of software development responsibilities, systems delivery, and technical impact.
-            </p>
           </div>
         </FadeIn>
 

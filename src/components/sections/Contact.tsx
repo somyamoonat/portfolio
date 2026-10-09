@@ -96,13 +96,13 @@ export function Contact() {
         {/* Section Header */}
         <FadeIn>
           <div className="mb-12 md:mb-16">
-            <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-accent mb-3">
-              <span>[06]</span>
-              <span className="text-text-muted">/</span>
-              <span className="text-text-secondary">CONTACT</span>
+            <div className="flex items-center gap-2.5 font-mono text-xs uppercase tracking-wider text-text-muted mb-3">
+              <span className="text-text-secondary font-medium">06</span>
+              <span className="text-border-subtle">/</span>
+              <span className="tracking-widest">Contact</span>
             </div>
             <Heading as="h2" size="xl">
-              Get in Touch
+              Initiate a Conversation
             </Heading>
             {/* Warm line inviting people to reach out */}
             <p className="mt-3 text-base sm:text-lg text-text-secondary max-w-[65ch] leading-relaxed">
@@ -118,11 +118,11 @@ export function Contact() {
               <div className="space-y-10">
                 {/* Large Copyable Email Link */}
                 <div className="space-y-4">
-                  <span className="font-mono text-xs uppercase tracking-widest text-accent block">
+                  <span className="font-mono text-xs uppercase tracking-wider text-text-primary font-medium block">
                     Direct Inbox
                   </span>
 
-                  <div className="p-6 sm:p-8 border border-border-hairline bg-surface/60 corner-ticks space-y-4">
+                  <div className="p-6 sm:p-8 border border-border-hairline bg-surface/60 space-y-4">
                     <button
                       type="button"
                       onClick={handleCopyEmail}
@@ -219,10 +219,10 @@ export function Contact() {
           {/* Right Column: Editorial Contact Form */}
           <div className="lg:col-span-6">
             <FadeIn delay={0.1}>
-              <div className="border border-border-hairline bg-surface p-6 sm:p-8 md:p-10 corner-ticks space-y-6">
+              <div className="border border-border-hairline bg-surface p-6 sm:p-8 md:p-10 space-y-6">
                 <div>
-                  <span className="font-mono text-xs uppercase tracking-widest text-accent block mb-2">
-                    Message Terminal
+                  <span className="font-mono text-xs uppercase tracking-wider text-text-primary font-medium block mb-2">
+                    Written Inquiry
                   </span>
                   <h3 className="font-serif text-2xl text-text-primary font-normal">
                     Send a note directly.

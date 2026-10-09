@@ -44,11 +44,11 @@ export function FadeIn({
         opacity: 1,
         y: 0,
       }}
-      viewport={{ once: true, margin: "-40px" }}
+      viewport={{ once: true, margin: "0px 0px 250px 0px", amount: 0 }}
       transition={{
-        duration: shouldReduceMotion ? 0 : 0.45,
-        delay: shouldReduceMotion ? 0 : delay,
-        ease: "easeOut",
+        duration: shouldReduceMotion ? 0 : 0.35,
+        delay: shouldReduceMotion ? 0 : Math.min(delay, 0.15),
+        ease: [0.16, 1, 0.3, 1],
       }}
       className={className}
     >

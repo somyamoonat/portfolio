@@ -117,13 +117,13 @@ export const profileData: Profile = {
       statusText: "Available for full-time roles & select projects",
     },
     bioShort:
-      "Software developer building full-stack web applications and machine learning systems with clean data flow and strict type safety.",
+      "Software developer building full-stack applications and ML pipelines with clean architectures and disciplined engineering.",
     bioLong: [
-      "I build full-stack web applications and work on machine learning pipelines. My technical work focuses on TypeScript and Next.js on the client, robust backend APIs, and deploying models with Python and modern ML libraries.",
-      "I prioritize clean code organization, maintainable architectures, predictable data flow, and minimal unnecessary dependencies.",
+      "I am an engineer focused on the intersection of modern web systems and applied machine learning. Most of my work involves TypeScript and Next.js on the client, clean Python and Node backends, and practical data pipelines that solve concrete problems.",
+      "I value architectural clarity: predictable state management, defensive typing, sensible database schemas, and avoiding unnecessary abstractions that make software difficult to reason about.",
     ],
     statement:
-      "Full-stack web developer and machine learning engineer focused on practical software, clean architecture, and reliable systems.",
+      "Full-stack engineer and machine learning practitioner building reliable web applications and intelligent data systems.",
     currently: [
       "Building full-stack applications with Next.js App Router and TypeScript",
       "Studying information retrieval methods and model evaluation workflows",
