@@ -1,42 +1,66 @@
 import { profileData } from "@/content/profile";
-import { Container } from "@/components/primitives";
+import { Container, Link } from "@/components/primitives";
 
 export function Footer() {
+  const { personal, contact, socials } = profileData;
+
   return (
-    <footer className="py-12 bg-canvas text-text-muted font-mono text-xs">
+    <footer
+      role="contentinfo"
+      className="py-12 border-t border-border-hairline bg-canvas text-text-muted font-mono text-xs"
+    >
       <Container>
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-8 hairline-b">
-          <div className="space-y-1">
-            <div className="text-text-primary uppercase tracking-wider font-medium">
-              {profileData.personal.name}
-            </div>
-            <div className="text-text-muted text-[11px]">
-              {profileData.personal.domain} • Static-first Next.js
-            </div>
-          </div>
-
-          {/* Typography Colophon */}
-          <div className="text-[11px] text-text-muted space-y-0.5">
-            <div>Typefaces: Instrument Serif + Plus Jakarta Sans + JetBrains Mono</div>
-            <div>Palette: Atelier Noir with Signal Vermilion Accent</div>
-          </div>
-
-          <div className="text-right">
-            <a
-              href="#top"
-              className="hover:text-accent transition-colors uppercase tracking-wider text-[11px]"
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-6 border-b border-border-hairline">
+          {/* Email link */}
+          <div>
+            <Link
+              href={`mailto:${contact.email}`}
+              variant="editorial"
+              className="text-xs text-text-secondary"
             >
-              Back to top ↑
-            </a>
+              {contact.email}
+            </Link>
+          </div>
+
+          {/* Social Links */}
+          <div className="flex flex-wrap items-center gap-6">
+            {socials.github && (
+              <Link
+                href={socials.github.url}
+                variant="mono"
+                external
+              >
+                GitHub
+              </Link>
+            )}
+            {socials.linkedin && (
+              <Link
+                href={socials.linkedin.url}
+                variant="mono"
+                external
+              >
+                LinkedIn
+              </Link>
+            )}
+            {socials.x && (
+              <Link
+                href={socials.x.url}
+                variant="mono"
+                external
+              >
+                X
+              </Link>
+            )}
           </div>
         </div>
 
-        <div className="pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-[11px] text-text-muted">
+        {/* Copyright notice */}
+        <div className="pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-[11px] text-text-muted">
           <div>
-            © 2026 {profileData.personal.name}. All rights reserved.
+            © 2026 {personal.name}
           </div>
-          <div className="text-text-muted">
-            Engineered with Next.js App Router & Tailwind CSS.
+          <div>
+            somyamoonat.tech
           </div>
         </div>
       </Container>

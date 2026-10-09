@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Somya Moonat — Personal Portfolio (`somyamoonat.tech`)
 
-## Getting Started
+Editorial, restrained, and confident personal portfolio built with Next.js (App Router), TypeScript, Tailwind CSS v4, Motion, and Google Fonts.
 
-First, run the development server:
+---
+
+## Architecture & Principles
+
+- **Single Source of Truth**: All personal content (bio, projects, experience, education, skills, contact links) is managed in [`src/content/profile.ts`](src/content/profile.ts). Update this file to modify content without touching UI components.
+- **Strict Design Guardrails**: Adheres to [`DESIGN_RULES.md`](DESIGN_RULES.md). No SaaS visual tropes, no glowing orbs/gradients, no emoji icons, maximum of one accent colour (**Signal Vermilion `#E84A27`**), and high-contrast WCAG AA compliance.
+- **Type Pairing**:
+  - **Display**: `Instrument Serif` (sharp, intellectual editorial serif)
+  - **Body / Interface**: `Plus Jakarta Sans` (contemporary sans-serif)
+  - **Technical Labels / Indices**: `JetBrains Mono` (monospace indicators and dates)
+- **Zero-Flash Theme System**: Synchronous blocking script in `<head>` ensures zero flash of unstyled content (FOUC) across light and dark themes.
+
+---
+
+## Contact Form & Resend Setup
+
+The contact section includes an editorial form integrated with a Next.js route handler (`/api/contact`) powered by [Resend](https://resend.com), featuring honeypot spam protection, server-side validation, and client feedback.
+
+### Environment Variables
+
+Create a `.env.local` file in the root directory:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Resend API Key (obtain from https://resend.com/api-keys)
+RESEND_API_KEY=re_your_api_key_here
+
+# Optional: Verified sender email (default: onboarding@resend.dev)
+CONTACT_FROM_EMAIL="Portfolio Contact <onboarding@resend.dev>"
+
+# Optional: Destination email (default: somya.moonat@gmail.com)
+CONTACT_TO_EMAIL=somya.moonat@gmail.com
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> **Note on Simulated Mode**: If `RESEND_API_KEY` is not set, the contact API runs in graceful simulation mode during local development, logging the message to the server console and returning a friendly success message to the frontend without crashing.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Local Development
 
-## Learn More
+```bash
+# Install dependencies
+npm install
 
-To learn more about Next.js, take a look at the following resources:
+# Start development server
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Open [http://localhost:3000](http://localhost:3000) (or the port specified by the CLI) in your browser.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Production Build
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run build
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Prerenders 100% static HTML routes with zero server runtime overhead. Ready for immediate deployment to Vercel.

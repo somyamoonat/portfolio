@@ -37,7 +37,7 @@ export function FadeIn({
       transition={{
         duration: shouldReduceMotion ? 0 : 0.45,
         delay: shouldReduceMotion ? 0 : delay,
-        ease: [0.21, 0.47, 0.32, 0.98],
+        ease: "easeOut",
       }}
       className={className}
     >

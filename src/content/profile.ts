@@ -84,6 +84,7 @@ export interface Profile {
     bioLong: string[];
     statement: string;
     currently: string[];
+    photo?: string;
   };
   contact: {
     email: string;
@@ -128,12 +129,13 @@ export const profileData: Profile = {
       "Studying information retrieval methods and model evaluation workflows",
       "Open to software engineering and machine learning roles",
     ],
+    photo: undefined, // Add your image path here (e.g. "/somya.jpg") to switch from typographic portrait to photo
   },
 
   contact: {
     email: "somya.moonat@gmail.com",
     calendarUrl: undefined, // Optional booking link (e.g. "https://cal.com/somyamoonat")
-    resumeUrl: "/Somya_Moonat_Resume.pdf",
+    resumeUrl: "/resume.pdf",
     locationTimezone: "IST (UTC+5:30) • Open to remote worldwide",
   },
 
@@ -230,7 +232,7 @@ export const profileData: Profile = {
       technologies: ["Python", "PyTorch", "FastAPI", "Vector Search", "TypeScript", "Next.js"],
       images: [
         {
-          src: "/projects/search-engine-preview.png",
+          src: "/projects/search-engine-preview.svg",
           alt: "Contextual Semantic Search Engine query inspector and score breakdown",
         },
       ],
@@ -260,7 +262,7 @@ export const profileData: Profile = {
       technologies: ["TypeScript", "Next.js", "Node.js", "Redis", "PostgreSQL", "Tailwind CSS"],
       images: [
         {
-          src: "/projects/orchestrator-preview.png",
+          src: "/projects/orchestrator-preview.svg",
           alt: "Concurrent Task Orchestrator job management dashboard",
         },
       ],
@@ -290,7 +292,7 @@ export const profileData: Profile = {
       technologies: ["PyTorch", "OpenCV", "Python", "NumPy", "ONNX"],
       images: [
         {
-          src: "/projects/vision-preview.png",
+          src: "/projects/vision-preview.svg",
           alt: "Visual Anomaly Detection model evaluation and heatmap output",
         },
       ],
@@ -320,7 +322,7 @@ export const profileData: Profile = {
       technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "MDX"],
       images: [
         {
-          src: "/projects/editorial-preview.png",
+          src: "/projects/editorial-preview.svg",
           alt: "Editorial Publishing Engine reading view",
         },
       ],

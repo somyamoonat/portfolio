@@ -1,7 +1,6 @@
 import { profileData } from "@/content/profile";
-import { SectionLabel } from "@/components/ui/SectionLabel";
+import { Container, Section, Heading } from "@/components/primitives";
 import { FadeIn } from "@/components/motion/FadeIn";
-import { Container, Section } from "@/components/primitives";
 
 export function Skills() {
   const { skills } = profileData;
@@ -9,36 +8,44 @@ export function Skills() {
   return (
     <Section id="skills" spacing="md" bordered>
       <Container>
-        <SectionLabel
-          number="04"
-          label="SKILLS"
-          title="Technical Capabilities"
-          description="Proficiencies across frontend architecture, backend systems, machine learning engineering, and tooling."
-        />
+        {/* Section Header */}
+        <div className="mb-12 md:mb-16">
+          <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-accent mb-3">
+            <span>[05]</span>
+            <span className="text-text-muted">/</span>
+            <span className="text-text-secondary">SKILLS & DISCIPLINES</span>
+          </div>
+          <Heading as="h2" size="xl">
+            Technical Capabilities
+          </Heading>
+          <p className="mt-3 text-sm md:text-base text-text-secondary max-w-2xl leading-relaxed">
+            Proficiencies across client architecture, backend systems, machine learning workflows, and deployment tooling.
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {skills.map((category, idx) => (
-            <FadeIn key={category.category} delay={idx * 0.06}>
-              <div className="hairline-all bg-surface/40 p-6 corner-ticks h-full flex flex-col justify-between">
-                <div>
-                  <div className="font-mono text-xs uppercase tracking-widest text-accent mb-4 pb-3 hairline-b flex items-center justify-between">
-                    <span>{category.category}</span>
-                    <span className="text-text-muted">0{idx + 1}</span>
-                  </div>
-
-                  <ul className="space-y-2.5 font-mono text-xs text-text-secondary">
-                    {category.skills.map((skill) => (
-                      <li key={skill} className="flex items-center gap-2">
-                        <span className="text-accent/60 select-none">•</span>
-                        <span>{skill}</span>
-                      </li>
-                    ))}
-                  </ul>
+        {/* Plain Text Lists Grouped by Category (No meters, no progress bars, no logo walls) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 border-t border-b border-border-hairline py-10">
+          {skills.map((group, idx) => (
+            <FadeIn key={group.category} delay={idx * 0.05}>
+              <div className="space-y-4">
+                {/* Category Header */}
+                <div className="font-mono text-xs uppercase tracking-wider pb-2 border-b border-border-hairline flex items-center justify-between">
+                  <span className="text-text-primary font-medium">{group.category}</span>
+                  <span className="text-accent">0{idx + 1}</span>
                 </div>
 
-                <div className="pt-6 mt-6 hairline-t font-mono text-[10px] text-text-muted uppercase tracking-wider">
-                  Verified In Production
-                </div>
+                {/* Plain Text List */}
+                <ul className="space-y-2 text-sm text-text-secondary">
+                  {group.skills.map((skill) => (
+                    <li
+                      key={skill}
+                      className="flex items-baseline gap-2.5 font-sans"
+                    >
+                      <span className="text-accent font-mono text-xs select-none">•</span>
+                      <span>{skill}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </FadeIn>
           ))}

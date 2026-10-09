@@ -1,80 +1,108 @@
+"use client";
+
 import { profileData } from "@/content/profile";
-import { FadeIn } from "@/components/motion/FadeIn";
-import { Container, Section, Heading, Button, Link } from "@/components/primitives";
+import { Container, Section, Button } from "@/components/primitives";
+import { motion, useReducedMotion } from "motion/react";
 
 export function Hero() {
-  const { personal, contact, socials } = profileData;
+  const { personal, contact } = profileData;
+  const shouldReduceMotion = useReducedMotion();
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: shouldReduceMotion ? 0 : 0.12,
+        delayChildren: shouldReduceMotion ? 0 : 0.05,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 16 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: shouldReduceMotion ? 0 : 0.5,
+        ease: "easeOut" as const,
+      },
+    },
+  };
 
   return (
-    <Section spacing="lg" bordered>
+    <Section spacing="lg" bordered className="pt-20 sm:pt-28 md:pt-36">
       <Container>
-        <FadeIn>
-          {/* Eyebrow / Role definition */}
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-xs uppercase tracking-widest text-accent mb-6">
-            <span>[00 / PROFILE]</span>
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+          className="max-w-5xl"
+        >
+          {/* Eyebrow Label */}
+          <motion.div
+            variants={itemVariants}
+            className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-accent mb-6"
+          >
+            <span>[00 / {personal.name.toUpperCase()}]</span>
             <span className="text-text-muted">/</span>
             <span className="text-text-secondary">{personal.primaryRole}</span>
-          </div>
+          </motion.div>
 
-          {/* Main Editorial Headline */}
-          <Heading as="h1" size="display" className="mb-8">
-            {personal.name}
-          </Heading>
+          {/* Large Typographic Statement in One Specific Sentence */}
+          <motion.h1
+            variants={itemVariants}
+            className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-text-primary leading-[1.08] font-normal mb-10"
+          >
+            Full-stack developer and machine learning practitioner building resilient web architectures and data-driven systems.
+          </motion.h1>
 
-          {/* Direct, specific positioning statement */}
-          <p className="text-lg sm:text-xl md:text-2xl text-text-secondary max-w-3xl font-light leading-relaxed mb-10">
-            {personal.statement}
-          </p>
+          {/* Location and Current Status */}
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-6 pb-8 border-t border-b border-border-hairline mb-10 font-mono text-xs text-text-secondary"
+          >
+            <div className="flex items-center gap-2">
+              <span className="text-text-muted">Location:</span>
+              <span className="text-text-primary">{personal.location}</span>
+            </div>
 
-          {/* Sub-specializations list in monospace hairline box */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-6 pb-8 hairline-t hairline-b max-w-3xl mb-10 font-mono text-xs text-text-secondary">
-            {personal.subRoles.map((role, idx) => (
-              <div key={role} className="flex items-center gap-2">
-                <span className="text-text-muted">0{idx + 1}.</span>
-                <span className="text-text-primary">{role}</span>
+            {personal.status.availableForWork && (
+              <div className="flex items-center gap-2.5">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-60" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
+                </span>
+                <span className="text-text-primary font-medium">
+                  {personal.status.statusText}
+                </span>
               </div>
-            ))}
-          </div>
+            )}
+          </motion.div>
 
-          {/* Action Triggers: Primary Contact & Direct Actions */}
-          <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-2">
+          {/* Two Clear Actions */}
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-wrap items-center gap-4 sm:gap-6"
+          >
             <Button
               variant="primary"
-              href={`mailto:${contact.email}`}
+              href="#work"
             >
-              <span>Get in touch</span>
-              <span className="text-accent">→</span>
+              <span>View work</span>
+              <span className="text-accent select-none">↓</span>
             </Button>
 
             <Button
               variant="secondary"
-              href={contact.resumeUrl}
-              target="_blank"
+              href={`mailto:${contact.email}`}
             >
-              <span>Download Resume</span>
-              <span className="text-text-muted">↗</span>
+              <span>Get in touch</span>
+              <span className="text-text-muted select-none">→</span>
             </Button>
-
-            <div className="flex items-center gap-4 ml-auto sm:ml-2 font-mono text-xs uppercase tracking-wider text-text-muted">
-              {socials.github && (
-                <Link
-                  variant="mono"
-                  href={socials.github.url}
-                >
-                  GitHub
-                </Link>
-              )}
-              {socials.linkedin && (
-                <Link
-                  variant="mono"
-                  href={socials.linkedin.url}
-                >
-                  LinkedIn
-                </Link>
-              )}
-            </div>
-          </div>
-        </FadeIn>
+          </motion.div>
+        </motion.div>
       </Container>
     </Section>
   );

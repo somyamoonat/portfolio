@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
+  <rect width="1200" height="750" fill="#131418"/>
+  <defs>
+    <pattern id="grid2" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#22242c" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="750" fill="url(#grid2)" />
+  
+  <!-- Outer frame -->
+  <rect x="40" y="40" width="1120" height="670" fill="none" stroke="#2b2e39" stroke-width="1"/>
+  
+  <!-- Header bar -->
+  <line x1="40" y1="90" x2="1160" y2="90" stroke="#2b2e39" stroke-width="1"/>
+  <text x="70" y="70" font-family="monospace" font-size="12" fill="#8e929e" letter-spacing="2">DASHBOARD // CONCURRENT TASK DISPATCHER</text>
+  <text x="1120" y="70" font-family="monospace" font-size="11" fill="#e84a27" text-anchor="end">[STATUS: WORKER POOL HEALTHY]</text>
+
+  <!-- Metrics row -->
+  <g transform="translate(80, 130)">
+    <rect x="0" y="0" width="320" height="90" fill="#181920" stroke="#2b2e39" stroke-width="1"/>
+    <text x="25" y="35" font-family="monospace" font-size="11" fill="#8e929e">ACTIVE WORKERS</text>
+    <text x="25" y="70" font-family="monospace" font-size="28" fill="#f4f4f6">16 / 16</text>
+
+    <rect x="360" y="0" width="320" height="90" fill="#181920" stroke="#2b2e39" stroke-width="1"/>
+    <text x="385" y="35" font-family="monospace" font-size="11" fill="#8e929e">QUEUE BACKPRESSURE</text>
+    <text x="385" y="70" font-family="monospace" font-size="28" fill="#f4f4f6">0.02s</text>
+
+    <rect x="720" y="0" width="320" height="90" fill="#181920" stroke="#2b2e39" stroke-width="1"/>
+    <text x="745" y="35" font-family="monospace" font-size="11" fill="#8e929e">SUCCESS RATE</text>
+    <text x="745" y="70" font-family="monospace" font-size="28" fill="#e84a27">99.98%</text>
+  </g>
+
+  <!-- Job stream log wireframe -->
+  <g transform="translate(80, 260)">
+    <rect x="0" y="0" width="1040" height="270" fill="#16171d" stroke="#2b2e39" stroke-width="1"/>
+    <rect x="0" y="0" width="1040" height="35" fill="#1f2029"/>
+    <text x="20" y="22" font-family="monospace" font-size="11" fill="#8e929e">EVENT TELEMETRY LOG (LIVE STREAM)</text>
+
+    <text x="20" y="65" font-family="monospace" font-size="13" fill="#e84a27">[10:14:02.112]</text>
+    <text x="140" y="65" font-family="monospace" font-size="13" fill="#f4f4f6">JOB_ACK: id=task_8829 status=COMPLETED duration=14ms worker=node-04</text>
+
+    <text x="20" y="105" font-family="monospace" font-size="13" fill="#8e929e">[10:14:01.890]</text>
+    <text x="140" y="105" font-family="monospace" font-size="13" fill="#f4f4f6">JOB_DISPATCH: id=task_8830 queue=priority_high attempts=1 worker=node-02</text>
+
+    <text x="20" y="145" font-family="monospace" font-size="13" fill="#8e929e">[10:14:00.410]</text>
+    <text x="140" y="145" font-family="monospace" font-size="13" fill="#f4f4f6">HEARTBEAT: cluster_healthy pool_active=16 memory_usage=184mb</text>
+
+    <text x="20" y="185" font-family="monospace" font-size="13" fill="#8e929e">[10:13:58.201]</text>
+    <text x="140" y="185" font-family="monospace" font-size="13" fill="#f4f4f6">BACKOFF_RETRY: id=task_8819 retry_delay=500ms jitter=12ms</text>
+  </g>
+
+  <!-- Dev watermark stamp -->
+  <rect x="360" y="580" width="480" height="45" fill="#0d0e11" stroke="#e84a27" stroke-dasharray="4,4" stroke-width="1"/>
+  <text x="600" y="608" font-family="monospace" font-size="12" fill="#e84a27" letter-spacing="1.5" text-anchor="middle">
+    [PLACEHOLDER SCREENSHOT — TASK ORCHESTRATOR]
+  </text>
+</svg>
