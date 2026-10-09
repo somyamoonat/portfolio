@@ -27,30 +27,30 @@
   <g transform="translate(80, 230)">
     <rect x="0" y="0" width="1040" height="40" fill="#1b1c24" stroke="#2b2e39" stroke-width="1"/>
     <text x="20" y="25" font-family="monospace" font-size="12" fill="#8e929e">RANK</text>
-    <text x="100" y="25" font-family="monospace" font-size="12" fill="#8e929e">SCORE (HYBRID)</text>
-    <text x="280" y="25" font-family="monospace" font-size="12" fill="#8e929e">DOCUMENT CHUNK</text>
-    <text x="900" y="25" font-family="monospace" font-size="12" fill="#8e929e">DIMENSION</text>
+    <text x="80" y="25" font-family="monospace" font-size="12" fill="#8e929e">SCORE (HYBRID)</text>
+    <text x="370" y="25" font-family="monospace" font-size="12" fill="#8e929e">DOCUMENT CHUNK</text>
+    <text x="950" y="25" font-family="monospace" font-size="12" fill="#8e929e">DIMENSION</text>
     
     <!-- Row 1 -->
     <rect x="0" y="55" width="1040" height="60" fill="#141519" stroke="#22242c" stroke-width="1"/>
     <text x="20" y="90" font-family="monospace" font-size="13" fill="#e84a27">#01</text>
-    <text x="100" y="90" font-family="monospace" font-size="13" fill="#f4f4f6">0.9412 [dense: 0.89 / lex: 0.96]</text>
-    <text x="280" y="90" font-family="sans-serif" font-size="13" fill="#8e929e">"Partitioned inverted index structures with bi-encoder similarity scoring..."</text>
-    <text x="900" y="90" font-family="monospace" font-size="12" fill="#5e6270">768-D</text>
+    <text x="80" y="90" font-family="monospace" font-size="12" fill="#f4f4f6">0.9412 [d: 0.89 / l: 0.96]</text>
+    <text x="370" y="90" font-family="sans-serif" font-size="13" fill="#8e929e">"Partitioned inverted index structures with bi-encoder similarity scoring..."</text>
+    <text x="950" y="90" font-family="monospace" font-size="12" fill="#5e6270">768-D</text>
 
     <!-- Row 2 -->
     <rect x="0" y="130" width="1040" height="60" fill="#141519" stroke="#22242c" stroke-width="1"/>
     <text x="20" y="165" font-family="monospace" font-size="13" fill="#8e929e">#02</text>
-    <text x="100" y="165" font-family="monospace" font-size="13" fill="#f4f4f6">0.8870 [dense: 0.91 / lex: 0.85]</text>
-    <text x="280" y="165" font-family="sans-serif" font-size="13" fill="#8e929e">"Memory-mapped vector lookup caching with quantized weights..."</text>
-    <text x="900" y="165" font-family="monospace" font-size="12" fill="#5e6270">768-D</text>
+    <text x="80" y="165" font-family="monospace" font-size="12" fill="#f4f4f6">0.8870 [d: 0.91 / l: 0.85]</text>
+    <text x="370" y="165" font-family="sans-serif" font-size="13" fill="#8e929e">"Memory-mapped vector lookup caching with quantized weights..."</text>
+    <text x="950" y="165" font-family="monospace" font-size="12" fill="#5e6270">768-D</text>
 
     <!-- Row 3 -->
     <rect x="0" y="205" width="1040" height="60" fill="#141519" stroke="#22242c" stroke-width="1"/>
     <text x="20" y="240" font-family="monospace" font-size="13" fill="#8e929e">#03</text>
-    <text x="100" y="240" font-family="monospace" font-size="13" fill="#f4f4f6">0.8245 [dense: 0.84 / lex: 0.80]</text>
-    <text x="280" y="240" font-family="sans-serif" font-size="13" fill="#8e929e">"Concurrent query evaluation pipeline with streaming telemetry..."</text>
-    <text x="900" y="240" font-family="monospace" font-size="12" fill="#5e6270">768-D</text>
+    <text x="80" y="240" font-family="monospace" font-size="12" fill="#f4f4f6">0.8245 [d: 0.84 / l: 0.80]</text>
+    <text x="370" y="240" font-family="sans-serif" font-size="13" fill="#8e929e">"Concurrent query evaluation pipeline with streaming telemetry..."</text>
+    <text x="950" y="240" font-family="monospace" font-size="12" fill="#5e6270">768-D</text>
   </g>
 
   <!-- Dev watermark stamp -->

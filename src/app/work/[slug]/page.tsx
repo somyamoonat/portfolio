@@ -85,8 +85,58 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       ? profileData.projects[projectIndex + 1]
       : null;
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: `https://${profileData.personal.domain}`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Work",
+            item: `https://${profileData.personal.domain}/#work`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: project.title,
+            item: `https://${profileData.personal.domain}/work/${project.slug}`,
+          },
+        ],
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        name: project.title,
+        headline: project.tagline,
+        description: `${project.tagline} ${project.problem}`,
+        url: `https://${profileData.personal.domain}/work/${project.slug}`,
+        author: {
+          "@type": "Person",
+          name: profileData.personal.name,
+          url: `https://${profileData.personal.domain}`,
+        },
+        image: project.images[0]?.src
+          ? `https://${profileData.personal.domain}${project.images[0].src}`
+          : `https://${profileData.personal.domain}/og-image.png`,
+        programmingLanguage: project.technologies,
+        codeRepository: project.githubUrl,
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-canvas text-text-primary">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
 
       <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">

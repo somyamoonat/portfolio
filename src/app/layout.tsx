@@ -106,13 +106,31 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "ProfilePage",
+      "@id": `https://${profileData.personal.domain}/#profilepage`,
+      url: `https://${profileData.personal.domain}`,
+      name: `${profileData.personal.name} — ${profileData.personal.primaryRole}`,
+      isPartOf: {
+        "@type": "WebSite",
+        "@id": `https://${profileData.personal.domain}/#website`,
+      },
+      mainEntity: {
+        "@id": `https://${profileData.personal.domain}/#person`,
+      },
+    },
+    {
       "@type": "Person",
+      "@id": `https://${profileData.personal.domain}/#person`,
       name: profileData.personal.name,
+      givenName: "Somya",
+      familyName: "Moonat",
+      alternateName: ["Somya", "Moonat Somya"],
       url: `https://${profileData.personal.domain}`,
       jobTitle: profileData.personal.primaryRole,
       description: profileData.personal.statement,
       image: `https://${profileData.personal.domain}/og-image.png`,
       email: `mailto:${profileData.contact.email}`,
+      mainEntityOfPage: `https://${profileData.personal.domain}`,
       address: {
         "@type": "PostalAddress",
         addressCountry: "IN",
@@ -123,15 +141,23 @@ const jsonLd = {
         profileData.socials.x?.url,
       ].filter(Boolean),
       knowsAbout: profileData.skills.flatMap((s) => s.skills),
+      alumniOf: profileData.education.map((edu) => ({
+        "@type": "CollegeOrUniversity",
+        name: edu.institution,
+      })),
     },
     {
       "@type": "WebSite",
-      name: `${profileData.personal.name} Portfolio`,
+      "@id": `https://${profileData.personal.domain}/#website`,
+      name: profileData.personal.name,
+      alternateName: `${profileData.personal.name} Portfolio`,
       url: `https://${profileData.personal.domain}`,
       description: profileData.personal.statement,
+      publisher: {
+        "@id": `https://${profileData.personal.domain}/#person`,
+      },
       author: {
-        "@type": "Person",
-        name: profileData.personal.name,
+        "@id": `https://${profileData.personal.domain}/#person`,
       },
     },
   ],

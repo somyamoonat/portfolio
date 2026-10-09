@@ -243,7 +243,7 @@ export const profileData: Profile = {
       technologies: ["Python", "PyTorch", "FastAPI", "Vector Search", "TypeScript", "Next.js"],
       images: [
         {
-          src: "/projects/search-engine-preview.svg",
+          src: "/projects/search-engine-preview.webp",
           alt: "Contextual Semantic Search Engine query inspector and score breakdown",
         },
       ],
@@ -273,7 +273,7 @@ export const profileData: Profile = {
       technologies: ["TypeScript", "Next.js", "Node.js", "Redis", "PostgreSQL", "Tailwind CSS"],
       images: [
         {
-          src: "/projects/orchestrator-preview.svg",
+          src: "/projects/orchestrator-preview.webp",
           alt: "Concurrent Task Orchestrator job management dashboard",
         },
       ],
@@ -303,7 +303,7 @@ export const profileData: Profile = {
       technologies: ["PyTorch", "OpenCV", "Python", "NumPy", "ONNX"],
       images: [
         {
-          src: "/projects/vision-preview.svg",
+          src: "/projects/vision-preview.webp",
           alt: "Visual Anomaly Detection model evaluation and heatmap output",
         },
       ],
@@ -333,7 +333,7 @@ export const profileData: Profile = {
       technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "MDX"],
       images: [
         {
-          src: "/projects/editorial-preview.svg",
+          src: "/projects/editorial-preview.webp",
           alt: "Editorial Publishing Engine reading view",
         },
       ],
