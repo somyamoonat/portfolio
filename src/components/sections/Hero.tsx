@@ -5,7 +5,7 @@ import { Container, Section, Button } from "@/components/primitives";
 import { motion, useReducedMotion } from "motion/react";
 
 export function Hero() {
-  const { personal, contact } = profileData;
+  const { personal, contact, socials } = profileData;
   const shouldReduceMotion = useReducedMotion();
 
   const containerVariants = {
@@ -13,14 +13,14 @@ export function Hero() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: shouldReduceMotion ? 0 : 0.12,
+        staggerChildren: shouldReduceMotion ? 0 : 0.1,
         delayChildren: shouldReduceMotion ? 0 : 0.05,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 14 },
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 12 },
     visible: {
       opacity: 1,
       y: 0,
@@ -40,60 +40,104 @@ export function Hero() {
           variants={containerVariants}
           className="max-w-5xl"
         >
-          {/* Large Typographic Statement containing Full Name */}
-          <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-text-primary leading-[1.08] font-normal mb-10">
-            <span className="block font-mono text-xs sm:text-sm uppercase tracking-wider text-text-muted font-normal mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block mr-2.5 align-middle" aria-hidden="true" />
-              <span className="text-text-primary font-medium">{personal.name}</span>
-              <span className="text-border-subtle mx-2">/</span>
-              <span className="text-text-secondary">{personal.primaryRole}</span>
-            </span>
-            {personal.statement}
-          </h1>
-
-          {/* Location and Current Status */}
+          {/* 1. Eyebrow line */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-6 pb-8 border-t border-b border-border-hairline mb-10 font-mono text-xs text-text-secondary"
+            className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs uppercase tracking-widest mb-6 sm:mb-8"
           >
-            <div className="flex items-center gap-2">
-              <span className="text-text-muted">Location:</span>
-              <span className="text-text-primary">{personal.location}</span>
-            </div>
-
-            {personal.status.availableForWork && (
-              <div className="flex items-center gap-2.5">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-60" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
-                </span>
-                <span className="text-text-primary font-medium">
-                  {personal.status.statusText}
-                </span>
-              </div>
-            )}
+            <span className="text-accent font-medium">[00 / PROFILE]</span>
+            <span className="text-border-subtle" aria-hidden="true">
+              /
+            </span>
+            <span className="text-text-muted">{personal.heroEyebrowRole}</span>
           </motion.div>
 
-          {/* Two Clear Actions */}
+          {/* 2. Name as the page's single <h1> */}
+          <motion.h1
+            variants={itemVariants}
+            className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tight leading-[0.95] font-normal text-text-primary mb-8 sm:mb-10 text-balance"
+          >
+            {personal.name}
+          </motion.h1>
+
+          {/* 3. Subline paragraph */}
+          <motion.p
+            variants={itemVariants}
+            className="font-sans font-light text-base sm:text-lg md:text-xl text-text-secondary leading-relaxed max-w-[60ch] mb-10"
+          >
+            {personal.heroSubline}
+          </motion.p>
+
+          {/* 4. Numbered monospace items flanked by hairline rules */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-wrap items-center gap-4 sm:gap-6"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6 py-6 border-t border-b border-border-hairline mb-10 font-mono text-xs max-w-4xl"
+          >
+            {personal.heroFocusItems.map((item, idx) => (
+              <div key={item} className="flex items-center gap-2">
+                <span className="text-text-muted">0{idx + 1}.</span>
+                <span className="text-text-primary font-medium">{item}</span>
+              </div>
+            ))}
+          </motion.div>
+
+          {/* 5. Actions row */}
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-wrap items-center gap-4 sm:gap-6 pt-2"
           >
             <Button
               variant="primary"
-              href="#work"
+              href="#contact"
+              className="rounded-none shadow-none"
             >
-              <span>View work</span>
-              <span className="text-accent select-none">↓</span>
+              <span>GET IN TOUCH</span>
+              <span className="text-accent select-none" aria-hidden="true">
+                →
+              </span>
             </Button>
 
             <Button
               variant="secondary"
-              href={`mailto:${contact.email}`}
+              href={contact.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-none shadow-none"
             >
-              <span>Get in touch</span>
-              <span className="text-text-muted select-none">→</span>
+              <span>DOWNLOAD RESUME</span>
+              <span className="text-text-muted select-none" aria-hidden="true">
+                ↗
+              </span>
             </Button>
+
+            <div className="flex items-center gap-5 sm:ml-2 font-mono text-xs uppercase tracking-wider text-text-muted">
+              {socials.github && (
+                <a
+                  href={socials.github.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-text-muted hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                >
+                  <span>GITHUB</span>
+                  <span className="text-text-muted select-none" aria-hidden="true">
+                    ↗
+                  </span>
+                </a>
+              )}
+              {socials.linkedin && (
+                <a
+                  href={socials.linkedin.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-text-muted hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                >
+                  <span>LINKEDIN</span>
+                  <span className="text-text-muted select-none" aria-hidden="true">
+                    ↗
+                  </span>
+                </a>
+              )}
+            </div>
           </motion.div>
         </motion.div>
       </Container>

@@ -6,7 +6,7 @@ import { Container, Section, Heading, Button } from "@/components/primitives";
 import { FadeIn } from "@/components/motion/FadeIn";
 
 export function Contact() {
-  const { contact, socials } = profileData;
+  const { personal, contact, socials } = profileData;
 
   // Copy email state
   const [copied, setCopied] = useState(false);
@@ -96,6 +96,12 @@ export function Contact() {
         {/* Section Header */}
         <FadeIn>
           <div className="mb-12 md:mb-16">
+            {/* Location & Availability Status */}
+            <div className="flex items-center gap-2 font-mono text-xs text-text-muted mb-4">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block" aria-hidden="true" />
+              <span>{personal.location} · {personal.status.statusText}</span>
+            </div>
+
             <div className="flex items-center gap-2.5 font-mono text-xs uppercase tracking-wider text-text-muted mb-3">
               <span className="text-text-secondary font-medium">06</span>
               <span className="text-border-subtle">/</span>

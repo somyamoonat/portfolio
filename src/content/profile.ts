@@ -74,6 +74,9 @@ export interface Profile {
     name: string;
     domain: string;
     primaryRole: string;
+    heroEyebrowRole: string;
+    heroSubline: string;
+    heroFocusItems: string[];
     subRoles: string[];
     location: string;
     status: {
@@ -106,6 +109,14 @@ export const profileData: Profile = {
     name: "Somya Moonat",
     domain: "somyamoonat.tech",
     primaryRole: "Full-Stack Developer & ML Engineer",
+    heroEyebrowRole: "FULL-STACK DEVELOPER & ML ENGINEER",
+    heroSubline:
+      "Full-stack web developer and machine learning engineer focused on practical software, clean architecture, and reliable systems.",
+    heroFocusItems: [
+      "Full-Stack Web Development",
+      "Machine Learning Systems",
+      "API & Backend Engineering",
+    ],
     subRoles: [
       "Full-Stack Web Development",
       "Machine Learning Systems",
@@ -114,7 +125,7 @@ export const profileData: Profile = {
     location: "India (IST, UTC+5:30)",
     status: {
       availableForWork: true,
-      statusText: "Available for full-time roles & select projects",
+      statusText: "Open to full-time roles & select projects",
     },
     bioShort:
       "Software developer building full-stack applications and ML pipelines with clean architectures and disciplined engineering.",
