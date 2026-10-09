@@ -136,6 +136,21 @@ body {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
+/* Typographic orphans and widows protection */
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+p, li {
+  text-wrap: pretty;
+}
+
+/* Accessible, high-contrast focus rings everywhere */
+:focus-visible {
+  outline: 2px solid var(--accent) !important;
+  outline-offset: 3px !important;
+}
+
 ::selection {
   background-color: var(--accent);
   color: #ffffff;

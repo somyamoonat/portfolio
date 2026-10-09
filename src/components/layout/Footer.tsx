@@ -1,5 +1,6 @@
 import { profileData } from "@/content/profile";
 import { Container, Link } from "@/components/primitives";
+import { FadeIn } from "@/components/motion/FadeIn";
 
 export function Footer() {
   const { personal, contact, socials } = profileData;
@@ -10,7 +11,8 @@ export function Footer() {
       className="py-12 border-t border-border-hairline bg-canvas text-text-muted font-mono text-xs"
     >
       <Container>
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-6 border-b border-border-hairline">
+        <FadeIn>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-6 border-b border-border-hairline">
           {/* Email link */}
           <div>
             <Link
@@ -54,15 +56,16 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Copyright notice */}
-        <div className="pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-[11px] text-text-muted">
-          <div>
-            © 2026 {personal.name}
+          {/* Copyright notice */}
+          <div className="pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-[11px] text-text-muted">
+            <div>
+              © 2026 {personal.name}
+            </div>
+            <div>
+              somyamoonat.tech
+            </div>
           </div>
-          <div>
-            somyamoonat.tech
-          </div>
-        </div>
+        </FadeIn>
       </Container>
     </footer>
   );

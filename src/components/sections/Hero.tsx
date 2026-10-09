@@ -20,12 +20,12 @@ export function Hero() {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 16 },
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 14 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: shouldReduceMotion ? 0 : 0.5,
+        duration: shouldReduceMotion ? 0 : 0.45,
         ease: "easeOut" as const,
       },
     },

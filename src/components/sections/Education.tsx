@@ -10,16 +10,21 @@ export function Education() {
     <Section id="education" spacing="md" bordered>
       <Container>
         {/* Section Header */}
-        <div className="mb-12 md:mb-16">
-          <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-accent mb-3">
-            <span>[04]</span>
-            <span className="text-text-muted">/</span>
-            <span className="text-text-secondary">EDUCATION & CREDENTIALS</span>
+        <FadeIn>
+          <div className="mb-12 md:mb-16">
+            <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-accent mb-3">
+              <span>[04]</span>
+              <span className="text-text-muted">/</span>
+              <span className="text-text-secondary">EDUCATION & CREDENTIALS</span>
+            </div>
+            <Heading as="h2" size="xl">
+              Academic Background & Recognition
+            </Heading>
+            <p className="mt-3 text-sm md:text-base text-text-secondary max-w-[65ch] leading-relaxed">
+              Formal computer science foundations, continuous coursework, and technical milestones.
+            </p>
           </div>
-          <Heading as="h2" size="xl">
-            Academic Background & Recognition
-          </Heading>
-        </div>
+        </FadeIn>
 
         {/* Compact Typographic Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
@@ -50,7 +55,7 @@ export function Education() {
                     </div>
 
                     {edu.notes && (
-                      <p className="text-xs sm:text-sm text-text-secondary leading-relaxed pt-2 border-t border-border-hairline">
+                      <p className="text-xs sm:text-sm text-text-secondary leading-relaxed pt-2 border-t border-border-hairline max-w-[65ch]">
                         {edu.notes}
                       </p>
                     )}
@@ -111,7 +116,7 @@ export function Education() {
                             {ach.year}
                           </span>
                         </div>
-                        <p className="text-xs text-text-secondary leading-relaxed">
+                        <p className="text-xs text-text-secondary leading-relaxed max-w-[65ch]">
                           {ach.description}
                         </p>
                         <DevPlaceholderBadge placeholder={ach.placeholder} className="mt-1" />

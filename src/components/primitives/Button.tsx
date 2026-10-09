@@ -30,11 +30,11 @@ export function Button({
 
   const variantClasses = {
     primary:
-      "bg-text-primary text-canvas font-semibold hover:opacity-90 active:opacity-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
+      "bg-text-primary text-canvas font-semibold hover:bg-accent hover:text-white active:opacity-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
     secondary:
-      "hairline-all bg-surface text-text-primary hover:border-text-secondary active:bg-surface-subtle focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
+      "hairline-all bg-surface text-text-primary hover:border-accent hover:text-accent active:bg-surface-subtle focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
     ghost:
-      "text-text-secondary hover:text-text-primary hover:bg-surface-subtle focus-visible:outline-2 focus-visible:outline-accent",
+      "text-text-secondary hover:text-accent hover:bg-surface-subtle focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
   };
 
   const baseClasses =

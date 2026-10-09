@@ -29,9 +29,9 @@ export function Link({
 
   const variantClasses = {
     editorial:
-      "inline-flex items-baseline gap-1 text-text-primary hover:text-accent transition-colors underline underline-offset-4 decoration-border-strong hover:decoration-accent",
-    mono: "inline-flex items-center gap-1 font-mono text-xs uppercase tracking-wider text-text-secondary hover:text-accent transition-colors",
-    plain: "text-text-primary hover:text-accent transition-colors",
+      "inline-flex items-baseline gap-1 text-text-primary hover:text-accent transition-colors underline underline-offset-4 decoration-border-strong hover:decoration-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
+    mono: "inline-flex items-center gap-1 font-mono text-xs uppercase tracking-wider text-text-secondary hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
+    plain: "text-text-primary hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
   };
 
   const content = (

@@ -6,7 +6,7 @@ import { Container, Section, Heading, Button } from "@/components/primitives";
 import { FadeIn } from "@/components/motion/FadeIn";
 
 export function Contact() {
-  const { personal, contact, socials } = profileData;
+  const { contact, socials } = profileData;
 
   // Copy email state
   const [copied, setCopied] = useState(false);
@@ -94,120 +94,126 @@ export function Contact() {
     <Section id="contact" spacing="lg" bordered>
       <Container>
         {/* Section Header */}
-        <div className="mb-12 md:mb-16">
-          <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-accent mb-3">
-            <span>[06]</span>
-            <span className="text-text-muted">/</span>
-            <span className="text-text-secondary">CONTACT</span>
+        <FadeIn>
+          <div className="mb-12 md:mb-16">
+            <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-accent mb-3">
+              <span>[06]</span>
+              <span className="text-text-muted">/</span>
+              <span className="text-text-secondary">CONTACT</span>
+            </div>
+            <Heading as="h2" size="xl">
+              Get in Touch
+            </Heading>
+            {/* Warm line inviting people to reach out */}
+            <p className="mt-3 text-base sm:text-lg text-text-secondary max-w-[65ch] leading-relaxed">
+              I’m always open to discussing full-stack engineering roles, machine learning research, interesting project ideas, or simply having a thoughtful technical conversation.
+            </p>
           </div>
-          <Heading as="h2" size="xl">
-            Get in Touch
-          </Heading>
-          {/* Warm line inviting people to reach out */}
-          <p className="mt-3 text-base sm:text-lg text-text-secondary max-w-2xl leading-relaxed">
-            I’m always open to discussing full-stack engineering roles, machine learning research, interesting project ideas, or simply having a thoughtful technical conversation.
-          </p>
-        </div>
+        </FadeIn>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Column: Large Copyable Email + Resume + Socials */}
-          <div className="lg:col-span-6 space-y-10">
-            {/* Large Copyable Email Link */}
-            <div className="space-y-4">
-              <span className="font-mono text-xs uppercase tracking-widest text-accent block">
-                Direct Inbox
-              </span>
-
-              <div className="p-6 sm:p-8 border border-border-hairline bg-surface/60 corner-ticks space-y-4">
-                <button
-                  type="button"
-                  onClick={handleCopyEmail}
-                  className="group block text-left w-full focus-visible:outline-2 focus-visible:outline-accent"
-                  title="Click to copy email address"
-                  aria-label="Copy email address"
-                >
-                  <span className="font-serif text-2xl sm:text-3xl md:text-4xl text-text-primary group-hover:text-accent transition-colors block break-all font-normal">
-                    {contact.email}
+          <div className="lg:col-span-6">
+            <FadeIn delay={0.05}>
+              <div className="space-y-10">
+                {/* Large Copyable Email Link */}
+                <div className="space-y-4">
+                  <span className="font-mono text-xs uppercase tracking-widest text-accent block">
+                    Direct Inbox
                   </span>
-                </button>
 
-                <div className="flex flex-wrap items-center gap-3 pt-2 font-mono text-xs">
-                  <button
-                    type="button"
-                    onClick={handleCopyEmail}
-                    className="inline-flex items-center gap-2 border border-border-hairline bg-surface-subtle px-3 py-1.5 text-text-secondary hover:text-text-primary transition-colors cursor-pointer"
-                  >
-                    <span>{copied ? "✓ Copied to clipboard" : "Copy email address"}</span>
-                  </button>
+                  <div className="p-6 sm:p-8 border border-border-hairline bg-surface/60 corner-ticks space-y-4">
+                    <button
+                      type="button"
+                      onClick={handleCopyEmail}
+                      className="group block text-left w-full rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent cursor-pointer"
+                      title="Click to copy email address"
+                      aria-label="Copy email address"
+                    >
+                      <span className="font-serif text-2xl sm:text-3xl md:text-4xl text-text-primary group-hover:text-accent transition-colors block break-all font-normal">
+                        {contact.email}
+                      </span>
+                    </button>
 
-                  <a
-                    href={`mailto:${contact.email}`}
-                    className="text-text-muted hover:text-accent transition-colors py-1.5 px-2"
-                  >
-                    Open mail client ↗
-                  </a>
+                    <div className="flex flex-wrap items-center gap-3 pt-2 font-mono text-xs">
+                      <button
+                        type="button"
+                        onClick={handleCopyEmail}
+                        className="inline-flex items-center gap-2 border border-border-hairline bg-surface-subtle px-3 py-1.5 text-text-secondary hover:text-text-primary hover:border-text-secondary active:bg-surface rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent transition-colors cursor-pointer"
+                      >
+                        <span>{copied ? "✓ Copied to clipboard" : "Copy email address"}</span>
+                      </button>
+
+                      <a
+                        href={`mailto:${contact.email}`}
+                        className="text-text-muted hover:text-accent transition-colors py-1.5 px-2 rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                      >
+                        Open mail client ↗
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Resume Download Link */}
+                <div className="space-y-3 pt-2">
+                  <span className="font-mono text-xs uppercase tracking-widest text-text-muted block">
+                    Curriculum Vitae
+                  </span>
+                  <div>
+                    <Button
+                      variant="secondary"
+                      href={contact.resumeUrl}
+                      target="_blank"
+                    >
+                      <span>Download résumé</span>
+                      <span className="text-text-muted">↗</span>
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Social Links */}
+                <div className="space-y-3 pt-4 border-t border-border-hairline">
+                  <span className="font-mono text-xs uppercase tracking-widest text-text-muted block">
+                    Network & Profiles
+                  </span>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono text-xs">
+                    {socials.github && (
+                      <a
+                        href={socials.github.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 border border-border-hairline bg-surface/40 hover:border-border-strong hover:bg-surface-subtle/50 transition-colors flex items-center justify-between rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                      >
+                        <span className="text-text-primary">{socials.github.label}</span>
+                        <span className="text-text-muted">↗</span>
+                      </a>
+                    )}
+                    {socials.linkedin && (
+                      <a
+                        href={socials.linkedin.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 border border-border-hairline bg-surface/40 hover:border-border-strong hover:bg-surface-subtle/50 transition-colors flex items-center justify-between rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                      >
+                        <span className="text-text-primary">{socials.linkedin.label}</span>
+                        <span className="text-text-muted">↗</span>
+                      </a>
+                    )}
+                    {socials.x && (
+                      <a
+                        href={socials.x.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 border border-border-hairline bg-surface/40 hover:border-border-strong hover:bg-surface-subtle/50 transition-colors flex items-center justify-between rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                      >
+                        <span className="text-text-primary">{socials.x.label}</span>
+                        <span className="text-text-muted">↗</span>
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-
-            {/* Resume Download Link */}
-            <div className="space-y-3 pt-2">
-              <span className="font-mono text-xs uppercase tracking-widest text-text-muted block">
-                Curriculum Vitae
-              </span>
-              <div>
-                <Button
-                  variant="secondary"
-                  href={contact.resumeUrl}
-                  target="_blank"
-                >
-                  <span>Download résumé</span>
-                  <span className="text-text-muted">↗</span>
-                </Button>
-              </div>
-            </div>
-
-            {/* Social Links */}
-            <div className="space-y-3 pt-4 border-t border-border-hairline">
-              <span className="font-mono text-xs uppercase tracking-widest text-text-muted block">
-                Network & Profiles
-              </span>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono text-xs">
-                {socials.github && (
-                  <a
-                    href={socials.github.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 border border-border-hairline bg-surface/40 hover:border-text-secondary transition-colors flex items-center justify-between"
-                  >
-                    <span className="text-text-primary">{socials.github.label}</span>
-                    <span className="text-text-muted">↗</span>
-                  </a>
-                )}
-                {socials.linkedin && (
-                  <a
-                    href={socials.linkedin.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 border border-border-hairline bg-surface/40 hover:border-text-secondary transition-colors flex items-center justify-between"
-                  >
-                    <span className="text-text-primary">{socials.linkedin.label}</span>
-                    <span className="text-text-muted">↗</span>
-                  </a>
-                )}
-                {socials.x && (
-                  <a
-                    href={socials.x.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 border border-border-hairline bg-surface/40 hover:border-text-secondary transition-colors flex items-center justify-between"
-                  >
-                    <span className="text-text-primary">{socials.x.label}</span>
-                    <span className="text-text-muted">↗</span>
-                  </a>
-                )}
-              </div>
-            </div>
+            </FadeIn>
           </div>
 
           {/* Right Column: Editorial Contact Form */}
@@ -257,7 +263,7 @@ export function Contact() {
                       placeholder="Jane Doe"
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="w-full bg-surface-subtle border border-border-hairline px-3.5 py-2.5 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent font-sans transition-colors"
+                      className="w-full bg-surface-subtle border border-border-hairline px-3.5 py-2.5 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent focus-visible:ring-1 focus-visible:ring-accent font-sans transition-colors duration-150"
                     />
                   </div>
 
@@ -277,7 +283,7 @@ export function Contact() {
                       placeholder="jane@company.com"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full bg-surface-subtle border border-border-hairline px-3.5 py-2.5 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent font-sans transition-colors"
+                      className="w-full bg-surface-subtle border border-border-hairline px-3.5 py-2.5 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent focus-visible:ring-1 focus-visible:ring-accent font-sans transition-colors duration-150"
                     />
                   </div>
 
@@ -297,7 +303,7 @@ export function Contact() {
                       placeholder="Tell me about the role, technical challenge, or project..."
                       value={formData.message}
                       onChange={handleInputChange}
-                      className="w-full bg-surface-subtle border border-border-hairline px-3.5 py-2.5 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent font-sans transition-colors resize-y"
+                      className="w-full bg-surface-subtle border border-border-hairline px-3.5 py-2.5 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent focus-visible:ring-1 focus-visible:ring-accent font-sans transition-colors duration-150 resize-y"
                     />
                   </div>
 
@@ -320,7 +326,7 @@ export function Contact() {
                     <button
                       type="submit"
                       disabled={loading}
-                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 font-mono text-xs uppercase tracking-wider font-semibold bg-text-primary text-canvas px-6 py-3 hover:opacity-90 active:opacity-95 focus-visible:outline-2 focus-visible:outline-accent cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 font-mono text-xs uppercase tracking-wider font-semibold bg-text-primary text-canvas px-6 py-3 hover:bg-accent hover:text-white active:opacity-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-150"
                     >
                       {loading ? (
                         <>
@@ -330,7 +336,7 @@ export function Contact() {
                       ) : (
                         <>
                           <span>Send message</span>
-                          <span className="text-accent select-none">→</span>
+                          <span className="text-accent group-hover:text-white select-none">→</span>
                         </>
                       )}
                     </button>

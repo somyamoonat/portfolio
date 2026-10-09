@@ -88,7 +88,7 @@ export function Header() {
         {/* Left: Name / Wordmark */}
         <Link
           href="/"
-          className="font-mono text-xs uppercase tracking-wider text-text-primary hover:text-accent transition-colors font-medium"
+          className="font-mono text-xs uppercase tracking-wider text-text-primary hover:text-accent transition-colors font-medium py-1 px-1.5 -mx-1.5 rounded-xs focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
         >
           {profileData.personal.name}
         </Link>
@@ -100,7 +100,7 @@ export function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className="hover:text-accent transition-colors py-1"
+                className="hover:text-accent transition-colors py-1 px-1.5 -mx-1.5 rounded-xs focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
               >
                 {link.label}
               </a>
@@ -118,7 +118,7 @@ export function Header() {
             ref={triggerRef}
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="font-mono text-xs uppercase tracking-wider text-text-secondary hover:text-text-primary p-2 -mr-2 focus-visible:outline-2 focus-visible:outline-accent"
+            className="font-mono text-xs uppercase tracking-wider text-text-secondary hover:text-text-primary p-2 -mr-2 rounded-xs focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 cursor-pointer"
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-nav-dialog"
             aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
@@ -149,7 +149,7 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={closeMobileMenu}
-                className="text-text-secondary hover:text-accent transition-colors py-1"
+                className="text-text-secondary hover:text-accent transition-colors py-1.5 px-2 -mx-2 rounded-xs focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
               >
                 {link.label}
               </a>

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { profileData } from "@/content/profile";
 import { Container, Section, Heading } from "@/components/primitives";
+import { FadeIn } from "@/components/motion/FadeIn";
 import { motion, useReducedMotion } from "motion/react";
 
 export function About() {
@@ -36,16 +37,21 @@ export function About() {
     <Section id="about" spacing="md" bordered>
       <Container>
         {/* Section Header */}
-        <div className="mb-12 md:mb-16">
-          <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-accent mb-3">
-            <span>[02]</span>
-            <span className="text-text-muted">/</span>
-            <span className="text-text-secondary">ABOUT</span>
+        <FadeIn>
+          <div className="mb-12 md:mb-16">
+            <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-accent mb-3">
+              <span>[02]</span>
+              <span className="text-text-muted">/</span>
+              <span className="text-text-secondary">ABOUT</span>
+            </div>
+            <Heading as="h2" size="xl">
+              Background & Current Focus
+            </Heading>
+            <p className="mt-3 text-sm md:text-base text-text-secondary max-w-[65ch] leading-relaxed">
+              Engineering philosophy, personal background, and current technical investigations.
+            </p>
           </div>
-          <Heading as="h2" size="xl">
-            Background & Current Focus
-          </Heading>
-        </div>
+        </FadeIn>
 
         <motion.div
           initial="hidden"
@@ -106,7 +112,7 @@ export function About() {
           {/* Column 2: Human Bio & Compact Currently List */}
           <motion.div variants={itemVariants} className="lg:col-span-7 space-y-10">
             {/* Short, human bio */}
-            <div className="space-y-5 text-base sm:text-lg text-text-secondary leading-relaxed">
+            <div className="space-y-5 text-base sm:text-lg text-text-secondary leading-relaxed max-w-[65ch]">
               {personal.bioLong.map((paragraph, idx) => (
                 <p key={idx} className="last:mb-0">
                   {paragraph}

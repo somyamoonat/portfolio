@@ -10,19 +10,21 @@ export function Experience() {
     <Section id="experience" spacing="md" bordered>
       <Container>
         {/* Section Header */}
-        <div className="mb-12 md:mb-16">
-          <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-accent mb-3">
-            <span>[03]</span>
-            <span className="text-text-muted">/</span>
-            <span className="text-text-secondary">EXPERIENCE</span>
+        <FadeIn>
+          <div className="mb-12 md:mb-16">
+            <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-accent mb-3">
+              <span>[03]</span>
+              <span className="text-text-muted">/</span>
+              <span className="text-text-secondary">EXPERIENCE</span>
+            </div>
+            <Heading as="h2" size="xl">
+              Work & Engineering Milestones
+            </Heading>
+            <p className="mt-3 text-sm md:text-base text-text-secondary max-w-[65ch] leading-relaxed">
+              Chronological record of software development responsibilities, systems delivery, and technical impact.
+            </p>
           </div>
-          <Heading as="h2" size="xl">
-            Work & Engineering Milestones
-          </Heading>
-          <p className="mt-3 text-sm md:text-base text-text-secondary max-w-2xl leading-relaxed">
-            Chronological record of software development responsibilities, systems delivery, and technical impact.
-          </p>
-        </div>
+        </FadeIn>
 
         {/* Two-Column List: Dates Left, Details Right */}
         <div className="divide-y divide-border-hairline border-t border-b border-border-hairline">
@@ -56,13 +58,13 @@ export function Experience() {
                     </div>
                   </div>
 
-                  <p className="text-sm sm:text-base text-text-secondary leading-relaxed">
+                  <p className="text-sm sm:text-base text-text-secondary leading-relaxed max-w-[65ch]">
                     {item.summary}
                   </p>
 
                   {/* Impact Bullets with Concrete Outcomes */}
                   {item.bullets && item.bullets.length > 0 && (
-                    <ul className="space-y-2.5 pt-2">
+                    <ul className="space-y-2.5 pt-2 max-w-[65ch]">
                       {item.bullets.map((bullet, bIdx) => (
                         <li
                           key={bIdx}
