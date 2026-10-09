@@ -1,17 +1,12 @@
-"use client";
-
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { profileData, Project } from "@/content/profile";
+import { profileData } from "@/content/profile";
 import { Container, Section, Heading } from "@/components/primitives";
 import { DevPlaceholderBadge } from "@/components/ui/DevPlaceholderBadge";
 import { FadeIn } from "@/components/motion/FadeIn";
-import { motion, AnimatePresence } from "motion/react";
 
 export function SelectedWork() {
   const { projects } = profileData;
-  const [activeProject, setActiveProject] = useState<Project | null>(null);
 
   return (
     <Section id="work" spacing="md" bordered>
@@ -43,10 +38,6 @@ export function SelectedWork() {
               <FadeIn key={project.slug} delay={idx * 0.04}>
                 <Link
                   href={`/work/${project.slug}`}
-                  onMouseEnter={() => setActiveProject(project)}
-                  onMouseLeave={() => setActiveProject(null)}
-                  onFocus={() => setActiveProject(project)}
-                  onBlur={() => setActiveProject(null)}
                   className="group block py-8 sm:py-10 transition-colors duration-150 hover:bg-surface/50 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                 >
                   <div className="flex flex-col lg:flex-row lg:items-baseline justify-between gap-4">
@@ -117,36 +108,6 @@ export function SelectedWork() {
               </FadeIn>
             );
           })}
-
-          {/* Desktop Hover Preview Portal (Editorial Floating Card) */}
-          <AnimatePresence>
-            {activeProject && activeProject.images && activeProject.images.length > 0 && (
-              <motion.div
-                key={activeProject.slug}
-                initial={{ opacity: 0, scale: 0.98 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.98 }}
-                transition={{ duration: 0.18, ease: "easeOut" }}
-                className="hidden lg:block pointer-events-none fixed right-12 bottom-12 z-50 w-96 border border-border-strong bg-surface p-2 shadow-xl corner-ticks"
-              >
-                <div className="relative aspect-[16/10] w-full overflow-hidden border border-border-hairline bg-surface-subtle">
-                  <Image
-                    src={activeProject.images[0].src}
-                    alt={activeProject.images[0].alt}
-                    fill
-                    sizes="384px"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="pt-2 px-1 flex items-center justify-between font-mono text-[10px] uppercase tracking-wider text-text-muted">
-                  <span className="text-text-primary truncate max-w-[220px]">
-                    {activeProject.title}
-                  </span>
-                  <span className="text-accent font-medium">Preview</span>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
         </div>
       </Container>
     </Section>
