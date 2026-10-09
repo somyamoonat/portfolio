@@ -40,19 +40,14 @@ export function Hero() {
           variants={containerVariants}
           className="max-w-5xl"
         >
-          {/* Editorial Eyebrow */}
-          <motion.div
-            variants={itemVariants}
-            className="flex items-center gap-2.5 font-mono text-xs uppercase tracking-wider text-text-muted mb-6"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block" aria-hidden="true" />
-            <span className="text-text-primary font-medium">{personal.name}</span>
-            <span className="text-border-subtle">/</span>
-            <span className="text-text-secondary">{personal.primaryRole}</span>
-          </motion.div>
-
-          {/* Large Typographic Statement */}
+          {/* Large Typographic Statement containing Full Name */}
           <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-text-primary leading-[1.08] font-normal mb-10">
+            <span className="block font-mono text-xs sm:text-sm uppercase tracking-wider text-text-muted font-normal mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block mr-2.5 align-middle" aria-hidden="true" />
+              <span className="text-text-primary font-medium">{personal.name}</span>
+              <span className="text-border-subtle mx-2">/</span>
+              <span className="text-text-secondary">{personal.primaryRole}</span>
+            </span>
             {personal.statement}
           </h1>
 

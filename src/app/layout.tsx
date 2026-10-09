@@ -44,7 +44,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `https://${profileData.personal.domain}`,
   },
-  title: `${profileData.personal.name} — ${profileData.personal.primaryRole}`,
+  title: {
+    default: "Somya Moonat — Full-Stack Developer & ML Engineer",
+    template: `%s — ${profileData.personal.name}`,
+  },
   description: profileData.personal.statement,
   keywords: [
     profileData.personal.name,
@@ -58,7 +61,7 @@ export const metadata: Metadata = {
   authors: [{ name: profileData.personal.name, url: `https://${profileData.personal.domain}` }],
   creator: profileData.personal.name,
   openGraph: {
-    title: `${profileData.personal.name} — ${profileData.personal.primaryRole}`,
+    title: "Somya Moonat — Full-Stack Developer & ML Engineer",
     description: profileData.personal.statement,
     url: `https://${profileData.personal.domain}`,
     siteName: profileData.personal.name,
@@ -75,7 +78,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${profileData.personal.name} — ${profileData.personal.primaryRole}`,
+    title: "Somya Moonat — Full-Stack Developer & ML Engineer",
     description: profileData.personal.statement,
     creator: "@somyamoonat",
     images: ["/og-image.png"],
@@ -88,21 +91,37 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: profileData.personal.name,
-  url: `https://${profileData.personal.domain}`,
-  jobTitle: profileData.personal.primaryRole,
-  description: profileData.personal.statement,
-  address: {
-    "@type": "PostalAddress",
-    addressCountry: "IN",
-  },
-  sameAs: [
-    profileData.socials.github?.url,
-    profileData.socials.linkedin?.url,
-    profileData.socials.x?.url,
-  ].filter(Boolean),
-  knowsAbout: profileData.skills.flatMap((s) => s.skills),
+  "@graph": [
+    {
+      "@type": "Person",
+      name: profileData.personal.name,
+      url: `https://${profileData.personal.domain}`,
+      jobTitle: profileData.personal.primaryRole,
+      description: profileData.personal.statement,
+      image: `https://${profileData.personal.domain}/og-image.png`,
+      email: `mailto:${profileData.contact.email}`,
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "IN",
+      },
+      sameAs: [
+        profileData.socials.github?.url,
+        profileData.socials.linkedin?.url,
+        profileData.socials.x?.url,
+      ].filter(Boolean),
+      knowsAbout: profileData.skills.flatMap((s) => s.skills),
+    },
+    {
+      "@type": "WebSite",
+      name: `${profileData.personal.name} Portfolio`,
+      url: `https://${profileData.personal.domain}`,
+      description: profileData.personal.statement,
+      author: {
+        "@type": "Person",
+        name: profileData.personal.name,
+      },
+    },
+  ],
 };
 
 const themeInitScript = `

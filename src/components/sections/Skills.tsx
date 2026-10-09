@@ -28,10 +28,10 @@ export function Skills() {
             <FadeIn key={group.category} delay={idx * 0.05}>
               <div className="space-y-4">
                 {/* Category Header with item count */}
-                <div className="font-mono text-xs uppercase tracking-wider pb-2 border-b border-border-hairline flex items-center justify-between">
+                <h3 className="font-mono text-xs uppercase tracking-wider pb-2 border-b border-border-hairline flex items-center justify-between">
                   <span className="text-text-primary font-medium">{group.category}</span>
                   <span className="text-text-muted font-normal">{String(idx + 1).padStart(2, "0")}</span>
-                </div>
+                </h3>
 
                 {/* Plain Text List with refined typographic bullets */}
                 <ul className="space-y-2 text-sm text-text-secondary">

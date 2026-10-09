@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { profileData } from "@/content/profile";
 import { Header } from "@/components/layout/Header";
 import { Hero } from "@/components/sections/Hero";
 import { SelectedWork } from "@/components/sections/SelectedWork";
@@ -7,6 +9,33 @@ import { Education } from "@/components/sections/Education";
 import { Skills } from "@/components/sections/Skills";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/layout/Footer";
+
+export const metadata: Metadata = {
+  title: "Somya Moonat — Full-Stack Developer & ML Engineer",
+  description: profileData.personal.statement,
+  alternates: {
+    canonical: `https://${profileData.personal.domain}`,
+  },
+  openGraph: {
+    title: "Somya Moonat — Full-Stack Developer & ML Engineer",
+    description: profileData.personal.statement,
+    url: `https://${profileData.personal.domain}`,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: `${profileData.personal.name} — ${profileData.personal.primaryRole}`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Somya Moonat — Full-Stack Developer & ML Engineer",
+    description: profileData.personal.statement,
+    images: ["/og-image.png"],
+  },
+};
 
 export default function Home() {
   return (

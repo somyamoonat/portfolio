@@ -3,10 +3,11 @@ import { profileData } from "@/content/profile";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = `https://${profileData.personal.domain}`;
+  const now = new Date();
 
   const projectEntries: MetadataRoute.Sitemap = profileData.projects.map((project) => ({
     url: `${baseUrl}/work/${project.slug}`,
-    lastModified: "2026-10-09",
+    lastModified: now,
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));
@@ -14,8 +15,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: baseUrl,
-      lastModified: "2026-10-09",
-      changeFrequency: "weekly",
+      lastModified: now,
+      changeFrequency: "weekly" as const,
       priority: 1.0,
     },
     ...projectEntries,
