@@ -8,6 +8,7 @@ interface FadeInProps {
   delay?: number;
   direction?: "up" | "down" | "none";
   className?: string;
+  as?: "div" | "li" | "section" | "article";
 }
 
 export function FadeIn({
@@ -15,6 +16,7 @@ export function FadeIn({
   delay = 0,
   direction = "up",
   className = "",
+  as = "div",
 }: FadeInProps) {
   const shouldReduceMotion = useReducedMotion();
 
@@ -23,8 +25,17 @@ export function FadeIn({
     return direction === "up" ? 14 : -14;
   };
 
+  const Component =
+    as === "li"
+      ? motion.li
+      : as === "section"
+      ? motion.section
+      : as === "article"
+      ? motion.article
+      : motion.div;
+
   return (
-    <motion.div
+    <Component
       initial={{
         opacity: 0,
         y: getInitialY(),
@@ -33,7 +44,7 @@ export function FadeIn({
         opacity: 1,
         y: 0,
       }}
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, margin: "-40px" }}
       transition={{
         duration: shouldReduceMotion ? 0 : 0.45,
         delay: shouldReduceMotion ? 0 : delay,
@@ -42,6 +53,6 @@ export function FadeIn({
       className={className}
     >
       {children}
-    </motion.div>
+    </Component>
   );
 }

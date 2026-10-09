@@ -126,7 +126,7 @@ export function Contact() {
                     <button
                       type="button"
                       onClick={handleCopyEmail}
-                      className="group block text-left w-full rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent cursor-pointer"
+                      className="group block text-left w-full min-h-[44px] py-1.5 rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent cursor-pointer"
                       title="Click to copy email address"
                       aria-label="Copy email address"
                     >
@@ -139,14 +139,14 @@ export function Contact() {
                       <button
                         type="button"
                         onClick={handleCopyEmail}
-                        className="inline-flex items-center gap-2 border border-border-hairline bg-surface-subtle px-3 py-1.5 text-text-secondary hover:text-text-primary hover:border-text-secondary active:bg-surface rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent transition-colors cursor-pointer"
+                        className="inline-flex items-center gap-2 border border-border-hairline bg-surface-subtle px-4 py-2.5 min-h-[44px] text-text-secondary hover:text-text-primary hover:border-text-secondary active:bg-surface rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent transition-colors cursor-pointer"
                       >
                         <span>{copied ? "✓ Copied to clipboard" : "Copy email address"}</span>
                       </button>
 
                       <a
                         href={`mailto:${contact.email}`}
-                        className="text-text-muted hover:text-accent transition-colors py-1.5 px-2 rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                        className="inline-flex items-center text-text-muted hover:text-accent transition-colors py-2.5 px-3 min-h-[44px] rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                       >
                         Open mail client ↗
                       </a>

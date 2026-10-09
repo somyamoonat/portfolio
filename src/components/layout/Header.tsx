@@ -88,7 +88,7 @@ export function Header() {
         {/* Left: Name / Wordmark */}
         <Link
           href="/"
-          className="font-mono text-xs uppercase tracking-wider text-text-primary hover:text-accent transition-colors font-medium py-1 px-1.5 -mx-1.5 rounded-xs focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+          className="font-mono text-xs uppercase tracking-wider text-text-primary hover:text-accent transition-colors font-medium min-h-[44px] inline-flex items-center py-1 px-1.5 -mx-1.5 rounded-xs focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
         >
           {profileData.personal.name}
         </Link>
@@ -100,13 +100,13 @@ export function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className="hover:text-accent transition-colors py-1 px-1.5 -mx-1.5 rounded-xs focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+                className="hover:text-accent transition-colors min-h-[44px] inline-flex items-center py-1 px-1.5 -mx-1.5 rounded-xs focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
               >
                 {link.label}
               </a>
             ))}
           </nav>
-          <div className="border-l border-border-hairline pl-5">
+          <div className="border-l border-border-hairline pl-5 flex items-center">
             <ThemeToggle />
           </div>
         </div>
@@ -118,7 +118,7 @@ export function Header() {
             ref={triggerRef}
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="font-mono text-xs uppercase tracking-wider text-text-secondary hover:text-text-primary p-2 -mr-2 rounded-xs focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 cursor-pointer"
+            className="font-mono text-xs uppercase tracking-wider text-text-secondary hover:text-text-primary p-2 -mr-2 rounded-xs focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 cursor-pointer min-h-[44px] min-w-[44px] inline-flex items-center justify-center"
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-nav-dialog"
             aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
@@ -143,13 +143,13 @@ export function Header() {
             <span>{profileData.personal.status.statusText}</span>
           </div>
 
-          <nav aria-label="Mobile Menu Navigation" className="flex flex-col gap-3">
+          <nav aria-label="Mobile Menu Navigation" className="flex flex-col gap-2">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={closeMobileMenu}
-                className="text-text-secondary hover:text-accent transition-colors py-1.5 px-2 -mx-2 rounded-xs focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+                className="text-text-secondary hover:text-accent transition-colors min-h-[44px] flex items-center py-2 px-2.5 -mx-2 rounded-xs focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
               >
                 {link.label}
               </a>

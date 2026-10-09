@@ -76,21 +76,24 @@ export function Education() {
 
                 <ul className="space-y-4">
                   {certifications.map((cert, cIdx) => (
-                    <FadeIn key={cIdx} delay={cIdx * 0.05}>
-                      <li className="p-4 border border-border-hairline bg-surface/30 space-y-1">
-                        <div className="flex items-baseline justify-between gap-2">
-                          <span className="text-sm font-medium text-text-primary">
-                            {cert.name}
-                          </span>
-                          <span className="font-mono text-xs text-text-muted">
-                            {cert.year}
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-2 font-mono text-xs text-text-muted">
-                          <span>{cert.issuer}</span>
-                          <DevPlaceholderBadge placeholder={cert.placeholder} />
-                        </div>
-                      </li>
+                    <FadeIn
+                      as="li"
+                      key={cIdx}
+                      delay={cIdx * 0.05}
+                      className="p-4 border border-border-hairline bg-surface/30 space-y-1 list-none"
+                    >
+                      <div className="flex items-baseline justify-between gap-2">
+                        <span className="text-sm font-medium text-text-primary">
+                          {cert.name}
+                        </span>
+                        <span className="font-mono text-xs text-text-muted">
+                          {cert.year}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2 font-mono text-xs text-text-muted">
+                        <span>{cert.issuer}</span>
+                        <DevPlaceholderBadge placeholder={cert.placeholder} />
+                      </div>
                     </FadeIn>
                   ))}
                 </ul>
@@ -106,21 +109,24 @@ export function Education() {
 
                 <ul className="space-y-4">
                   {achievements.map((ach, aIdx) => (
-                    <FadeIn key={aIdx} delay={aIdx * 0.05}>
-                      <li className="p-4 border border-border-hairline bg-surface/30 space-y-1.5">
-                        <div className="flex items-baseline justify-between gap-2">
-                          <span className="text-sm font-medium text-text-primary">
-                            {ach.title}
-                          </span>
-                          <span className="font-mono text-xs text-text-muted">
-                            {ach.year}
-                          </span>
-                        </div>
-                        <p className="text-xs text-text-secondary leading-relaxed max-w-[65ch]">
-                          {ach.description}
-                        </p>
-                        <DevPlaceholderBadge placeholder={ach.placeholder} className="mt-1" />
-                      </li>
+                    <FadeIn
+                      as="li"
+                      key={aIdx}
+                      delay={aIdx * 0.05}
+                      className="p-4 border border-border-hairline bg-surface/30 space-y-1.5 list-none"
+                    >
+                      <div className="flex items-baseline justify-between gap-2">
+                        <span className="text-sm font-medium text-text-primary">
+                          {ach.title}
+                        </span>
+                        <span className="font-mono text-xs text-text-muted">
+                          {ach.year}
+                        </span>
+                      </div>
+                      <p className="text-xs text-text-secondary leading-relaxed max-w-[65ch]">
+                        {ach.description}
+                      </p>
+                      <DevPlaceholderBadge placeholder={ach.placeholder} className="mt-1" />
                     </FadeIn>
                   ))}
                 </ul>

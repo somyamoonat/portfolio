@@ -41,6 +41,9 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${profileData.personal.domain}`),
+  alternates: {
+    canonical: `https://${profileData.personal.domain}`,
+  },
   title: `${profileData.personal.name} — ${profileData.personal.primaryRole}`,
   description: profileData.personal.statement,
   keywords: [
@@ -61,17 +64,45 @@ export const metadata: Metadata = {
     siteName: profileData.personal.name,
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: `${profileData.personal.name} — ${profileData.personal.primaryRole}`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${profileData.personal.name} — ${profileData.personal.primaryRole}`,
     description: profileData.personal.statement,
     creator: "@somyamoonat",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
     follow: true,
   },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profileData.personal.name,
+  url: `https://${profileData.personal.domain}`,
+  jobTitle: profileData.personal.primaryRole,
+  description: profileData.personal.statement,
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "IN",
+  },
+  sameAs: [
+    profileData.socials.github?.url,
+    profileData.socials.linkedin?.url,
+    profileData.socials.x?.url,
+  ].filter(Boolean),
+  knowsAbout: profileData.skills.flatMap((s) => s.skills),
 };
 
 const themeInitScript = `
@@ -106,6 +137,12 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: themeInitScript,
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd),
           }}
         />
       </head>

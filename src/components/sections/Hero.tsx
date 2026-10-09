@@ -51,12 +51,9 @@ export function Hero() {
           </motion.div>
 
           {/* Large Typographic Statement in One Specific Sentence */}
-          <motion.h1
-            variants={itemVariants}
-            className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-text-primary leading-[1.08] font-normal mb-10"
-          >
+          <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-text-primary leading-[1.08] font-normal mb-10">
             Full-stack developer and machine learning practitioner building resilient web architectures and data-driven systems.
-          </motion.h1>
+          </h1>
 
           {/* Location and Current Status */}
           <motion.div

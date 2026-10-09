@@ -41,7 +41,7 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
       type="button"
       onClick={toggleTheme}
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-      className={`font-mono text-xs uppercase tracking-wider text-text-secondary hover:text-accent transition-colors py-1 px-1.5 -mx-1.5 rounded-xs focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 cursor-pointer ${className}`}
+      className={`font-mono text-xs uppercase tracking-wider text-text-secondary hover:text-accent transition-colors min-h-[44px] min-w-[44px] inline-flex items-center justify-center py-1 px-1.5 -mx-1.5 rounded-xs focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 cursor-pointer ${className}`}
     >
       [{theme === "dark" ? "Light" : "Dark"}]
     </button>
