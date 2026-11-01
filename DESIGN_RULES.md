@@ -10,7 +10,6 @@ Design Direction: Editorial, restrained, confident. Think a curated publication,
 1. **No SaaS Visual Tropes**:
    - Strictly NO purple/blue-to-pink gradients.
    - Strictly NO gradient text effects.
-   - Strictly NO frosted glass / glassmorphism (`backdrop-blur` heavy containers with glowing borders).
    - Strictly NO neon glowing blobs, floating orbs, or animated particle nets.
 
 2. **Iconography & Visual Artifacts**:
@@ -38,11 +37,6 @@ Design Direction: Editorial, restrained, confident. Think a curated publication,
    - Under no circumstances default to plain Inter, Roboto, or system sans-serif alone.
    - Pair an expressive, authoritative display face (e.g., editorial serif like *Newsreader* / *Playfair Display* or sharp grotesque/monospaced like *Space Grotesk* / *Syne* / *Instrument Serif*) with a hyper-legible body face (e.g., *Plus Jakarta Sans*, *Geist*, *IBM Plex Sans* or *JetBrains Mono* for technical labels).
 
-7. **Purposeful Motion**:
-   - Motion is subtle, tactile, and purposeful (smooth micro-transitions, crisp scroll reveals, precise link underlines, state shifts).
-   - Never decorative, floaty, or distracting.
-   - Always respect `prefers-reduced-motion` at every level.
-
-8. **Scale & Typographic Hierarchy**:
+7. **Scale & Typographic Hierarchy**:
    - Strict spacing scale (8pt grid cadence).
    - High typographic dynamic range: clear contrast between expansive display titles, clinical uppercase labels (`tracking-widest text-xs uppercase`), and comfortable reading prose.

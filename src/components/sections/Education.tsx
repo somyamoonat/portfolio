@@ -1,10 +1,14 @@
+"use client";
+
 import { profileData } from "@/content/profile";
 import { Container, Section, Heading } from "@/components/primitives";
 import { DevPlaceholderBadge } from "@/components/ui/DevPlaceholderBadge";
 import { FadeIn } from "@/components/motion/FadeIn";
+import { motion, useReducedMotion } from "motion/react";
 
 export function Education() {
   const { education, certifications, achievements } = profileData;
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <Section id="education" spacing="md" bordered>
@@ -34,9 +38,22 @@ export function Education() {
             <div className="space-y-8">
               {education.map((edu, idx) => (
                 <FadeIn key={idx} delay={idx * 0.05}>
-                  <div className="border border-border-hairline bg-surface/50 p-6 sm:p-8 space-y-3">
+                  <motion.div
+                    whileHover={
+                      shouldReduceMotion
+                        ? undefined
+                        : {
+                            y: -3,
+                            transition: { type: "spring", stiffness: 350, damping: 25 },
+                          }
+                    }
+                    className="border border-border-hairline glass-card p-6 sm:p-8 space-y-3 cursor-default hover-glow"
+                  >
                     <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
-                      <span className="text-text-primary font-medium">{edu.period}</span>
+                      <div className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                        <span className="text-text-primary font-medium">{edu.period}</span>
+                      </div>
                       {edu.location && (
                         <span className="text-text-muted">{edu.location}</span>
                       )}
@@ -47,7 +64,7 @@ export function Education() {
                       {edu.degree}
                     </h3>
 
-                    <div className="font-mono text-xs uppercase tracking-wider text-accent">
+                    <div className="font-mono text-xs uppercase tracking-wider text-accent font-medium">
                       {edu.institution}
                     </div>
 
@@ -56,7 +73,7 @@ export function Education() {
                         {edu.notes}
                       </p>
                     )}
-                  </div>
+                  </motion.div>
                 </FadeIn>
               ))}
             </div>
@@ -77,20 +94,32 @@ export function Education() {
                       as="li"
                       key={cIdx}
                       delay={cIdx * 0.05}
-                      className="p-4 border border-border-hairline bg-surface/30 space-y-1 list-none"
+                      className="list-none"
                     >
-                      <div className="flex items-baseline justify-between gap-2">
-                        <span className="text-sm font-medium text-text-primary">
-                          {cert.name}
-                        </span>
-                        <span className="font-mono text-xs text-text-muted">
-                          {cert.year}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2 font-mono text-xs text-text-muted">
-                        <span>{cert.issuer}</span>
-                        <DevPlaceholderBadge placeholder={cert.placeholder} />
-                      </div>
+                      <motion.div
+                        whileHover={
+                          shouldReduceMotion
+                            ? undefined
+                            : {
+                                x: 3,
+                                transition: { type: "spring", stiffness: 400, damping: 25 },
+                              }
+                        }
+                        className="p-4 border border-border-hairline glass-card space-y-1 hover-glow"
+                      >
+                        <div className="flex items-baseline justify-between gap-2">
+                          <span className="text-sm font-medium text-text-primary">
+                            {cert.name}
+                          </span>
+                          <span className="font-mono text-xs text-text-muted">
+                            {cert.year}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-2 font-mono text-xs text-text-muted">
+                          <span>{cert.issuer}</span>
+                          <DevPlaceholderBadge placeholder={cert.placeholder} />
+                        </div>
+                      </motion.div>
                     </FadeIn>
                   ))}
                 </ul>
@@ -110,20 +139,32 @@ export function Education() {
                       as="li"
                       key={aIdx}
                       delay={aIdx * 0.05}
-                      className="p-4 border border-border-hairline bg-surface/30 space-y-1.5 list-none"
+                      className="list-none"
                     >
-                      <div className="flex items-baseline justify-between gap-2">
-                        <span className="text-sm font-medium text-text-primary">
-                          {ach.title}
-                        </span>
-                        <span className="font-mono text-xs text-text-muted">
-                          {ach.year}
-                        </span>
-                      </div>
-                      <p className="text-xs text-text-secondary leading-relaxed max-w-[65ch]">
-                        {ach.description}
-                      </p>
-                      <DevPlaceholderBadge placeholder={ach.placeholder} className="mt-1" />
+                      <motion.div
+                        whileHover={
+                          shouldReduceMotion
+                            ? undefined
+                            : {
+                                x: 3,
+                                transition: { type: "spring", stiffness: 400, damping: 25 },
+                              }
+                        }
+                        className="p-4 border border-border-hairline glass-card space-y-1.5 hover-glow"
+                      >
+                        <div className="flex items-baseline justify-between gap-2">
+                          <span className="text-sm font-medium text-text-primary">
+                            {ach.title}
+                          </span>
+                          <span className="font-mono text-xs text-text-muted">
+                            {ach.year}
+                          </span>
+                        </div>
+                        <p className="text-xs text-text-secondary leading-relaxed max-w-[65ch]">
+                          {ach.description}
+                        </p>
+                        <DevPlaceholderBadge placeholder={ach.placeholder} className="mt-1" />
+                      </motion.div>
                     </FadeIn>
                   ))}
                 </ul>

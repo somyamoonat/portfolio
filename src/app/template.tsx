@@ -8,12 +8,18 @@ export default function Template({ children }: { children: React.ReactNode }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 8 }}
+      initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{
-        duration: shouldReduceMotion ? 0 : 0.35,
-        ease: "easeOut",
-      }}
+      transition={
+        shouldReduceMotion
+          ? { duration: 0 }
+          : {
+              type: "spring",
+              stiffness: 120,
+              damping: 20,
+              mass: 0.8,
+            }
+      }
       className="flex-1 flex flex-col"
     >
       {children}

@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import { profileData } from "@/content/profile";
 import { Header } from "@/components/layout/Header";
 import { Hero } from "@/components/sections/Hero";
+import { ImpactMetrics } from "@/components/sections/ImpactMetrics";
 import { SelectedWork } from "@/components/sections/SelectedWork";
 import { About } from "@/components/sections/About";
 import { Experience } from "@/components/sections/Experience";
 import { Education } from "@/components/sections/Education";
 import { Skills } from "@/components/sections/Skills";
+import { Testimonials } from "@/components/sections/Testimonials";
+import { Writing } from "@/components/sections/Writing";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/layout/Footer";
 
@@ -56,6 +59,9 @@ export default function Home() {
         {/* 00 / HERO: Large Typographic Statement */}
         <Hero />
 
+        {/* Quantified Engineering Impact Ledger */}
+        <ImpactMetrics />
+
         {/* 01 / SELECTED WORK: Editorial Numbered List with Hover Preview */}
         <SelectedWork />
 
@@ -71,7 +77,13 @@ export default function Home() {
         {/* 05 / SKILLS: Plain Text Lists Grouped by Category */}
         <Skills />
 
-        {/* 06 / CONTACT: Inquiries & Direct Conversion */}
+        {/* 06 / ENDORSEMENTS: Peer, Mentor & Collaborator Endorsements */}
+        <Testimonials />
+
+        {/* 07 / PERSPECTIVES: Technical Writing & Insights */}
+        <Writing />
+
+        {/* 08 / CONTACT: Inquiries & Direct Conversion */}
         <Contact />
       </main>
 

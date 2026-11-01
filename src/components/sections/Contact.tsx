@@ -4,9 +4,11 @@ import { useState } from "react";
 import { profileData } from "@/content/profile";
 import { Container, Section, Heading, Button } from "@/components/primitives";
 import { FadeIn } from "@/components/motion/FadeIn";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 
 export function Contact() {
   const { personal, contact, socials } = profileData;
+  const shouldReduceMotion = useReducedMotion();
 
   // Copy email state
   const [copied, setCopied] = useState(false);
@@ -96,14 +98,17 @@ export function Contact() {
         {/* Section Header */}
         <FadeIn>
           <div className="mb-12 md:mb-16">
-            {/* Location & Availability Status */}
-            <div className="flex items-center gap-2 font-mono text-xs text-text-muted mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block" aria-hidden="true" />
+            {/* Location & Availability Status with pulsing ring */}
+            <div className="flex items-center gap-2.5 font-mono text-xs text-text-muted mb-4">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
+              </span>
               <span>{personal.location} · {personal.status.statusText}</span>
             </div>
 
             <div className="flex items-center gap-2.5 font-mono text-xs uppercase tracking-wider text-text-muted mb-3">
-              <span className="text-text-secondary font-medium">06</span>
+              <span className="text-text-secondary font-medium">08</span>
               <span className="text-border-subtle">/</span>
               <span className="tracking-widest">Contact</span>
             </div>
@@ -128,7 +133,7 @@ export function Contact() {
                     Direct Inbox
                   </span>
 
-                  <div className="p-6 sm:p-8 border border-border-hairline bg-surface/60 space-y-4">
+                  <div className="p-6 sm:p-8 border border-border-hairline glass-card hover-glow space-y-4">
                     <button
                       type="button"
                       onClick={handleCopyEmail}
@@ -142,13 +147,38 @@ export function Contact() {
                     </button>
 
                     <div className="flex flex-wrap items-center gap-3 pt-2 font-mono text-xs">
-                      <button
+                      <motion.button
                         type="button"
+                        whileHover={shouldReduceMotion ? undefined : { scale: 1.02 }}
+                        whileTap={shouldReduceMotion ? undefined : { scale: 0.97 }}
                         onClick={handleCopyEmail}
                         className="inline-flex items-center gap-2 border border-border-hairline bg-surface-subtle px-4 py-2.5 min-h-[44px] text-text-secondary hover:text-text-primary hover:border-text-secondary active:bg-surface rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent transition-colors cursor-pointer"
                       >
-                        <span>{copied ? "✓ Copied to clipboard" : "Copy email address"}</span>
-                      </button>
+                        <AnimatePresence mode="wait" initial={false}>
+                          {copied ? (
+                            <motion.span
+                              key="copied"
+                              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: -4 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 4 }}
+                              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                              className="text-accent font-semibold inline-flex items-center gap-1.5"
+                            >
+                              ✓ Copied to clipboard
+                            </motion.span>
+                          ) : (
+                            <motion.span
+                              key="copy"
+                              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 4 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -4 }}
+                              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                            >
+                              Copy email address
+                            </motion.span>
+                          )}
+                        </AnimatePresence>
+                      </motion.button>
 
                       <a
                         href={`mailto:${contact.email}`}
@@ -184,37 +214,64 @@ export function Contact() {
                   </span>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono text-xs">
                     {socials.github && (
-                      <a
+                      <motion.a
+                        whileHover={
+                          shouldReduceMotion
+                            ? undefined
+                            : {
+                                y: -2,
+                                x: 2,
+                                transition: { type: "spring", stiffness: 400, damping: 25 },
+                              }
+                        }
                         href={socials.github.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-3 border border-border-hairline bg-surface/40 hover:border-border-strong hover:bg-surface-subtle/50 transition-colors flex items-center justify-between rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                        className="p-3 border border-border-hairline glass-card hover-glow transition-colors flex items-center justify-between rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                       >
                         <span className="text-text-primary">{socials.github.label}</span>
                         <span className="text-text-muted">↗</span>
-                      </a>
+                      </motion.a>
                     )}
                     {socials.linkedin && (
-                      <a
+                      <motion.a
+                        whileHover={
+                          shouldReduceMotion
+                            ? undefined
+                            : {
+                                y: -2,
+                                x: 2,
+                                transition: { type: "spring", stiffness: 400, damping: 25 },
+                              }
+                        }
                         href={socials.linkedin.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-3 border border-border-hairline bg-surface/40 hover:border-border-strong hover:bg-surface-subtle/50 transition-colors flex items-center justify-between rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                        className="p-3 border border-border-hairline glass-card hover-glow transition-colors flex items-center justify-between rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                       >
                         <span className="text-text-primary">{socials.linkedin.label}</span>
                         <span className="text-text-muted">↗</span>
-                      </a>
+                      </motion.a>
                     )}
                     {socials.x && (
-                      <a
+                      <motion.a
+                        whileHover={
+                          shouldReduceMotion
+                            ? undefined
+                            : {
+                                y: -2,
+                                x: 2,
+                                transition: { type: "spring", stiffness: 400, damping: 25 },
+                              }
+                        }
                         href={socials.x.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-3 border border-border-hairline bg-surface/40 hover:border-border-strong hover:bg-surface-subtle/50 transition-colors flex items-center justify-between rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                        className="p-3 border border-border-hairline glass-card hover-glow transition-colors flex items-center justify-between rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                       >
                         <span className="text-text-primary">{socials.x.label}</span>
                         <span className="text-text-muted">↗</span>
-                      </a>
+                      </motion.a>
                     )}
                   </div>
                 </div>
@@ -225,7 +282,7 @@ export function Contact() {
           {/* Right Column: Editorial Contact Form */}
           <div className="lg:col-span-6">
             <FadeIn delay={0.1}>
-              <div className="border border-border-hairline bg-surface p-6 sm:p-8 md:p-10 space-y-6">
+              <div className="border border-border-hairline glass-card hover-glow p-6 sm:p-8 md:p-10 space-y-6">
                 <div>
                   <span className="font-mono text-xs uppercase tracking-wider text-text-primary font-medium block mb-2">
                     Written Inquiry
@@ -269,7 +326,7 @@ export function Contact() {
                       placeholder="Jane Doe"
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="w-full bg-surface-subtle border border-border-hairline px-3.5 py-2.5 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent focus-visible:ring-1 focus-visible:ring-accent font-sans transition-colors duration-150"
+                      className="w-full bg-surface-subtle/80 border border-border-hairline px-3.5 py-2.5 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent focus-visible:ring-1 focus-visible:ring-accent font-sans transition-all duration-150 rounded-xs"
                     />
                   </div>
 
@@ -289,7 +346,7 @@ export function Contact() {
                       placeholder="jane@company.com"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full bg-surface-subtle border border-border-hairline px-3.5 py-2.5 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent focus-visible:ring-1 focus-visible:ring-accent font-sans transition-colors duration-150"
+                      className="w-full bg-surface-subtle/80 border border-border-hairline px-3.5 py-2.5 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent focus-visible:ring-1 focus-visible:ring-accent font-sans transition-all duration-150 rounded-xs"
                     />
                   </div>
 
@@ -309,30 +366,54 @@ export function Contact() {
                       placeholder="Tell me about the role, technical challenge, or project..."
                       value={formData.message}
                       onChange={handleInputChange}
-                      className="w-full bg-surface-subtle border border-border-hairline px-3.5 py-2.5 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent focus-visible:ring-1 focus-visible:ring-accent font-sans transition-colors duration-150 resize-y"
+                      className="w-full bg-surface-subtle/80 border border-border-hairline px-3.5 py-2.5 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent focus-visible:ring-1 focus-visible:ring-accent font-sans transition-all duration-150 resize-y rounded-xs"
                     />
                   </div>
 
-                  {/* Feedback status message */}
-                  {status.type !== "idle" && (
-                    <div
-                      role="alert"
-                      className={`p-3 text-xs font-mono leading-relaxed border ${
-                        status.type === "success"
-                          ? "border-green-600/30 bg-green-500/10 text-green-400"
-                          : "border-accent/30 bg-accent/10 text-accent"
-                      }`}
-                    >
-                      {status.message}
-                    </div>
-                  )}
+                  {/* Animated feedback status message */}
+                  <AnimatePresence>
+                    {status.type !== "idle" && (
+                      <motion.div
+                        role="alert"
+                        initial={{ opacity: 0, height: 0, y: -6 }}
+                        animate={{ opacity: 1, height: "auto", y: 0 }}
+                        exit={{ opacity: 0, height: 0, y: -6 }}
+                        transition={{ type: "spring", stiffness: 350, damping: 26 }}
+                        className={`overflow-hidden p-3 text-xs font-mono leading-relaxed border rounded-xs ${
+                          status.type === "success"
+                            ? "border-green-600/30 bg-green-500/10 text-green-400"
+                            : "border-accent/30 bg-accent/10 text-accent"
+                        }`}
+                      >
+                        {status.message}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
 
-                  {/* Submit button with loading state */}
+                  {/* Submit button with tactile spring animation */}
                   <div className="pt-2">
-                    <button
+                    <motion.button
                       type="submit"
                       disabled={loading}
-                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 font-mono text-xs uppercase tracking-wider font-semibold bg-text-primary text-canvas px-6 py-3 hover:bg-accent hover:text-white active:opacity-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-150"
+                      whileHover={
+                        shouldReduceMotion || loading
+                          ? undefined
+                          : {
+                              scale: 1.02,
+                              y: -1,
+                              transition: { type: "spring", stiffness: 450, damping: 25 },
+                            }
+                      }
+                      whileTap={
+                        shouldReduceMotion || loading
+                          ? undefined
+                          : {
+                              scale: 0.98,
+                              y: 0,
+                              transition: { type: "spring", stiffness: 450, damping: 25 },
+                            }
+                      }
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 font-mono text-xs uppercase tracking-wider font-semibold bg-text-primary text-canvas px-6 py-3 hover:bg-accent hover:text-white active:opacity-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-150 rounded-none shadow-[0_2px_10px_-4px_rgba(0,0,0,0.15)]"
                     >
                       {loading ? (
                         <>
@@ -345,7 +426,7 @@ export function Contact() {
                           <span className="text-accent group-hover:text-white select-none">→</span>
                         </>
                       )}
-                    </button>
+                    </motion.button>
                   </div>
                 </form>
               </div>

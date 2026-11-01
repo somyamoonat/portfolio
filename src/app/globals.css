@@ -203,3 +203,34 @@ p, li {
   border-right: 1px solid var(--border-strong);
   pointer-events: none;
 }
+
+/* Glassmorphism & Subtle Glowing Border Utilities */
+.glass-panel {
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.glass-card {
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 38%, var(--border-subtle));
+  box-shadow: 0 10px 30px -10px var(--accent-subtle), 0 0 1px 1px var(--accent-subtle);
+}
+
+.hover-glow {
+  transition: border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-glow:hover {
+  border-color: color-mix(in srgb, var(--accent) 42%, var(--border-hairline));
+  box-shadow: 0 6px 24px -6px var(--accent-subtle);
+}
