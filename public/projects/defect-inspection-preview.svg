@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
+  <rect width="1200" height="750" fill="#131418"/>
+  <defs>
+    <pattern id="grid2" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#22242c" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="750" fill="url(#grid2)" />
+  
+  <!-- Outer hairline frame -->
+  <rect x="40" y="40" width="1120" height="670" fill="none" stroke="#2b2e39" stroke-width="1"/>
+  
+  <!-- Header bar -->
+  <line x1="40" y1="90" x2="1160" y2="90" stroke="#2b2e39" stroke-width="1"/>
+  <circle cx="70" cy="65" r="4" fill="#3d4252"/>
+  <circle cx="85" cy="65" r="4" fill="#3d4252"/>
+  <circle cx="100" cy="65" r="4" fill="#3d4252"/>
+  
+  <text x="130" y="70" font-family="monospace" font-size="12" fill="#8e929e" letter-spacing="2">BATCH IMAGE PREPROCESSING // AUTOMATED YOLO &amp; JSON LABELING</text>
+  <text x="1120" y="70" font-family="monospace" font-size="11" fill="#e84a27" text-anchor="end">[STACK: OPENCV • NUMPY • BATCH PIPELINE]</text>
+
+  <!-- Left: Visual Inspection & Bounding View -->
+  <g transform="translate(80, 130)">
+    <rect x="0" y="0" width="500" height="420" fill="#16171d" stroke="#2b2e39" stroke-width="1"/>
+    
+    <line x1="0" y1="40" x2="500" y2="40" stroke="#22242c" stroke-width="1"/>
+    <text x="20" y="26" font-family="monospace" font-size="11" fill="#8e929e" letter-spacing="1">BATCH NORMALIZATION &amp; FEATURE DETECTION</text>
+    <text x="480" y="26" font-family="monospace" font-size="11" fill="#f4f4f6" text-anchor="end">FPS: 120</text>
+
+    <!-- Inspection frame with defect regions -->
+    <rect x="30" y="65" width="440" height="260" fill="#0f1013" stroke="#22242c" stroke-width="1"/>
+    
+    <!-- Defect Region 1 -->
+    <rect x="75" y="110" width="130" height="110" fill="rgba(232, 74, 39, 0.12)" stroke="#e84a27" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <text x="80" y="100" font-family="monospace" font-size="10" fill="#e84a27">DEFECT_01: surface_crack [0.974]</text>
+
+    <!-- Defect Region 2 -->
+    <rect x="250" y="150" width="170" height="120" fill="none" stroke="#e84a27" stroke-width="1.2"/>
+    <text x="255" y="142" font-family="monospace" font-size="10" fill="#e84a27">DEFECT_02: void_pocket [0.961]</text>
+
+    <!-- Normal reference zone -->
+    <rect x="240" y="80" width="120" height="50" fill="none" stroke="#3d4252" stroke-width="1"/>
+    <text x="245" y="74" font-family="monospace" font-size="10" fill="#8e929e">REGION_NORMAL</text>
+
+    <!-- Bottom info -->
+    <text x="30" y="360" font-family="monospace" font-size="11" fill="#8e929e">INPUT_BATCH: 1920x1080 -&gt; RESIZED 512x512 NORMALIZED</text>
+    <text x="30" y="385" font-family="monospace" font-size="11" fill="#5e6270">OUTPUT: Standardized Coordinate Matrix (x_center, y_center, w, h)</text>
+  </g>
+
+  <!-- Right: Defect Classification Breakdown -->
+  <g transform="translate(620, 130)">
+    <rect x="0" y="0" width="500" height="420" fill="#181920" stroke="#2b2e39" stroke-width="1"/>
+    
+    <line x1="0" y1="40" x2="500" y2="40" stroke="#22242c" stroke-width="1"/>
+    <text x="20" y="26" font-family="monospace" font-size="11" fill="#8e929e" letter-spacing="1">DEFECT CLASS EVALUATION MATRIX</text>
+    <text x="480" y="26" font-family="monospace" font-size="11" fill="#e84a27" text-anchor="end">YOLO / JSON</text>
+
+    <g transform="translate(30, 70)">
+      <text x="0" y="25" font-family="monospace" font-size="12" fill="#f4f4f6">SURFACE_CRACK</text>
+      <rect x="180" y="12" width="220" height="16" fill="#e84a27"/>
+      <text x="440" y="25" font-family="monospace" font-size="12" fill="#f4f4f6" text-anchor="end">97.8%</text>
+
+      <text x="0" y="70" font-family="monospace" font-size="12" fill="#f4f4f6">DEFORMATION</text>
+      <rect x="180" y="57" width="200" height="16" fill="#e84a27" opacity="0.85"/>
+      <text x="440" y="70" font-family="monospace" font-size="12" fill="#f4f4f6" text-anchor="end">94.2%</text>
+
+      <text x="0" y="115" font-family="monospace" font-size="12" fill="#f4f4f6">VOID_POCKET</text>
+      <rect x="180" y="102" width="210" height="16" fill="#e84a27" opacity="0.9"/>
+      <text x="440" y="115" font-family="monospace" font-size="12" fill="#f4f4f6" text-anchor="end">96.1%</text>
+
+      <text x="0" y="160" font-family="monospace" font-size="12" fill="#f4f4f6">SURFACE_DISCOLOR</text>
+      <rect x="180" y="147" width="190" height="16" fill="#e84a27" opacity="0.75"/>
+      <text x="440" y="160" font-family="monospace" font-size="12" fill="#f4f4f6" text-anchor="end">92.0%</text>
+
+      <text x="0" y="205" font-family="monospace" font-size="12" fill="#f4f4f6">GEOMETRIC_OFFSET</text>
+      <rect x="180" y="192" width="175" height="16" fill="#e84a27" opacity="0.7"/>
+      <text x="440" y="205" font-family="monospace" font-size="12" fill="#f4f4f6" text-anchor="end">89.4%</text>
+    </g>
+
+    <!-- Pipeline features box -->
+    <g transform="translate(30, 315)">
+      <rect x="0" y="0" width="440" height="75" fill="#131418" stroke="#22242c" stroke-width="1"/>
+      <text x="15" y="25" font-family="monospace" font-size="11" fill="#8e929e">EXPORT PIPELINE VERIFIED</text>
+      <text x="15" y="50" font-family="monospace" font-size="11" fill="#f4f4f6">Structured JSON schemas &amp; YOLO coordinate files generated.</text>
+    </g>
+  </g>
+
+  <!-- Footer bar -->
+  <line x1="40" y1="670" x2="1160" y2="670" stroke="#2b2e39" stroke-width="1"/>
+  <text x="70" y="692" font-family="monospace" font-size="11" fill="#5e6270">ENGINEERING ARCHIVE // SOMYA MOONAT</text>
+  <text x="1130" y="692" font-family="monospace" font-size="11" fill="#8e929e" text-anchor="end">CASE 02 / IMAGE PREPROCESSING</text>
+</svg>

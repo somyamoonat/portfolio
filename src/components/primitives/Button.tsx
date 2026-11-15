@@ -43,7 +43,7 @@ export function Button({
   };
 
   const baseClasses =
-    "inline-flex items-center justify-center gap-2 font-mono uppercase tracking-wider select-none cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed";
+    "group inline-flex items-center justify-center gap-2 font-mono uppercase tracking-wider select-none cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed";
 
   const combinedClasses = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
 

@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
+  <rect width="1200" height="750" fill="#131418"/>
+  <defs>
+    <pattern id="grid3" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#22242c" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="750" fill="url(#grid3)" />
+  
+  <!-- Outer hairline frame -->
+  <rect x="40" y="40" width="1120" height="670" fill="none" stroke="#2b2e39" stroke-width="1"/>
+  
+  <!-- Header bar -->
+  <line x1="40" y1="90" x2="1160" y2="90" stroke="#2b2e39" stroke-width="1"/>
+  <circle cx="70" cy="65" r="4" fill="#3d4252"/>
+  <circle cx="85" cy="65" r="4" fill="#3d4252"/>
+  <circle cx="100" cy="65" r="4" fill="#3d4252"/>
+  
+  <text x="130" y="70" font-family="monospace" font-size="12" fill="#8e929e" letter-spacing="2">RESTAURANT WEB PLATFORM // WEASYPRINT AUTOMATED PDF ENGINE</text>
+  <text x="1120" y="70" font-family="monospace" font-size="11" fill="#e84a27" text-anchor="end">[FULL-STACK: DYNAMIC CMS &amp; PRINT PIPELINE]</text>
+
+  <!-- Left: Responsive Customer Web Platform View -->
+  <g transform="translate(80, 130)">
+    <rect x="0" y="0" width="500" height="420" fill="#16171d" stroke="#2b2e39" stroke-width="1"/>
+    
+    <line x1="0" y1="40" x2="500" y2="40" stroke="#22242c" stroke-width="1"/>
+    <text x="20" y="26" font-family="monospace" font-size="11" fill="#8e929e" letter-spacing="1">RESPONSIVE DIGITAL MENU INTERFACE</text>
+    <text x="480" y="26" font-family="monospace" font-size="11" fill="#f4f4f6" text-anchor="end">LIVE WEB</text>
+
+    <!-- Simulated browser window content -->
+    <rect x="25" y="60" width="450" height="265" fill="#0f1013" stroke="#22242c" stroke-width="1"/>
+    
+    <!-- Restaurant Header in interface -->
+    <rect x="25" y="60" width="450" height="40" fill="#1a1b22"/>
+    <text x="45" y="85" font-family="serif" font-size="16" fill="#f4f4f6">L'Atelier Culinary</text>
+    <text x="455" y="85" font-family="monospace" font-size="10" fill="#e84a27" text-anchor="end">MENU SYNC: ON</text>
+
+    <!-- Menu Items -->
+    <g transform="translate(45, 120)">
+      <!-- Item 1 -->
+      <text x="0" y="15" font-family="sans-serif" font-weight="600" font-size="12" fill="#f4f4f6">Wood-Fired Truffle Gnocchi</text>
+      <text x="410" y="15" font-family="monospace" font-size="12" fill="#e84a27" text-anchor="end">$24.00</text>
+      <text x="0" y="32" font-family="sans-serif" font-size="10" fill="#8e929e">House potato gnocchi, wild mushrooms, sage emulsion</text>
+      <line x1="0" y1="42" x2="410" y2="42" stroke="#1f212a" stroke-width="1"/>
+
+      <!-- Item 2 -->
+      <text x="0" y="62" font-family="sans-serif" font-weight="600" font-size="12" fill="#f4f4f6">Pan-Seared Line Catch</text>
+      <text x="410" y="62" font-family="monospace" font-size="12" fill="#e84a27" text-anchor="end">$32.00</text>
+      <text x="0" y="79" font-family="sans-serif" font-size="10" fill="#8e929e">Fennel purée, caper brown butter, roasted sea greens</text>
+      <line x1="0" y1="89" x2="410" y2="89" stroke="#1f212a" stroke-width="1"/>
+
+      <!-- Item 3 -->
+      <text x="0" y="109" font-family="sans-serif" font-weight="600" font-size="12" fill="#f4f4f6">Slow-Braised Short Rib</text>
+      <text x="410" y="109" font-family="monospace" font-size="12" fill="#e84a27" text-anchor="end">$38.00</text>
+      <text x="0" y="126" font-family="sans-serif" font-size="10" fill="#8e929e">Pomme mousseline, charred shallot, red wine jus</text>
+    </g>
+
+    <text x="25" y="360" font-family="monospace" font-size="11" fill="#8e929e">FRONTEND: Semantic HTML5 • CSS3 Responsive Grid • Clean JS</text>
+    <text x="25" y="385" font-family="monospace" font-size="11" fill="#5e6270">OPTIMIZED: Zero Layout Shift • Mobile-first Touch Navigation</text>
+  </g>
+
+  <!-- Right: Headless WeasyPrint PDF Generation Engine -->
+  <g transform="translate(620, 130)">
+    <rect x="0" y="0" width="500" height="420" fill="#181920" stroke="#2b2e39" stroke-width="1"/>
+    
+    <line x1="0" y1="40" x2="500" y2="40" stroke="#22242c" stroke-width="1"/>
+    <text x="20" y="26" font-family="monospace" font-size="11" fill="#8e929e" letter-spacing="1">AUTOMATED PYTHON WEASYPRINT PIPELINE</text>
+    <text x="480" y="26" font-family="monospace" font-size="11" fill="#e84a27" text-anchor="end">300 DPI PRINT</text>
+
+    <!-- Pipeline steps box -->
+    <g transform="translate(25, 60)">
+      <!-- Step 1 -->
+      <rect x="0" y="0" width="450" height="60" fill="#131418" stroke="#22242c" stroke-width="1"/>
+      <text x="15" y="25" font-family="monospace" font-size="11" fill="#e84a27">[01] DATA SOURCE INGESTION</text>
+      <text x="15" y="45" font-family="monospace" font-size="11" fill="#f4f4f6">Dynamic menu JSON parsed &amp; verified against schema.</text>
+
+      <!-- Step 2 -->
+      <rect x="0" y="75" width="450" height="60" fill="#131418" stroke="#22242c" stroke-width="1"/>
+      <text x="15" y="100" font-family="monospace" font-size="11" fill="#e84a27">[02] HTML/CSS PAGED MEDIA COMPILATION</text>
+      <text x="15" y="120" font-family="monospace" font-size="11" fill="#f4f4f6">@page margins, bleed markers, and typographic grid applied.</text>
+
+      <!-- Step 3 -->
+      <rect x="0" y="150" width="450" height="60" fill="#131418" stroke="#22242c" stroke-width="1"/>
+      <text x="15" y="175" font-family="monospace" font-size="11" fill="#e84a27">[03] WEASYPRINT HEADLESS RENDER</text>
+      <text x="15" y="195" font-family="monospace" font-size="11" fill="#f4f4f6">Font embedding (Nimbus / OTF), vector curves, CMYK-safe PDF.</text>
+
+      <!-- Step 4 -->
+      <rect x="0" y="225" width="450" height="60" fill="#131418" stroke="#22242c" stroke-width="1"/>
+      <text x="15" y="250" font-family="monospace" font-size="11" fill="#8e929e">[04] DELIVERABLE ARTIFACT</text>
+      <text x="15" y="270" font-family="monospace" font-size="11" fill="#f4f4f6">Instant print-ready PDF generated in sub-400ms.</text>
+    </g>
+
+    <!-- Bottom summary line -->
+    <line x1="25" y1="365" x2="475" y2="365" stroke="#22242c" stroke-width="1"/>
+    <text x="25" y="390" font-family="monospace" font-size="11" fill="#8e929e">TECH: Python • WeasyPrint • Jinja2 • Paged Media CSS</text>
+  </g>
+
+  <!-- Footer bar -->
+  <line x1="40" y1="670" x2="1160" y2="670" stroke="#2b2e39" stroke-width="1"/>
+  <text x="70" y="692" font-family="monospace" font-size="11" fill="#5e6270">ENGINEERING ARCHIVE // SOMYA MOONAT</text>
+  <text x="1130" y="692" font-family="monospace" font-size="11" fill="#8e929e" text-anchor="end">CASE 03 / FULL-STACK &amp; AUTOMATION</text>
+</svg>

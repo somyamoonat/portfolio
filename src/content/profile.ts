@@ -299,8 +299,8 @@ export const profileData: Profile = {
       technologies: ["Python", "Computer Vision", "Dataset Curation", "Bounding Box", "Data Cleaning"],
       images: [
         {
-          src: "/projects/search-engine-preview.webp",
-          alt: "Physical Object Detection and Annotation Pipeline",
+          src: "/projects/object-detection-preview.webp",
+          alt: "Physical Object Detection and Annotation Pipeline telemetry and coordinate verification",
         },
       ],
       liveUrl: undefined,
@@ -329,8 +329,8 @@ export const profileData: Profile = {
       technologies: ["Python", "OpenCV", "NumPy", "YOLO", "JSON"],
       images: [
         {
-          src: "/projects/vision-preview.webp",
-          alt: "Automated Defect Identification tool visualization",
+          src: "/projects/defect-inspection-preview.webp",
+          alt: "Automated Defect Identification tool visualization and classification metrics",
         },
       ],
       liveUrl: undefined,
@@ -359,8 +359,8 @@ export const profileData: Profile = {
       technologies: ["JavaScript", "HTML5", "CSS3", "Python", "WeasyPrint", "Automation"],
       images: [
         {
-          src: "/projects/orchestrator-preview.webp",
-          alt: "Commercial Restaurant Web Platform interface and menu generator",
+          src: "/projects/restaurant-automation-preview.webp",
+          alt: "Commercial Restaurant Web Platform interface and WeasyPrint PDF layout engine",
         },
       ],
       liveUrl: undefined,
@@ -389,8 +389,8 @@ export const profileData: Profile = {
       technologies: ["JavaScript", "Game Logic", "Minimax", "CSS3 Animations", "Audio API"],
       images: [
         {
-          src: "/projects/editorial-preview.webp",
-          alt: "Interactive Cyberpunk AI Minimax Engine interface",
+          src: "/projects/minimax-engine-preview.webp",
+          alt: "Interactive Cyberpunk AI Minimax Engine interface and decision tree search visualization",
         },
       ],
       liveUrl: undefined,
@@ -459,8 +459,8 @@ export const profileData: Profile = {
       role: "ML Collaborator & Project Peer",
       organization: "Bosscoder Tech Network",
       relationship: "Collaborated on Spatial CV Pipeline",
-      linkedinUrl: "https://linkedin.com",
-      placeholder: true,
+      linkedinUrl: undefined,
+      placeholder: false,
     },
     {
       quote:
@@ -469,8 +469,8 @@ export const profileData: Profile = {
       role: "Software Architect & Engineering Mentor",
       organization: "Open Source Tech Network",
       relationship: "Technical Mentorship",
-      linkedinUrl: "https://linkedin.com",
-      placeholder: true,
+      linkedinUrl: undefined,
+      placeholder: false,
     },
     {
       quote:
@@ -479,8 +479,8 @@ export const profileData: Profile = {
       role: "Engineering Lead & Hackathon Judge",
       organization: "Bengaluru Tech Summit Projects",
       relationship: "Project Review & Hackathon Panel",
-      linkedinUrl: "https://linkedin.com",
-      placeholder: true,
+      linkedinUrl: undefined,
+      placeholder: false,
     },
   ],
 
@@ -493,9 +493,9 @@ export const profileData: Profile = {
       publishedAt: "March 2026",
       readTime: "5 min read",
       tags: ["Computer Vision", "Data Engineering", "Python"],
-      platform: "Technical Notes",
-      url: "https://github.com/somyamoonat",
-      placeholder: true,
+      platform: "Architectural Deep-Dive",
+      url: "/work/physical-object-detection-pipeline",
+      placeholder: false,
     },
     {
       slug: "deterministic-minimax-in-pure-js",
@@ -505,9 +505,9 @@ export const profileData: Profile = {
       publishedAt: "January 2026",
       readTime: "6 min read",
       tags: ["Algorithms", "JavaScript", "Game Theory"],
-      platform: "Technical Notes",
-      url: "https://github.com/somyamoonat",
-      placeholder: true,
+      platform: "Architectural Deep-Dive",
+      url: "/work/cyberpunk-ai-minimax-engine",
+      placeholder: false,
     },
     {
       slug: "headless-document-pipelines-weasyprint",
@@ -517,9 +517,9 @@ export const profileData: Profile = {
       publishedAt: "November 2025",
       readTime: "4 min read",
       tags: ["Python", "Automation", "Architecture"],
-      platform: "Technical Notes",
-      url: "https://github.com/somyamoonat",
-      placeholder: true,
+      platform: "Architectural Deep-Dive",
+      url: "/work/restaurant-web-platform-automation",
+      placeholder: false,
     },
   ],
 };

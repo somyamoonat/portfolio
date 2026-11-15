@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
+  <rect width="1200" height="750" fill="#131418"/>
+  <defs>
+    <pattern id="grid4" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#22242c" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="750" fill="url(#grid4)" />
+  
+  <!-- Outer hairline frame -->
+  <rect x="40" y="40" width="1120" height="670" fill="none" stroke="#2b2e39" stroke-width="1"/>
+  
+  <!-- Header bar -->
+  <line x1="40" y1="90" x2="1160" y2="90" stroke="#2b2e39" stroke-width="1"/>
+  <circle cx="70" cy="65" r="4" fill="#3d4252"/>
+  <circle cx="85" cy="65" r="4" fill="#3d4252"/>
+  <circle cx="100" cy="65" r="4" fill="#3d4252"/>
+  
+  <text x="130" y="70" font-family="monospace" font-size="12" fill="#8e929e" letter-spacing="2">DECISION ENGINE // MINIMAX ALGORITHM WITH ALPHA-BETA PRUNING</text>
+  <text x="1120" y="70" font-family="monospace" font-size="11" fill="#e84a27" text-anchor="end">[TURN LATENCY: &lt; 5MS • OPTIMAL HEURISTIC]</text>
+
+  <!-- Left: Cyberpunk Interactive Game Arena & Board State -->
+  <g transform="translate(80, 130)">
+    <rect x="0" y="0" width="500" height="420" fill="#16171d" stroke="#2b2e39" stroke-width="1"/>
+    
+    <line x1="0" y1="40" x2="500" y2="40" stroke="#22242c" stroke-width="1"/>
+    <text x="20" y="26" font-family="monospace" font-size="11" fill="#8e929e" letter-spacing="1">INTERACTIVE GAME MATRIX &amp; GLITCH INTERFACE</text>
+    <text x="480" y="26" font-family="monospace" font-size="11" fill="#e84a27" text-anchor="end">AI TURN: MOVE CALC</text>
+
+    <!-- Game Board Grid 3x3 -->
+    <g transform="translate(140, 75)">
+      <!-- Outer boundary -->
+      <rect x="0" y="0" width="220" height="220" fill="#0f1013" stroke="#2b2e39" stroke-width="1.5"/>
+      
+      <!-- Inner grid lines -->
+      <line x1="73" y1="0" x2="73" y2="220" stroke="#22242c" stroke-width="2"/>
+      <line x1="146" y1="0" x2="146" y2="220" stroke="#22242c" stroke-width="2"/>
+      <line x1="0" y1="73" x2="220" y2="73" stroke="#22242c" stroke-width="2"/>
+      <line x1="0" y1="146" x2="220" y2="146" stroke="#22242c" stroke-width="2"/>
+
+      <!-- Cell (0,0) - X -->
+      <text x="36" y="52" font-family="monospace" font-size="34" fill="#e84a27" text-anchor="middle" font-weight="bold">X</text>
+      
+      <!-- Cell (1,1) - O (AI optimal center) -->
+      <text x="110" y="125" font-family="monospace" font-size="34" fill="#f4f4f6" text-anchor="middle" font-weight="bold">O</text>
+      
+      <!-- Cell (0,2) - X -->
+      <text x="183" y="52" font-family="monospace" font-size="34" fill="#e84a27" text-anchor="middle" font-weight="bold">X</text>
+
+      <!-- Cell (1,0) - O (AI win-block move) -->
+      <rect x="0" y="73" width="73" height="73" fill="rgba(232, 74, 39, 0.15)"/>
+      <text x="36" y="125" font-family="monospace" font-size="34" fill="#e84a27" text-anchor="middle" font-weight="bold">O</text>
+    </g>
+
+    <text x="30" y="340" font-family="monospace" font-size="11" fill="#8e929e">CYBERPUNK AUDIO: Web Audio API Oscillator Synthesis</text>
+    <text x="30" y="365" font-family="monospace" font-size="11" fill="#5e6270">VISUAL FX: Custom Keyframe Chromatic Aberration &amp; Glitch Shaders</text>
+    <text x="30" y="390" font-family="monospace" font-size="11" fill="#e84a27">ZERO EXTERNAL LIBRARIES: 100% Pure Vanilla JavaScript</text>
+  </g>
+
+  <!-- Right: Minimax Search Tree & Alpha-Beta Telemetry -->
+  <g transform="translate(620, 130)">
+    <rect x="0" y="0" width="500" height="420" fill="#181920" stroke="#2b2e39" stroke-width="1"/>
+    
+    <line x1="0" y1="40" x2="500" y2="40" stroke="#22242c" stroke-width="1"/>
+    <text x="20" y="26" font-family="monospace" font-size="11" fill="#8e929e" letter-spacing="1">RECURSIVE MINIMAX SEARCH TREE</text>
+    <text x="480" y="26" font-family="monospace" font-size="11" fill="#f4f4f6" text-anchor="end">DEPTH: 9</text>
+
+    <!-- Minimax metrics -->
+    <g transform="translate(25, 60)">
+      <rect x="0" y="0" width="215" height="70" fill="#131418" stroke="#22242c" stroke-width="1"/>
+      <text x="15" y="24" font-family="monospace" font-size="10" fill="#8e929e">EVALUATION TIME</text>
+      <text x="15" y="55" font-family="monospace" font-size="24" fill="#e84a27">2.4 ms</text>
+
+      <rect x="235" y="0" width="215" height="70" fill="#131418" stroke="#22242c" stroke-width="1"/>
+      <text x="250" y="24" font-family="monospace" font-size="10" fill="#8e929e">PRUNED BRANCHES</text>
+      <text x="250" y="55" font-family="monospace" font-size="24" fill="#f4f4f6">1,842</text>
+    </g>
+
+    <!-- Recursive tree schematic -->
+    <g transform="translate(25, 155)">
+      <text x="0" y="15" font-family="monospace" font-size="11" fill="#8e929e">DECISION PATH HEURISTIC EVALUATION</text>
+      
+      <!-- Root Node -->
+      <circle cx="225" cy="50" r="14" fill="#131418" stroke="#e84a27" stroke-width="2"/>
+      <text x="225" y="54" font-family="monospace" font-size="10" fill="#f4f4f6" text-anchor="middle">MAX</text>
+
+      <!-- Branches -->
+      <line x1="215" y1="62" x2="110" y2="105" stroke="#3d4252" stroke-width="1.5"/>
+      <line x1="225" y1="64" x2="225" y2="105" stroke="#e84a27" stroke-width="2"/>
+      <line x1="235" y1="62" x2="340" y2="105" stroke="#3d4252" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+      <!-- Level 1 Nodes -->
+      <circle cx="110" cy="115" r="12" fill="#131418" stroke="#3d4252" stroke-width="1.5"/>
+      <text x="110" y="119" font-family="monospace" font-size="9" fill="#8e929e" text-anchor="middle">MIN</text>
+
+      <circle cx="225" cy="115" r="12" fill="#131418" stroke="#e84a27" stroke-width="2"/>
+      <text x="225" y="119" font-family="monospace" font-size="9" fill="#f4f4f6" text-anchor="middle">+10</text>
+
+      <circle cx="340" cy="115" r="12" fill="#131418" stroke="#5e6270" stroke-width="1" stroke-dasharray="2,2"/>
+      <text x="340" y="119" font-family="monospace" font-size="9" fill="#5e6270" text-anchor="middle">CUT</text>
+
+      <!-- Level 2 Branches from center -->
+      <line x1="218" y1="126" x2="170" y2="160" stroke="#e84a27" stroke-width="1.5"/>
+      <line x1="232" y1="126" x2="280" y2="160" stroke="#3d4252" stroke-width="1"/>
+
+      <circle cx="170" cy="170" r="10" fill="#e84a27"/>
+      <text x="170" y="174" font-family="monospace" font-size="8" fill="#ffffff" text-anchor="middle">OPT</text>
+
+      <circle cx="280" cy="170" r="10" fill="#131418" stroke="#3d4252" stroke-width="1"/>
+      <text x="280" y="174" font-family="monospace" font-size="8" fill="#8e929e" text-anchor="middle">0</text>
+    </g>
+
+    <!-- Bottom summary line -->
+    <line x1="25" y1="365" x2="475" y2="365" stroke="#22242c" stroke-width="1"/>
+    <text x="25" y="390" font-family="monospace" font-size="11" fill="#8e929e">ALGORITHM: Minimax • Alpha-Beta Pruning • O(b^(d/2)) Complexity</text>
+  </g>
+
+  <!-- Footer bar -->
+  <line x1="40" y1="670" x2="1160" y2="670" stroke="#2b2e39" stroke-width="1"/>
+  <text x="70" y="692" font-family="monospace" font-size="11" fill="#5e6270">ENGINEERING ARCHIVE // SOMYA MOONAT</text>
+  <text x="1130" y="692" font-family="monospace" font-size="11" fill="#8e929e" text-anchor="end">CASE 04 / GAME LOGIC &amp; ALGORITHMS</text>
+</svg>

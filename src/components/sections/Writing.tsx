@@ -91,12 +91,12 @@ export function Writing() {
                     {/* Action Arrow Column */}
                     <div className="md:col-span-2 flex items-center md:justify-end font-mono text-xs text-text-muted group-hover:text-accent transition-colors pt-2 md:pt-0">
                       <span className="inline-flex items-center gap-1 uppercase tracking-wider text-[11px]">
-                        <span>READ NOTE</span>
+                        <span>{article.url?.startsWith("/") ? "READ CASE" : "READ NOTE"}</span>
                         <span
                           aria-hidden="true"
-                          className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                          className="transition-transform duration-200 group-hover:translate-x-1"
                         >
-                          ↗
+                          {article.url?.startsWith("/") ? "→" : "↗"}
                         </span>
                       </span>
                     </div>

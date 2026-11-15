@@ -141,9 +141,9 @@ export function SelectedWork() {
                     href={`/work/${project.slug}`}
                     className="block py-8 sm:py-10 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent glass-card border border-transparent hover:border-border-hairline transition-all duration-200"
                   >
-                    <div className="flex flex-col lg:flex-row lg:items-baseline justify-between gap-4">
-                      {/* Left: Number + Title + Tagline */}
-                      <div className="space-y-3 max-w-3xl">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
+                      {/* Left: Project Number + Title + Tagline + Tech Tags */}
+                      <div className="lg:col-span-7 space-y-3.5">
                         <div className="flex flex-wrap items-center gap-3 font-mono text-xs">
                           <span className="text-text-muted group-hover:text-accent uppercase tracking-wider font-semibold transition-colors">
                             {String(idx + 1).padStart(2, "0")}
@@ -152,6 +152,8 @@ export function SelectedWork() {
                           <span className="text-text-secondary uppercase tracking-wider">
                             {project.category}
                           </span>
+                          <span className="text-border-subtle">•</span>
+                          <span className="text-text-muted font-medium">{project.year}</span>
                           <DevPlaceholderBadge placeholder={project.placeholder} />
                         </div>
 
@@ -164,19 +166,12 @@ export function SelectedWork() {
                           </span>
                         </div>
 
-                        <p className="text-sm sm:text-base text-text-secondary leading-relaxed max-w-[65ch]">
+                        <p className="text-sm sm:text-base text-text-secondary leading-relaxed max-w-[62ch]">
                           {project.tagline}
                         </p>
-                      </div>
 
-                      {/* Right: Tech Tags & Year */}
-                      <div className="flex flex-wrap lg:flex-col lg:items-end justify-between lg:justify-start gap-3 shrink-0 pt-2 lg:pt-0">
-                        <span className="font-mono text-xs text-text-muted font-medium">
-                          {project.year}
-                        </span>
-
-                        <div className="flex flex-wrap gap-1.5 max-w-md lg:justify-end">
-                          {project.technologies.slice(0, 4).map((tech) => (
+                        <div className="flex flex-wrap gap-1.5 pt-1">
+                          {project.technologies.map((tech) => (
                             <span
                               key={tech}
                               className="font-mono text-[10px] text-text-muted bg-surface-subtle border border-border-hairline px-2 py-0.5 group-hover:border-border-subtle transition-colors"
@@ -184,27 +179,28 @@ export function SelectedWork() {
                               {tech}
                             </span>
                           ))}
-                          {project.technologies.length > 4 && (
-                            <span className="font-mono text-[10px] text-text-muted px-1 py-0.5">
-                              +{project.technologies.length - 4}
-                            </span>
-                          )}
                         </div>
                       </div>
-                    </div>
 
-                    {/* Mobile Preview Image */}
-                    {previewImage && (
-                      <div className="mt-6 lg:hidden relative aspect-[16/9] w-full border border-border-hairline overflow-hidden bg-surface">
-                        <Image
-                          src={previewImage.src}
-                          alt={previewImage.alt}
-                          fill
-                          sizes="(max-width: 1024px) 100vw, 600px"
-                          className="object-cover transition-transform duration-300 group-hover:scale-102"
-                        />
-                      </div>
-                    )}
+                      {/* Right: Architectural Framed Preview */}
+                      {previewImage && (
+                        <div className="lg:col-span-5 mt-3 lg:mt-0">
+                          <div className="relative aspect-[16/10] w-full border border-border-hairline group-hover:border-border-strong overflow-hidden bg-surface-subtle rounded-xs transition-colors duration-200">
+                            <Image
+                              src={previewImage.src}
+                              alt={previewImage.alt}
+                              fill
+                              sizes="(max-width: 1024px) 100vw, 460px"
+                              className="object-cover object-top transition-transform duration-300 group-hover:scale-102"
+                            />
+                            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-surface/95 via-surface/40 to-transparent p-2.5 flex items-center justify-between font-mono text-[10px] text-text-muted uppercase tracking-wider">
+                              <span className="truncate max-w-[220px] text-text-secondary">{project.role}</span>
+                              <span className="text-accent group-hover:underline">Case Dossier ↗</span>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </Link>
                 </motion.article>
               );

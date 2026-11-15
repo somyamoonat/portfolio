@@ -114,7 +114,7 @@ export function Hero() {
               className="rounded-none"
             >
               <span>GET IN TOUCH</span>
-              <span className="text-accent select-none" aria-hidden="true">
+              <span className="text-accent group-hover:text-white transition-colors select-none" aria-hidden="true">
                 →
               </span>
             </Button>
