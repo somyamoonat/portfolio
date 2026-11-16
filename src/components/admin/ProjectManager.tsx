@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useSyncExternalStore } from "react";
+import { useState, useEffect, useSyncExternalStore, useRef } from "react";
 import { createPortal } from "react-dom";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
@@ -73,6 +73,118 @@ export function ProjectManager({ isOpen, onClose, embedded = false }: ProjectMan
   const [githubRepos, setGithubRepos] = useState<GitHubRepo[]>([]);
   const [fetchingRepos, setFetchingRepos] = useState(false);
   const [showRepoPicker, setShowRepoPicker] = useState(false);
+
+  // Image handling state & functions
+  const [uploadingImage, setUploadingImage] = useState(false);
+  const [newImageUrl, setNewImageUrl] = useState("");
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files || files.length === 0 || !editingProject) return;
+
+    const file = files[0];
+    setUploadingImage(true);
+    setStatusMessage(null);
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("slug", editingProject.slug || "screenshot");
+    formData.append("pin", pin);
+
+    try {
+      const res = await fetch("/api/admin/upload", {
+        method: "POST",
+        headers: {
+          "x-admin-pin": pin,
+        },
+        body: formData,
+      });
+
+      const data = await res.json();
+      if (data.success && data.url) {
+        const newImage = {
+          src: data.url,
+          alt: `${editingProject.title} application screenshot`,
+        };
+        setEditingProject((prev) => {
+          if (!prev) return null;
+          const currentImages = prev.images || [];
+          return {
+            ...prev,
+            images: [...currentImages, newImage],
+            placeholder: false,
+          };
+        });
+        setStatusMessage({
+          type: "success",
+          text: data.committed
+            ? `Screenshot "${file.name}" uploaded and committed to GitHub repo!`
+            : `Screenshot "${file.name}" uploaded successfully!`,
+        });
+      } else {
+        setStatusMessage({
+          type: "error",
+          text: data.error || "Failed to upload image.",
+        });
+      }
+    } catch {
+      setStatusMessage({
+        type: "error",
+        text: "Network error occurred while uploading image.",
+      });
+    } finally {
+      setUploadingImage(false);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
+    }
+  };
+
+  const addImageFromUrl = () => {
+    if (!newImageUrl.trim() || !editingProject) return;
+    const url = newImageUrl.trim();
+    const newImage = {
+      src: url,
+      alt: `${editingProject.title} screenshot`,
+    };
+    setEditingProject((prev) => {
+      if (!prev) return null;
+      return {
+        ...prev,
+        images: [...(prev.images || []), newImage],
+        placeholder: false,
+      };
+    });
+    setNewImageUrl("");
+  };
+
+  const removeImage = (index: number) => {
+    setEditingProject((prev) => {
+      if (!prev) return null;
+      const filtered = prev.images.filter((_, i) => i !== index);
+      return { ...prev, images: filtered };
+    });
+  };
+
+  const setPrimaryImage = (index: number) => {
+    setEditingProject((prev) => {
+      if (!prev) return null;
+      const images = [...prev.images];
+      const [selected] = images.splice(index, 1);
+      images.unshift(selected);
+      return { ...prev, images };
+    });
+  };
+
+  const updateImageAlt = (index: number, alt: string) => {
+    setEditingProject((prev) => {
+      if (!prev) return null;
+      const images = [...prev.images];
+      images[index] = { ...images[index], alt };
+      return { ...prev, images };
+    });
+  };
 
   // Fetch projects when opened and unlocked
   useEffect(() => {
@@ -632,57 +744,157 @@ export function ProjectManager({ isOpen, onClose, embedded = false }: ProjectMan
                   </div>
                 </div>
 
-                {/* Preview Image Selection */}
-                <div>
-                  <label className="block font-mono text-[11px] uppercase tracking-wider text-text-secondary mb-1">
-                    Preview Graphic Image Path
-                  </label>
-                  <div className="flex gap-2">
+                {/* Project Imagery & Real App Screenshots */}
+                <div className="space-y-4 pt-2 border-t border-border-hairline">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div>
+                      <label className="block font-mono text-[11px] uppercase tracking-wider text-text-primary font-semibold">
+                        App Screenshots &amp; Media ({editingProject.images?.length || 0})
+                      </label>
+                      <p className="text-[11px] text-text-muted">
+                        Upload real screenshots of your application from your device, or link external graphics.
+                      </p>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <input
+                        ref={fileInputRef}
+                        type="file"
+                        accept="image/png,image/jpeg,image/webp,image/svg+xml,image/gif"
+                        onChange={handleImageUpload}
+                        className="hidden"
+                      />
+                      <button
+                        type="button"
+                        disabled={uploadingImage}
+                        onClick={() => fileInputRef.current?.click()}
+                        className="bg-accent text-white px-3 py-1.5 font-mono text-xs uppercase tracking-wider rounded-xs hover:bg-accent/90 transition-colors inline-flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+                      >
+                        {uploadingImage ? (
+                          <>
+                            <span className="w-2.5 h-2.5 rounded-full border-2 border-white border-t-transparent animate-spin" />
+                            <span>Uploading to GitHub...</span>
+                          </>
+                        ) : (
+                          <>
+                            <span>↑</span>
+                            <span>Upload from Device</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Existing Images Grid */}
+                  {editingProject.images && editingProject.images.length > 0 ? (
+                    <div className="space-y-3">
+                      {editingProject.images.map((img, idx) => (
+                        <div
+                          key={idx}
+                          className="flex flex-col sm:flex-row items-start sm:items-center gap-3 p-3 bg-surface-subtle/80 border border-border-hairline rounded-xs"
+                        >
+                          {/* Thumbnail preview */}
+                          <div className="relative w-28 h-20 bg-surface border border-border-hairline rounded-xs overflow-hidden shrink-0">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src={img.src}
+                              alt={img.alt || "Preview"}
+                              className="w-full h-full object-cover"
+                            />
+                            {idx === 0 && (
+                              <span className="absolute bottom-0 inset-x-0 bg-accent/90 text-white font-mono text-[9px] uppercase tracking-wider text-center py-0.5">
+                                Primary Cover
+                              </span>
+                            )}
+                          </div>
+
+                          {/* Info & Alt Text Editor */}
+                          <div className="flex-1 min-w-0 space-y-1.5 w-full">
+                            <div className="flex items-center justify-between gap-2">
+                              <span className="font-mono text-[10px] text-text-muted truncate">
+                                {img.src}
+                              </span>
+                              <div className="flex items-center gap-1.5 shrink-0 font-mono text-[10px]">
+                                {idx !== 0 && (
+                                  <button
+                                    type="button"
+                                    onClick={() => setPrimaryImage(idx)}
+                                    className="px-2 py-0.5 border border-border-hairline hover:border-accent hover:text-accent rounded-xs transition-colors"
+                                  >
+                                    Set as Cover
+                                  </button>
+                                )}
+                                <button
+                                  type="button"
+                                  onClick={() => removeImage(idx)}
+                                  className="px-2 py-0.5 border border-red-500/30 text-red-400 hover:bg-red-500/10 rounded-xs transition-colors"
+                                >
+                                  Remove
+                                </button>
+                              </div>
+                            </div>
+
+                            <input
+                              type="text"
+                              value={img.alt}
+                              placeholder="Image caption / alt text (e.g. Dashboard view)"
+                              onChange={(e) => updateImageAlt(idx, e.target.value)}
+                              className="w-full bg-surface border border-border-hairline px-2.5 py-1 text-xs rounded-xs font-sans focus:outline-none focus:border-accent"
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="p-4 border border-dashed border-border-hairline text-center text-text-muted font-mono text-xs rounded-xs">
+                      No images added yet. Click &quot;Upload from Device&quot; to add a screenshot of your app.
+                    </div>
+                  )}
+
+                  {/* Add Image via URL or Preset */}
+                  <div className="pt-2 flex flex-col sm:flex-row gap-2 font-mono text-xs">
                     <input
                       type="text"
-                      value={editingProject.images?.[0]?.src || ""}
-                      onChange={(e) =>
-                        setEditingProject((prev) =>
-                          prev
-                            ? {
-                                ...prev,
-                                images: [
-                                  {
-                                    src: e.target.value,
-                                    alt: prev.images?.[0]?.alt || prev.title,
-                                  },
-                                ],
-                              }
-                            : null
-                        )
-                      }
-                      className="flex-1 bg-surface-subtle border border-border-hairline px-3 py-2 text-sm font-mono rounded-xs focus:outline-none focus:border-accent"
+                      value={newImageUrl}
+                      onChange={(e) => setNewImageUrl(e.target.value)}
+                      placeholder="Or paste image URL (e.g. https://... or /projects/...)"
+                      className="flex-1 bg-surface-subtle border border-border-hairline px-3 py-1.5 text-xs rounded-xs focus:outline-none focus:border-accent"
                     />
+                    <button
+                      type="button"
+                      onClick={addImageFromUrl}
+                      disabled={!newImageUrl.trim()}
+                      className="px-3 py-1.5 border border-border-hairline hover:border-accent hover:text-accent disabled:opacity-40 rounded-xs transition-colors cursor-pointer"
+                    >
+                      + Add Image URL
+                    </button>
                   </div>
-                  <div className="flex flex-wrap gap-2 mt-2 font-mono text-[10px] text-text-muted">
-                    <span>Quick presets:</span>
+
+                  {/* Quick Preset Wireframes */}
+                  <div className="flex flex-wrap items-center gap-2 pt-1 font-mono text-[10px] text-text-muted">
+                    <span>Default wireframes:</span>
                     {[
-                      "/projects/receipt-sorter-preview.webp",
-                      "/projects/sign-to-voice-preview.webp",
-                      "/projects/crochet-diaryy-preview.webp",
-                      "/projects/moon-sweepers-preview.webp",
+                      { label: "Receipt Sorter", path: "/projects/receipt-sorter-preview.webp" },
+                      { label: "Sign-to-Voice", path: "/projects/sign-to-voice-preview.webp" },
+                      { label: "Crochet Diaryy", path: "/projects/crochet-diaryy-preview.webp" },
+                      { label: "Moon Sweepers", path: "/projects/moon-sweepers-preview.webp" },
                     ].map((preset) => (
                       <button
-                        key={preset}
+                        key={preset.path}
                         type="button"
-                        onClick={() =>
+                        onClick={() => {
                           setEditingProject((prev) =>
                             prev
                               ? {
                                   ...prev,
-                                  images: [{ src: preset, alt: prev.title }],
+                                  images: [...(prev.images || []), { src: preset.path, alt: `${preset.label} preview` }],
                                 }
                               : null
-                          )
-                        }
-                        className="underline hover:text-accent"
+                          );
+                        }}
+                        className="underline hover:text-accent cursor-pointer"
                       >
-                        {preset.split("/").pop()}
+                        +{preset.label}
                       </button>
                     ))}
                   </div>
