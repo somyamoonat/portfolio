@@ -1,9 +1,17 @@
+"use client";
+
 import { profileData } from "@/content/profile";
 import { Container, Link } from "@/components/primitives";
 import { FadeIn } from "@/components/motion/FadeIn";
 
 export function Footer() {
   const { personal, contact, socials } = profileData;
+
+  const handleAdminTrigger = () => {
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("open-project-manager"));
+    }
+  };
 
   return (
     <footer
@@ -56,11 +64,16 @@ export function Footer() {
           </div>
         </div>
 
-          {/* Copyright notice */}
+          {/* Copyright notice - clicking © acts as a discrete access trigger for Somya */}
           <div className="pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-[11px] text-text-muted">
-            <div>
+            <button
+              type="button"
+              onClick={handleAdminTrigger}
+              className="hover:text-text-secondary transition-colors text-left font-mono focus:outline-none"
+              title=""
+            >
               © 2026 {personal.name}
-            </div>
+            </button>
             <div>
               somyamoonat.tech
             </div>

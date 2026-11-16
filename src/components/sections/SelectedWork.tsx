@@ -31,30 +31,18 @@ export function SelectedWork() {
       <Container>
         {/* Section Header */}
         <FadeIn>
-          <div className="mb-10 md:mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div>
-              <div className="flex items-center gap-2.5 font-mono text-xs uppercase tracking-wider text-text-muted mb-3">
-                <span className="text-text-secondary font-medium">01</span>
-                <span className="text-border-subtle">/</span>
-                <span className="tracking-widest">Selected Work</span>
-              </div>
-              <Heading as="h2" size="xl">
-                Featured Systems & Architecture
-              </Heading>
-              <p className="mt-3 text-sm md:text-base text-text-secondary max-w-[65ch] leading-relaxed">
-                Selected production builds, distributed architectures, and machine learning implementations exploring concrete technical trade-offs.
-              </p>
+          <div className="mb-10 md:mb-12">
+            <div className="flex items-center gap-2.5 font-mono text-xs uppercase tracking-wider text-text-muted mb-3">
+              <span className="text-text-secondary font-medium">01</span>
+              <span className="text-border-subtle">/</span>
+              <span className="tracking-widest">Selected Work</span>
             </div>
-
-            <button
-              type="button"
-              onClick={() => window.dispatchEvent(new CustomEvent("open-project-manager"))}
-              className="self-start md:self-end font-mono text-xs uppercase tracking-wider text-text-muted hover:text-accent border border-border-hairline hover:border-accent bg-surface-subtle/50 px-3 py-1.5 transition-colors rounded-xs cursor-pointer inline-flex items-center gap-1.5"
-              title="Add, edit, or remove projects directly on this website"
-            >
-              <span>⚙</span>
-              <span>Manage Projects</span>
-            </button>
+            <Heading as="h2" size="xl">
+              Featured Systems & Architecture
+            </Heading>
+            <p className="mt-3 text-sm md:text-base text-text-secondary max-w-[65ch] leading-relaxed">
+              Selected production builds, distributed architectures, and machine learning implementations exploring concrete technical trade-offs.
+            </p>
           </div>
         </FadeIn>
 

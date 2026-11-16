@@ -19,7 +19,28 @@ export function Header() {
   useEffect(() => {
     const handleOpen = () => setProjectManagerOpen(true);
     window.addEventListener("open-project-manager", handleOpen);
-    return () => window.removeEventListener("open-project-manager", handleOpen);
+
+    // Secret shortcut: Cmd+Shift+E or Ctrl+Shift+E
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.shiftKey && (e.key === "E" || e.key === "e")) {
+        e.preventDefault();
+        setProjectManagerOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+
+    // URL parameter trigger: ?admin=1 or ?edit=1
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("admin") === "1" || params.get("edit") === "1") {
+        setTimeout(() => setProjectManagerOpen(true), 0);
+      }
+    }
+
+    return () => {
+      window.removeEventListener("open-project-manager", handleOpen);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, []);
 
   useEffect(() => {
@@ -144,16 +165,6 @@ export function Header() {
           </nav>
 
           <div className="border-l border-border-hairline pl-4 flex items-center gap-3">
-            <button
-              type="button"
-              onClick={() => setProjectManagerOpen(true)}
-              className="font-mono text-[11px] uppercase tracking-wider text-text-muted hover:text-accent border border-border-hairline hover:border-accent bg-surface-subtle/50 px-2 py-1 transition-colors inline-flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-accent rounded-xs cursor-pointer"
-              title="Manage, edit, or import projects"
-              aria-label="Manage projects"
-            >
-              <span>⚙</span>
-              <span>Edit Work</span>
-            </button>
             <a
               href={profileData.contact.resumeUrl}
               target="_blank"
@@ -243,18 +254,6 @@ export function Header() {
               ))}
 
               <div className="pt-3 mt-1 border-t border-border-hairline space-y-2">
-                <button
-                  type="button"
-                  onClick={() => {
-                    closeMobileMenu();
-                    setProjectManagerOpen(true);
-                  }}
-                  className="min-h-[44px] w-full flex items-center justify-between py-2 px-3 bg-surface border border-border-hairline text-text-primary hover:text-accent hover:border-accent transition-colors font-mono text-xs uppercase tracking-wider"
-                >
-                  <span>MANAGE / EDIT WORK</span>
-                  <span className="text-accent select-none" aria-hidden="true">⚙</span>
-                </button>
-
                 <a
                   href={profileData.contact.resumeUrl}
                   target="_blank"

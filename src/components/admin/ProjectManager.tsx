@@ -1,13 +1,17 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 import type { Project } from "@/content/profile";
 
+const emptySubscribe = () => () => {};
+
 interface ProjectManagerProps {
   isOpen: boolean;
   onClose: () => void;
+  embedded?: boolean;
   initialProjects?: Project[];
 }
 
@@ -39,8 +43,13 @@ const emptyProject: Project = {
   placeholder: false,
 };
 
-export function ProjectManager({ isOpen, onClose }: ProjectManagerProps) {
+export function ProjectManager({ isOpen, onClose, embedded = false }: ProjectManagerProps) {
   const router = useRouter();
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
 
   // Authentication PIN state
   const [pin, setPin] = useState("");
@@ -277,30 +286,10 @@ export function ProjectManager({ isOpen, onClose }: ProjectManagerProps) {
     }
   };
 
-  if (!isOpen) return null;
-
-  return (
-    <AnimatePresence>
-      <div className="fixed inset-0 z-50 overflow-hidden flex justify-end">
-        {/* Backdrop */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={onClose}
-          className="fixed inset-0 bg-black/60 backdrop-blur-xs transition-opacity"
-        />
-
-        {/* Slide-over Drawer */}
-        <motion.div
-          initial={{ x: "100%" }}
-          animate={{ x: 0 }}
-          exit={{ x: "100%" }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="relative w-full max-w-2xl bg-canvas border-l border-border-hairline shadow-2xl z-10 flex flex-col h-full overflow-hidden text-text-primary"
-        >
-          {/* Header */}
-          <div className="p-6 border-b border-border-hairline flex items-center justify-between bg-surface/50">
+  const managerContent = (
+    <>
+      {/* Header */}
+      <div className="p-6 border-b border-border-hairline flex items-center justify-between bg-surface/50">
             <div className="flex items-center gap-3">
               <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
               <div>
@@ -842,8 +831,43 @@ export function ProjectManager({ isOpen, onClose }: ProjectManagerProps) {
               </div>
             )}
           </div>
+    </>
+  );
+
+  if (embedded) {
+    return (
+      <div className="w-full max-w-4xl mx-auto bg-canvas border border-border-hairline shadow-lg flex flex-col text-text-primary rounded-xs corner-ticks overflow-hidden">
+        {managerContent}
+      </div>
+    );
+  }
+
+  if (!isOpen || !mounted) return null;
+
+  return createPortal(
+    <AnimatePresence>
+      <div className="fixed inset-0 z-[9999] overflow-hidden flex justify-end">
+        {/* Full-screen Backdrop */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={onClose}
+          className="fixed inset-0 bg-black/75 backdrop-blur-xs transition-opacity"
+        />
+
+        {/* Slide-over Drawer with fixed width and full viewport height */}
+        <motion.div
+          initial={{ x: "100%" }}
+          animate={{ x: 0 }}
+          exit={{ x: "100%" }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          className="relative w-full max-w-2xl bg-canvas border-l border-border-hairline shadow-2xl z-10 flex flex-col h-screen max-h-screen overflow-hidden text-text-primary"
+        >
+          {managerContent}
         </motion.div>
       </div>
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }
