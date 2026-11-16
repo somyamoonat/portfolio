@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
+  <rect width="1200" height="750" fill="#131418"/>
+  <defs>
+    <pattern id="gridM" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#22242c" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="750" fill="url(#gridM)" />
+  
+  <rect x="40" y="40" width="1120" height="670" fill="none" stroke="#2b2e39" stroke-width="1"/>
+  
+  <line x1="40" y1="90" x2="1160" y2="90" stroke="#2b2e39" stroke-width="1"/>
+  <circle cx="70" cy="65" r="4" fill="#3d4252"/>
+  <circle cx="85" cy="65" r="4" fill="#3d4252"/>
+  <circle cx="100" cy="65" r="4" fill="#3d4252"/>
+  
+  <text x="130" y="70" font-family="monospace" font-size="12" fill="#8e929e" letter-spacing="2">MOON SWEEPERS // GODOT 4 MOBILE AUTOMATION GAME</text>
+  <text x="1120" y="70" font-family="monospace" font-size="11" fill="#e84a27" text-anchor="end">[GDSCRIPT • FACTORY AUTOMATION • ANDROID]</text>
+
+  <!-- Left: Game World Simulation View -->
+  <g transform="translate(80, 130)">
+    <rect x="0" y="0" width="500" height="420" fill="#16171d" stroke="#2b2e39" stroke-width="1"/>
+    <line x1="0" y1="40" x2="500" y2="40" stroke="#22242c" stroke-width="1"/>
+    <text x="20" y="26" font-family="monospace" font-size="11" fill="#8e929e" letter-spacing="1">LUNAR REGOLITH CLEANING CANVAS</text>
+    <text x="480" y="26" font-family="monospace" font-size="11" fill="#e84a27" text-anchor="end">GODOT 4</text>
+
+    <!-- Simulated lunar terrain -->
+    <rect x="30" y="60" width="440" height="260" fill="#0b0c0e" stroke="#22242c" stroke-width="1"/>
+    
+    <!-- Moon craters & sweep pattern -->
+    <circle cx="120" cy="140" r="45" fill="none" stroke="#2b2e39" stroke-width="1.5"/>
+    <circle cx="340" cy="190" r="60" fill="none" stroke="#2b2e39" stroke-width="1.5"/>
+    
+    <!-- Sweeper unit -->
+    <rect x="220" y="150" width="40" height="40" fill="#e84a27"/>
+    <text x="240" y="175" font-family="monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="bold">▲</text>
+    
+    <!-- Cleaned trail -->
+    <line x1="80" y1="170" x2="220" y2="170" stroke="#e84a27" stroke-width="2" stroke-dasharray="3,3"/>
+    <text x="80" y="160" font-family="monospace" font-size="10" fill="#e84a27">CLEANED VACUUM TRAIL</text>
+
+    <text x="30" y="355" font-family="monospace" font-size="11" fill="#8e929e">CONTROLS: One-finger fluid touch gesture navigation</text>
+    <text x="30" y="380" font-family="monospace" font-size="11" fill="#5e6270">PHYSICS: 60 FPS deterministic collision &amp; vacuum simulation</text>
+  </g>
+
+  <!-- Right: Economy & Automation Tree -->
+  <g transform="translate(620, 130)">
+    <rect x="0" y="0" width="500" height="420" fill="#181920" stroke="#2b2e39" stroke-width="1"/>
+    <line x1="0" y1="40" x2="500" y2="40" stroke="#22242c" stroke-width="1"/>
+    <text x="20" y="26" font-family="monospace" font-size="11" fill="#8e929e" letter-spacing="1">AUTOMATION LOGIC &amp; UPGRADE TELEMETRY</text>
+    <text x="480" y="26" font-family="monospace" font-size="11" fill="#f4f4f6" text-anchor="end">GDSCRIPT</text>
+
+    <!-- Upgrades card -->
+    <g transform="translate(25, 60)">
+      <rect x="0" y="0" width="450" height="240" fill="#111216" stroke="#22242c" stroke-width="1"/>
+      
+      <text x="20" y="30" font-family="monospace" font-size="11" fill="#8e929e">01. COMPACTION COMPRESSOR</text>
+      <text x="430" y="30" font-family="monospace" font-size="11" fill="#e84a27" text-anchor="end">TIER 04</text>
+      <text x="20" y="55" font-family="monospace" font-size="12" fill="#f4f4f6">Yield: 24.8 kg Regolith/sec</text>
+
+      <line x1="20" y1="75" x2="430" y2="75" stroke="#1f212a" stroke-width="1"/>
+
+      <text x="20" y="105" font-family="monospace" font-size="11" fill="#8e929e">02. AUTONOMOUS CLEANING DRONE</text>
+      <text x="430" y="105" font-family="monospace" font-size="11" fill="#e84a27" text-anchor="end">ACTIVE (x4)</text>
+      <text x="20" y="130" font-family="monospace" font-size="12" fill="#f4f4f6">Pathfinding: A* Grid Traversal</text>
+
+      <line x1="20" y1="150" x2="430" y2="150" stroke="#1f212a" stroke-width="1"/>
+
+      <text x="20" y="180" font-family="monospace" font-size="11" fill="#8e929e">03. THERMAL SHIELDING</text>
+      <text x="430" y="180" font-family="monospace" font-size="11" fill="#f4f4f6" text-anchor="end">MAX</text>
+      <text x="20" y="205" font-family="monospace" font-size="12" fill="#f4f4f6">Lunar Day/Night Cycle Resistant</text>
+    </g>
+
+    <text x="25" y="350" font-family="monospace" font-size="11" fill="#8e929e">SAVESTATE: Encrypted local JSON persistence on Android</text>
+    <text x="25" y="375" font-family="monospace" font-size="11" fill="#5e6270">ENGINE: Godot 4.3 Mobile Renderer, zero external bloat</text>
+  </g>
+
+  <line x1="40" y1="670" x2="1160" y2="670" stroke="#2b2e39" stroke-width="1"/>
+  <text x="70" y="692" font-family="monospace" font-size="11" fill="#5e6270">GITHUB // SOMYAMOONAT/MOON-SWEEPERS-ANDROID</text>
+  <text x="1130" y="692" font-family="monospace" font-size="11" fill="#8e929e" text-anchor="end">CASE 04 / GODOT GAME SYSTEMS</text>
+</svg>

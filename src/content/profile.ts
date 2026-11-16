@@ -1,3 +1,5 @@
+import projectsData from "./projects.json";
+
 export interface SocialLink {
   label: string;
   url: string;
@@ -277,128 +279,7 @@ export const profileData: Profile = {
     },
   ],
 
-  projects: [
-    {
-      slug: "object-detection-annotation-pipeline",
-      title: "Physical Object Detection & Annotation Pipeline",
-      tagline: "Custom spatial dataset curation and semantic annotation pipeline for object recognition models.",
-      year: "2026",
-      category: "Machine Learning",
-      role: "Lead Developer",
-      problem:
-        "High labeling noise and inconsistent bounding annotations in raw image datasets degrade object detection accuracy and introduce training instabilities.",
-      outcome:
-        "Curated and labeled over 1,000 spatial images using bounding boxes and semantic segmentation, eliminating noise and improving base model training accuracy by 12%.",
-      description:
-        "An end-to-end dataset curation and auditing pipeline that processes spatial imagery, enforces bounding box precision, and eliminates labeling artifacts before model ingestion.",
-      highlights: [
-        "Curated and annotated a custom dataset of 1,000+ spatial images using bounding boxes and semantic segmentation",
-        "Performed data quality auditing and data cleaning to eliminate labeling noise",
-        "Improved base model training accuracy by 12% through systematic annotation verification",
-      ],
-      technologies: ["Python", "Computer Vision", "Dataset Curation", "Bounding Box", "Data Cleaning"],
-      images: [
-        {
-          src: "/projects/object-detection-preview.webp",
-          alt: "Physical Object Detection and Annotation Pipeline telemetry and coordinate verification",
-        },
-      ],
-      liveUrl: undefined,
-      githubUrl: "https://github.com/somyamoonat",
-      featured: true,
-      placeholder: false,
-    },
-    {
-      slug: "automated-defect-identification",
-      title: "Automated Defect Identification in Image Datasets",
-      tagline: "Batch image preprocessing, normalization, and automated YOLO/JSON annotation tooling.",
-      year: "2026",
-      category: "Machine Learning",
-      role: "ML Developer",
-      problem:
-        "Manual inspection and formatting across high-resolution image batches is slow, error-prone, and inconsistent across different model training formats.",
-      outcome:
-        "Built automated Python preprocessing utilities to normalize image batches and export structured JSON/YOLO labels ready for training pipelines.",
-      description:
-        "A Python-based image preprocessing workflow utilizing OpenCV and NumPy to filter, resize, and normalize high-resolution image batches with automated label formatting.",
-      highlights: [
-        "Developed Python-based preprocessing tool using OpenCV and NumPy to filter, resize, and normalize image batches",
-        "Configured automated scripts to label target classes and export structured JSON/YOLO annotation formats",
-        "Streamlined training pipeline ingestion with standardized bounding coordinate outputs",
-      ],
-      technologies: ["Python", "OpenCV", "NumPy", "YOLO", "JSON"],
-      images: [
-        {
-          src: "/projects/defect-inspection-preview.webp",
-          alt: "Automated Defect Identification tool visualization and classification metrics",
-        },
-      ],
-      liveUrl: undefined,
-      githubUrl: "https://github.com/somyamoonat",
-      featured: true,
-      placeholder: false,
-    },
-    {
-      slug: "restaurant-web-platform-automation",
-      title: "Commercial Restaurant Web Platform & Automated Menu System",
-      tagline: "Responsive commercial web platform with automated WeasyPrint PDF layout generation.",
-      year: "2026",
-      category: "Full-Stack",
-      role: "Full-Stack Developer",
-      problem:
-        "Maintaining synchronized digital menus and print-ready physical restaurant collateral leads to duplicate effort and formatting drift.",
-      outcome:
-        "Built a responsive customer web platform integrated with an automated WeasyPrint pipeline that compiles HTML/CSS templates into high-fidelity print PDFs.",
-      description:
-        "A full-stack restaurant platform enhancing digital presence and customer interaction, coupled with a Python-powered automation engine for programmatic PDF generation.",
-      highlights: [
-        "Designed and built responsive web platform for a local restaurant to enhance digital customer engagement",
-        "Engineered an automated Python pipeline using WeasyPrint to programmatically convert HTML/CSS into print-ready PDF menus",
-        "Ensured typographic fidelity and dynamic menu item synchronization",
-      ],
-      technologies: ["JavaScript", "HTML5", "CSS3", "Python", "WeasyPrint", "Automation"],
-      images: [
-        {
-          src: "/projects/restaurant-automation-preview.webp",
-          alt: "Commercial Restaurant Web Platform interface and WeasyPrint PDF layout engine",
-        },
-      ],
-      liveUrl: undefined,
-      githubUrl: "https://github.com/somyamoonat",
-      featured: true,
-      placeholder: false,
-    },
-    {
-      slug: "cyberpunk-ai-minimax-engine",
-      title: "Interactive Cyberpunk AI Minimax Engine",
-      tagline: "Interactive game engine powered by Minimax decision algorithm with custom audio & glitch animations.",
-      year: "2026",
-      category: "Web Systems",
-      role: "Frontend & Algorithm Developer",
-      problem:
-        "Standard web game implementations often rely on naive decision logic or heavy libraries, lacking both depth in bot decision trees and engaging styling.",
-      outcome:
-        "Developed a responsive browser game application with pure JavaScript Minimax decision-making logic and custom CSS cyberpunk glitch animations.",
-      description:
-        "An interactive web application featuring an optimal Minimax decision tree engine, pure JavaScript audio integrations, and custom CSS cyberpunk glitch aesthetics.",
-      highlights: [
-        "Built an interactive web application featuring a Minimax decision algorithm to execute optimal bot decision-making logic",
-        "Implemented custom CSS glitch animations and audio integrations with pure JavaScript to optimize user experience",
-        "Optimized game state evaluation for instantaneous zero-latency player moves",
-      ],
-      technologies: ["JavaScript", "Game Logic", "Minimax", "CSS3 Animations", "Audio API"],
-      images: [
-        {
-          src: "/projects/minimax-engine-preview.webp",
-          alt: "Interactive Cyberpunk AI Minimax Engine interface and decision tree search visualization",
-        },
-      ],
-      liveUrl: undefined,
-      githubUrl: "https://github.com/somyamoonat",
-      featured: true,
-      placeholder: false,
-    },
-  ],
+  projects: projectsData as Project[],
 
   experience: [
     {
@@ -410,9 +291,10 @@ export const profileData: Profile = {
       summary:
         "Designing, building, and deploying computer vision pipelines, full-stack applications, and automated document generation tools.",
       bullets: [
-        "Curated and labeled custom datasets of 1,000+ spatial images using bounding boxes and semantic segmentation, improving accuracy by 12%.",
-        "Built image preprocessing and automated YOLO/JSON annotation tooling using OpenCV and NumPy.",
-        "Engineered automated Python pipelines with WeasyPrint and built interactive web applications with pure JavaScript and Minimax logic.",
+        "Engineered ReceiptSorter, an offline-first vision document extraction application processing invoices via local open-weight models and persistent SQLite.",
+        "Architected Sign-to-Voice, an accessibility computer vision engine running real-time ASL hand gesture tracking and speech synthesis over Wasm and WebGL at 60 FPS.",
+        "Developed The Crochet Diaryy, a production full-stack e-commerce platform using Next.js 15 App Router, Prisma ORM, PostgreSQL, and Razorpay checkout.",
+        "Programmed Moon Sweepers, an incremental mobile automation game built in Godot 4 and GDScript with custom touch mechanics.",
       ],
       placeholder: false,
     },
@@ -486,39 +368,39 @@ export const profileData: Profile = {
 
   articles: [
     {
-      slug: "dataset-auditing-in-computer-vision",
-      title: "Why Dataset Auditing Trumps Hyperparameter Tuning in Computer Vision",
+      slug: "offline-first-vision-document-extraction",
+      title: "Offline-First Document Intelligence: Running Local Vision Models with Zero Cloud Egress",
       description:
-        "An engineering analysis of how annotation variance and spatial boundary noise degrade neural networks, and how systematic curation yields double-digit precision improvements.",
+        "An engineering analysis of executing open-weight vision models locally for invoice and receipt extraction, eliminating recurring cloud API costs while preserving complete user data privacy.",
       publishedAt: "March 2026",
       readTime: "5 min read",
-      tags: ["Computer Vision", "Data Engineering", "Python"],
+      tags: ["Computer Vision", "Privacy-First", "Python", "SQLite"],
       platform: "Architectural Deep-Dive",
-      url: "/work/physical-object-detection-pipeline",
+      url: "/work/receipt-sorter",
       placeholder: false,
     },
     {
-      slug: "deterministic-minimax-in-pure-js",
-      title: "Deterministic Game Logic: Implementing Minimax with Alpha-Beta Pruning in Pure JS",
+      slug: "realtime-asl-gesture-interpretation",
+      title: "Sub-20ms On-Device ASL Interpretation: Bridging WebAssembly, WebGL & Speech Synthesis",
       description:
-        "Architecting zero-dependency game decision engines with algorithmic search depth limits, heuristic evaluation scoring, and sub-50ms turn latency.",
+        "Architecting browser-native computer vision pipelines with client-side landmark tracking and zero-latency synthesized voice output without external GPU servers.",
       publishedAt: "January 2026",
       readTime: "6 min read",
-      tags: ["Algorithms", "JavaScript", "Game Theory"],
+      tags: ["WebAssembly", "WebGL", "Computer Vision", "Accessibility"],
       platform: "Architectural Deep-Dive",
-      url: "/work/cyberpunk-ai-minimax-engine",
+      url: "/work/sign-to-voice",
       placeholder: false,
     },
     {
-      slug: "headless-document-pipelines-weasyprint",
-      title: "Architecting Headless PDF Automation Pipelines with Python & WeasyPrint",
+      slug: "resilient-nextjs-ecommerce-architecture",
+      title: "Architecting Resilient Modern E-Commerce with Next.js 15, Prisma & Razorpay",
       description:
-        "Building reliable server-side document rendering engines from dynamic data schemas, eliminating desktop renderer dependencies while ensuring pixel-perfect output.",
+        "Building high-performance e-commerce platforms using Next.js 15 App Router, persistent Zustand client state, and secure server-side transactional payment verification.",
       publishedAt: "November 2025",
       readTime: "4 min read",
-      tags: ["Python", "Automation", "Architecture"],
+      tags: ["Next.js 15", "TypeScript", "Prisma", "PostgreSQL"],
       platform: "Architectural Deep-Dive",
-      url: "/work/restaurant-web-platform-automation",
+      url: "/work/the-crochet-diaryy",
       placeholder: false,
     },
   ],

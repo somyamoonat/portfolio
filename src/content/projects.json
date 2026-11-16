@@ -1,0 +1,167 @@
+[
+  {
+    "slug": "receipt-sorter",
+    "title": "ReceiptSorter — Offline-First Vision Receipt & Invoice Ledger",
+    "tagline": "Private, offline expense management powered by local open-weight vision models and SQLite.",
+    "year": "2026",
+    "category": "Machine Learning",
+    "role": "Creator & Lead Developer",
+    "problem": "Freelancers and small businesses need to extract receipt and invoice data without uploading sensitive financial documents to third-party cloud APIs or incurring expensive recurring vision model API subscriptions.",
+    "outcome": "Engineered a 100% offline-first application that extracts vendor, date, line items, taxes, and totals locally, indexing all records into a local SQLite ledger with multi-format export.",
+    "description": "A privacy-first receipt and invoice processing application utilizing local open-weight vision models. Upload receipt photos or invoice scans, and the engine extracts structured metadata into a card review interface, persistent SQLite ledger, and visual analytics with zero cloud calls.",
+    "highlights": [
+      "Engineered local vision inference pipeline running 100% on-device with zero cloud calls or API dependencies",
+      "Built persistent SQLite ledger with automated categorization, tax calculation, and multi-format report exports",
+      "Designed interactive review UI for rapid verification and inline correction of parsed receipt line items"
+    ],
+    "technologies": [
+      "Python",
+      "Computer Vision",
+      "Vision Models",
+      "SQLite",
+      "Document Extraction",
+      "Privacy-First"
+    ],
+    "images": [
+      {
+        "src": "/projects/receipt-sorter-preview.webp",
+        "alt": "ReceiptSorter local vision extraction and SQLite ledger telemetry"
+      }
+    ],
+    "githubUrl": "https://github.com/somyamoonat/recipt-sorter",
+    "featured": true,
+    "placeholder": false
+  },
+  {
+    "slug": "sign-to-voice",
+    "title": "Sign Language Interpreter — Real-Time ASL to Voice Engine",
+    "tagline": "Real-time computer vision system translating ASL hand gestures into spoken voice on-device.",
+    "year": "2026",
+    "category": "Computer Vision",
+    "role": "Computer Vision & Systems Developer",
+    "problem": "Sign language translation tools often suffer from high cloud latency, require specialized sensory hardware, or compromise user privacy by streaming continuous video to external servers.",
+    "outcome": "Developed an accessible, browser-native ASL interpreter that translates webcam video into live captions and synthesized speech at 30-60 FPS with sub-20ms latency directly on client hardware.",
+    "description": "An accessibility-first computer vision system that translates American Sign Language (ASL) gestures into real-time captions and natural spoken voice. The entire pipeline executes locally in the browser over WebAssembly and WebGL with zero cloud GPU streaming.",
+    "highlights": [
+      "Achieved ~12ms on-device inference using browser-native WebAssembly and WebGL execution",
+      "Integrated Web Speech Synthesis API for instantaneous voice translation synchronized with gesture detection",
+      "Engineered continuous landmark tracking pipeline maintaining high accuracy under varying webcam lighting"
+    ],
+    "technologies": [
+      "JavaScript",
+      "Computer Vision",
+      "WebAssembly",
+      "WebGL",
+      "Speech Synthesis",
+      "Accessibility"
+    ],
+    "images": [
+      {
+        "src": "/projects/sign-to-voice-preview.webp",
+        "alt": "Sign Language Interpreter landmark tracking and real-time voice translation pipeline"
+      }
+    ],
+    "githubUrl": "https://github.com/somyamoonat/Sign-to-Voice-",
+    "featured": true,
+    "placeholder": false
+  },
+  {
+    "slug": "the-crochet-diaryy",
+    "title": "The Crochet Diaryy — Modern Full-Stack E-Commerce Platform",
+    "tagline": "Full-stack e-commerce store with NextAuth credentials, Prisma ORM, and Razorpay checkout.",
+    "year": "2026",
+    "category": "Full-Stack",
+    "role": "Full-Stack Architect",
+    "problem": "Independent artisan businesses struggle with clunky e-commerce platforms that lack smooth custom design, persistent responsive carts, and clean automated payment reconciliation.",
+    "outcome": "Architected and deployed a production-ready e-commerce platform featuring Next.js 15 App Router, Prisma ORM with PostgreSQL, NextAuth.js v5, and native Razorpay payment gateway integration.",
+    "description": "A modern e-commerce web platform engineered for The Crochet Diaryy. Features an optimized shopping experience with persistent Zustand cart state, authenticated customer dashboards, automated order emails via Resend, and Razorpay transactions.",
+    "highlights": [
+      "Built scalable Next.js 15 App Router architecture with Tailwind CSS v4 and responsive product catalogs",
+      "Integrated PostgreSQL database via Prisma ORM for inventory management and order fulfillment tracking",
+      "Implemented secure NextAuth.js v5 authentication and seamless Razorpay payment gateway checkout"
+    ],
+    "technologies": [
+      "Next.js 15",
+      "TypeScript",
+      "Tailwind CSS",
+      "PostgreSQL",
+      "Prisma ORM",
+      "NextAuth",
+      "Zustand",
+      "Razorpay"
+    ],
+    "images": [
+      {
+        "src": "/projects/crochet-diaryy-preview.webp",
+        "alt": "The Crochet Diaryy e-commerce storefront and cart architecture"
+      }
+    ],
+    "githubUrl": "https://github.com/somyamoonat/Crochet-Website",
+    "featured": true,
+    "placeholder": false
+  },
+  {
+    "slug": "moon-sweepers",
+    "title": "Moon Sweepers — Tactical Automation & Incremental Game",
+    "tagline": "Tactile incremental cleaning & automation mobile game built in Godot 4 / GDScript.",
+    "year": "2026",
+    "category": "Web Systems",
+    "role": "Game & Systems Programmer",
+    "problem": "Mobile games often rely on predatory mechanics and bloated engines rather than clean, tactile physics and responsive state management.",
+    "outcome": "Engineered an incremental cleaning and factory automation mobile game in Godot 4 with customized regolith gathering physics, modular upgrades, and responsive touch controls.",
+    "description": "A tactile incremental game built in Godot 4 for mobile devices. Features state-driven factory automation, asteroid regolith compression pipelines, and custom physics simulation.",
+    "highlights": [
+      "Implemented custom incremental economy and automation logic in GDScript with zero frame drops",
+      "Designed one-finger touch gesture interaction model for smooth mobile gameplay",
+      "Architected modular upgrade trees and persistent local save state serialization"
+    ],
+    "technologies": [
+      "Godot 4",
+      "GDScript",
+      "Game Architecture",
+      "Physics Simulation",
+      "Mobile Development"
+    ],
+    "images": [
+      {
+        "src": "/projects/moon-sweepers-preview.webp",
+        "alt": "Moon Sweepers game mechanics and state architecture"
+      }
+    ],
+    "githubUrl": "https://github.com/somyamoonat/Moon-Sweepers-Android",
+    "featured": true,
+    "placeholder": false
+  },
+  {
+    "slug": "lunexa-learning-platform",
+    "title": "Lunexa — Peer-to-Peer Smart Learning Platform",
+    "tagline": "Interactive collaborative learning web platform with clean responsive architecture.",
+    "year": "2026",
+    "category": "Full-Stack",
+    "role": "Frontend & Systems Developer",
+    "problem": "Students require clean, distraction-free study environments that facilitate peer exchange and structured subject indexing.",
+    "outcome": "Built a lightweight peer-to-peer learning platform with responsive layout, semantic navigation, and multi-device optimization.",
+    "description": "A collaborative educational web platform facilitating peer-to-peer knowledge sharing, study scheduling, and learning material curation.",
+    "highlights": [
+      "Engineered responsive, accessible UI with zero layout shifts and optimized asset loading",
+      "Implemented client-side search and tag-based filtering for instant resource retrieval",
+      "Structured modular architecture allowing seamless cloud deployment on Netlify and Vercel"
+    ],
+    "technologies": [
+      "JavaScript",
+      "HTML5",
+      "CSS3",
+      "Responsive Design",
+      "Web Performance"
+    ],
+    "images": [
+      {
+        "src": "/projects/object-detection-preview.webp",
+        "alt": "Lunexa platform interface and resource directory"
+      }
+    ],
+    "githubUrl": "https://github.com/somyamoonat/Lunexa-",
+    "featured": false,
+    "placeholder": false
+  }
+]
