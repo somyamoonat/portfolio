@@ -249,9 +249,16 @@ export function ProjectManager({ isOpen, onClose, embedded = false }: ProjectMan
       const data = await res.json();
       if (data.success) {
         setProjects(data.projects);
+        try {
+          localStorage.setItem("somya_portfolio_projects", JSON.stringify(data.projects));
+          window.dispatchEvent(new CustomEvent("projects-updated", { detail: data.projects }));
+        } catch {}
         setEditingProject(null);
         setIsNew(false);
-        setStatusMessage({ type: "success", text: `Project "${projectToSave.title}" saved successfully!` });
+        const commitMsg = data.committed
+          ? `Project "${projectToSave.title}" saved and committed to GitHub! Vercel is redeploying.`
+          : `Project "${projectToSave.title}" saved successfully!`;
+        setStatusMessage({ type: "success", text: commitMsg });
         router.refresh();
       } else {
         setStatusMessage({ type: "error", text: data.error || "Failed to save project." });
@@ -276,7 +283,14 @@ export function ProjectManager({ isOpen, onClose, embedded = false }: ProjectMan
       const data = await res.json();
       if (data.success) {
         setProjects(data.projects);
-        setStatusMessage({ type: "success", text: `Project "${title}" was removed.` });
+        try {
+          localStorage.setItem("somya_portfolio_projects", JSON.stringify(data.projects));
+          window.dispatchEvent(new CustomEvent("projects-updated", { detail: data.projects }));
+        } catch {}
+        const commitMsg = data.committed
+          ? `Project "${title}" removed and committed to GitHub! Vercel is redeploying.`
+          : `Project "${title}" was removed.`;
+        setStatusMessage({ type: "success", text: commitMsg });
         router.refresh();
       } else {
         alert(data.error || "Failed to delete project.");

@@ -1,16 +1,61 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { profileData } from "@/content/profile";
+import { profileData, type Project } from "@/content/profile";
 import { Container, Section, Heading } from "@/components/primitives";
 import { DevPlaceholderBadge } from "@/components/ui/DevPlaceholderBadge";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 
 export function SelectedWork() {
-  const { projects } = profileData;
+  const [projects, setProjects] = useState<Project[]>(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const cached = localStorage.getItem("somya_portfolio_projects");
+        if (cached) {
+          const parsed = JSON.parse(cached);
+          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        }
+      } catch {}
+    }
+    return profileData.projects;
+  });
+
+  useEffect(() => {
+    let ignore = false;
+
+    // Fetch dynamic project updates from GitHub API backend
+    fetch("/api/admin/projects")
+      .then((res) => res.json())
+      .then((data) => {
+        if (!ignore && data.success && Array.isArray(data.projects) && data.projects.length > 0) {
+          setProjects(data.projects);
+          try {
+            localStorage.setItem("somya_portfolio_projects", JSON.stringify(data.projects));
+          } catch {}
+        }
+      })
+      .catch((err) => {
+        console.warn("Could not fetch remote projects, using fallback:", err);
+      });
+
+    // Real-time live update handler when Somya edits or deletes in ProjectManager
+    const handleProjectsUpdate = (e: Event) => {
+      const customEvent = e as CustomEvent<Project[]>;
+      if (customEvent.detail && Array.isArray(customEvent.detail)) {
+        setProjects(customEvent.detail);
+      }
+    };
+
+    window.addEventListener("projects-updated", handleProjectsUpdate);
+    return () => {
+      ignore = true;
+      window.removeEventListener("projects-updated", handleProjectsUpdate);
+    };
+  }, []);
+
   const shouldReduceMotion = useReducedMotion();
 
   // Extract unique categories preserving order
