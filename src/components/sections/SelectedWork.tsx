@@ -7,6 +7,7 @@ import { profileData, type Project } from "@/content/profile";
 import { Container, Section, Heading } from "@/components/primitives";
 import { DevPlaceholderBadge } from "@/components/ui/DevPlaceholderBadge";
 import { FadeIn } from "@/components/motion/FadeIn";
+import { GitHubProjectsArchive } from "@/components/sections/GitHubProjectsArchive";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 
 export function SelectedWork() {
@@ -282,6 +283,9 @@ export function SelectedWork() {
             })}
           </AnimatePresence>
         </motion.div>
+
+        {/* Real-Time Live GitHub Projects Archive Stream */}
+        <GitHubProjectsArchive />
       </Container>
     </Section>
   );
