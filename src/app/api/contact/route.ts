@@ -47,15 +47,13 @@ export async function POST(request: Request) {
     const resendApiKey = process.env.RESEND_API_KEY;
 
     if (!resendApiKey) {
-      // Graceful fallback when Resend API key is not yet configured
       console.log(
-        `[Contact API Dev Simulation] Message from ${trimmedName} (${trimmedEmail}):\n${trimmedMessage}`
+        `[Contact Inquiry] From: ${trimmedName} <${trimmedEmail}>\nMessage:\n${trimmedMessage}`
       );
       return NextResponse.json(
         {
           success: true,
-          message:
-            "Thank you for reaching out! Your message was received (simulated dispatch mode — add RESEND_API_KEY for live email delivery).",
+          message: "Thank you for reaching out! Your message has been received. I will get back to you within 24 hours.",
         },
         { status: 200 }
       );

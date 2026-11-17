@@ -19,7 +19,10 @@ export interface GitHubRepoItem {
   isArchived: boolean;
 }
 
-export async function GET() {
+export async function GET(request: Request) {
+  // Accessing request URL ensures Next.js marks route as dynamic
+  const { searchParams } = new URL(request.url);
+  const requestedLimit = parseInt(searchParams.get("limit") || "100", 10);
   try {
     const headers: Record<string, string> = {
       Accept: "application/vnd.github.v3+json",
