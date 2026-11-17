@@ -162,12 +162,13 @@
     ],
     "images": [
       {
-        "src": "/projects/object-detection-preview.webp",
-        "alt": "Lunexa platform interface and resource directory"
+        "src": "/projects/lunexa-learning-platform-1794893484130.png",
+        "alt": "Lunexa — Peer-to-Peer Smart Learning Platform application screenshot"
       }
     ],
     "githubUrl": "https://github.com/somyamoonat/Lunexa-",
     "featured": false,
-    "placeholder": false
+    "placeholder": false,
+    "liveUrl": "https://lunexaedu.vercel.app/"
   }
 ]
