@@ -1,38 +1,5 @@
 [
   {
-    "slug": "receipt-sorter",
-    "title": "ReceiptSorter — Offline-First Vision Receipt & Invoice Ledger",
-    "tagline": "Private, offline expense management powered by local open-weight vision models and SQLite.",
-    "year": "2026",
-    "category": "Machine Learning",
-    "role": "Creator & Lead Developer",
-    "problem": "Freelancers and small businesses need to extract receipt and invoice data without uploading sensitive financial documents to third-party cloud APIs or incurring expensive recurring vision model API subscriptions.",
-    "outcome": "Engineered a 100% offline-first application that extracts vendor, date, line items, taxes, and totals locally, indexing all records into a local SQLite ledger with multi-format export.",
-    "description": "A privacy-first receipt and invoice processing application utilizing local open-weight vision models. Upload receipt photos or invoice scans, and the engine extracts structured metadata into a card review interface, persistent SQLite ledger, and visual analytics with zero cloud calls.",
-    "highlights": [
-      "Engineered local vision inference pipeline running 100% on-device with zero cloud calls or API dependencies",
-      "Built persistent SQLite ledger with automated categorization, tax calculation, and multi-format report exports",
-      "Designed interactive review UI for rapid verification and inline correction of parsed receipt line items"
-    ],
-    "technologies": [
-      "Python",
-      "Computer Vision",
-      "Vision Models",
-      "SQLite",
-      "Document Extraction",
-      "Privacy-First"
-    ],
-    "images": [
-      {
-        "src": "/projects/receipt-sorter-preview.webp",
-        "alt": "ReceiptSorter local vision extraction and SQLite ledger telemetry"
-      }
-    ],
-    "githubUrl": "https://github.com/somyamoonat/recipt-sorter",
-    "featured": false,
-    "placeholder": false
-  },
-  {
     "slug": "sign-to-voice",
     "title": "Sign Language Interpreter — Real-Time ASL to Voice Engine",
     "tagline": "Real-time computer vision system translating ASL hand gestures into spoken voice on-device.",
