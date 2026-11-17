@@ -162,6 +162,10 @@
     ],
     "images": [
       {
+        "src": "/projects/lunexa-learning-platform-1794893484130.png",
+        "alt": "Lunexa — Peer-to-Peer Smart Learning Platform application screenshot"
+      },
+      {
         "src": "/projects/lunexa-learning-platform-1794893584450.png",
         "alt": "Lunexa — Peer-to-Peer Smart Learning Platform application screenshot"
       },
@@ -172,14 +176,10 @@
       {
         "src": "/projects/lunexa-learning-platform-1794893507809.png",
         "alt": "Lunexa — Peer-to-Peer Smart Learning Platform application screenshot"
-      },
-      {
-        "src": "/projects/lunexa-learning-platform-1794893484130.png",
-        "alt": "Lunexa — Peer-to-Peer Smart Learning Platform application screenshot"
       }
     ],
     "githubUrl": "https://github.com/somyamoonat/Lunexa-",
-    "featured": false,
+    "featured": true,
     "placeholder": false,
     "liveUrl": "https://lunexaedu.vercel.app/"
   }
