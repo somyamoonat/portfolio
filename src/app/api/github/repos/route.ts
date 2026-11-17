@@ -34,7 +34,7 @@ export async function GET(request: Request) {
     }
 
     const res = await fetch(
-      `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=pushed&direction=desc&per_page=100`,
+      `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=pushed&direction=desc&per_page=${Math.min(requestedLimit, 100)}`,
       {
         headers,
         cache: "no-store",

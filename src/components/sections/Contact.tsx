@@ -219,10 +219,10 @@ export function Contact() {
                           shouldReduceMotion
                             ? undefined
                             : {
-                                y: -2,
-                                x: 2,
-                                transition: { type: "spring", stiffness: 400, damping: 25 },
-                              }
+                              y: -2,
+                              x: 2,
+                              transition: { type: "spring", stiffness: 400, damping: 25 },
+                            }
                         }
                         href={socials.github.url}
                         target="_blank"
@@ -239,10 +239,10 @@ export function Contact() {
                           shouldReduceMotion
                             ? undefined
                             : {
-                                y: -2,
-                                x: 2,
-                                transition: { type: "spring", stiffness: 400, damping: 25 },
-                              }
+                              y: -2,
+                              x: 2,
+                              transition: { type: "spring", stiffness: 400, damping: 25 },
+                            }
                         }
                         href={socials.linkedin.url}
                         target="_blank"
@@ -259,10 +259,10 @@ export function Contact() {
                           shouldReduceMotion
                             ? undefined
                             : {
-                                y: -2,
-                                x: 2,
-                                transition: { type: "spring", stiffness: 400, damping: 25 },
-                              }
+                              y: -2,
+                              x: 2,
+                              transition: { type: "spring", stiffness: 400, damping: 25 },
+                            }
                         }
                         href={socials.x.url}
                         target="_blank"
@@ -291,7 +291,7 @@ export function Contact() {
                     Send a note directly.
                   </h3>
                   <p className="text-xs sm:text-sm text-text-muted mt-1 leading-relaxed">
-                    Leave your details and a short message. Responses are usually sent within 24 hours.
+                    Leave your details and a short message. Responses are usually seen within 24 hours.
                   </p>
                 </div>
 
@@ -379,11 +379,10 @@ export function Contact() {
                         animate={{ opacity: 1, height: "auto", y: 0 }}
                         exit={{ opacity: 0, height: 0, y: -6 }}
                         transition={{ type: "spring", stiffness: 350, damping: 26 }}
-                        className={`overflow-hidden p-3 text-xs font-mono leading-relaxed border rounded-xs ${
-                          status.type === "success"
+                        className={`overflow-hidden p-3 text-xs font-mono leading-relaxed border rounded-xs ${status.type === "success"
                             ? "border-green-600/30 bg-green-500/10 text-green-400"
                             : "border-accent/30 bg-accent/10 text-accent"
-                        }`}
+                          }`}
                       >
                         {status.message}
                       </motion.div>
@@ -399,19 +398,19 @@ export function Contact() {
                         shouldReduceMotion || loading
                           ? undefined
                           : {
-                              scale: 1.02,
-                              y: -1,
-                              transition: { type: "spring", stiffness: 450, damping: 25 },
-                            }
+                            scale: 1.02,
+                            y: -1,
+                            transition: { type: "spring", stiffness: 450, damping: 25 },
+                          }
                       }
                       whileTap={
                         shouldReduceMotion || loading
                           ? undefined
                           : {
-                              scale: 0.98,
-                              y: 0,
-                              transition: { type: "spring", stiffness: 450, damping: 25 },
-                            }
+                            scale: 0.98,
+                            y: 0,
+                            transition: { type: "spring", stiffness: 450, damping: 25 },
+                          }
                       }
                       className="w-full sm:w-auto inline-flex items-center justify-center gap-2 font-mono text-xs uppercase tracking-wider font-semibold bg-text-primary text-canvas px-6 py-3 hover:bg-accent hover:text-white active:opacity-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-150 rounded-none shadow-[0_2px_10px_-4px_rgba(0,0,0,0.15)]"
                     >
