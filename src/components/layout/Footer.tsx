@@ -61,6 +61,33 @@ export function Footer() {
                 X
               </Link>
             )}
+            {socials.leetcode && (
+              <Link
+                href={socials.leetcode.url}
+                variant="mono"
+                external
+              >
+                LeetCode
+              </Link>
+            )}
+            {socials.codeforces && (
+              <Link
+                href={socials.codeforces.url}
+                variant="mono"
+                external
+              >
+                Codeforces
+              </Link>
+            )}
+            {socials.codechef && (
+              <Link
+                href={socials.codechef.url}
+                variant="mono"
+                external
+              >
+                CodeChef
+              </Link>
+            )}
           </div>
         </div>
 

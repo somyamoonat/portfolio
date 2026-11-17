@@ -273,6 +273,66 @@ export function Contact() {
                         <span className="text-text-muted">↗</span>
                       </motion.a>
                     )}
+                    {socials.leetcode && (
+                      <motion.a
+                        whileHover={
+                          shouldReduceMotion
+                            ? undefined
+                            : {
+                              y: -2,
+                              x: 2,
+                              transition: { type: "spring", stiffness: 400, damping: 25 },
+                            }
+                        }
+                        href={socials.leetcode.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 border border-border-hairline glass-card hover-glow transition-colors flex items-center justify-between rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                      >
+                        <span className="text-text-primary">{socials.leetcode.label}</span>
+                        <span className="text-text-muted">↗</span>
+                      </motion.a>
+                    )}
+                    {socials.codechef && (
+                      <motion.a
+                        whileHover={
+                          shouldReduceMotion
+                            ? undefined
+                            : {
+                              y: -2,
+                              x: 2,
+                              transition: { type: "spring", stiffness: 400, damping: 25 },
+                            }
+                        }
+                        href={socials.codechef.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 border border-border-hairline glass-card hover-glow transition-colors flex items-center justify-between rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                      >
+                        <span className="text-text-primary">{socials.codechef.label}</span>
+                        <span className="text-text-muted">↗</span>
+                      </motion.a>
+                    )}
+                    {socials.codeforces && (
+                      <motion.a
+                        whileHover={
+                          shouldReduceMotion
+                            ? undefined
+                            : {
+                              y: -2,
+                              x: 2,
+                              transition: { type: "spring", stiffness: 400, damping: 25 },
+                            }
+                        }
+                        href={socials.codeforces.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 border border-border-hairline glass-card hover-glow transition-colors flex items-center justify-between rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                      >
+                        <span className="text-text-primary">{socials.codeforces.label}</span>
+                        <span className="text-text-muted">↗</span>
+                      </motion.a>
+                    )}
                   </div>
                 </div>
               </div>

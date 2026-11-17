@@ -199,6 +199,21 @@ export const profileData: Profile = {
       url: "https://x.com/somyamoonat",
       handle: "@somyamoonat",
     },
+    leetcode: {
+      label: "LeetCode",
+      url: "https://leetcode.com/u/somya_moonat/",
+      handle: "somya_moonat",
+    },
+    codechef: {
+      label: "CodeChef",
+      url: "https://www.codechef.com/users/somya_moonat",
+      handle: "somya_moonat",
+    },
+    codeforces: {
+      label: "Codeforces",
+      url: "https://codeforces.com/profile/somyamoonat22",
+      handle: "somyamoonat22",
+    },
     email: {
       label: "Direct Email",
       url: "mailto:somyamoonat22@gmail.com",
