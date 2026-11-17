@@ -107,20 +107,49 @@ export function ProjectManager({ isOpen, onClose, embedded = false }: ProjectMan
           src: data.url,
           alt: `${editingProject.title} application screenshot`,
         };
-        setEditingProject((prev) => {
-          if (!prev) return null;
-          const currentImages = prev.images || [];
-          return {
-            ...prev,
-            images: [...currentImages, newImage],
-            placeholder: false,
-          };
-        });
+
+        // Put the newly uploaded photo as the Primary Cover (index 0)
+        const updatedImages = [newImage, ...(editingProject.images || []).filter((img) => img.src !== data.url)];
+        const updatedProject = {
+          ...editingProject,
+          images: updatedImages,
+          placeholder: false,
+        };
+
+        setEditingProject(updatedProject);
+
+        // Auto-save the project so user does not need to manually click save
+        if (!isNew && updatedProject.slug) {
+          try {
+            const saveRes = await fetch("/api/admin/projects", {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+                "x-admin-pin": pin,
+              },
+              body: JSON.stringify(updatedProject),
+            });
+            const saveData = await saveRes.json();
+            if (saveData.success) {
+              setProjects(saveData.projects);
+              window.dispatchEvent(new CustomEvent("projects-updated", { detail: saveData.projects }));
+              setStatusMessage({
+                type: "success",
+                text: `Screenshot uploaded & set as primary cover! Live on site and committed to GitHub.`,
+              });
+              router.refresh();
+              return;
+            }
+          } catch (saveErr) {
+            console.error("Auto-save after upload failed:", saveErr);
+          }
+        }
+
         setStatusMessage({
           type: "success",
           text: data.committed
-            ? `Screenshot "${file.name}" uploaded and committed to GitHub repo!`
-            : `Screenshot "${file.name}" uploaded successfully!`,
+            ? `Screenshot "${file.name}" uploaded and set as cover! Click "Save Project" below to finish.`
+            : `Screenshot "${file.name}" uploaded! Click "Save Project" below to finish.`,
         });
       } else {
         setStatusMessage({
