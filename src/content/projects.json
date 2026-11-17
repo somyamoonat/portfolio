@@ -103,7 +103,8 @@
     ],
     "githubUrl": "https://github.com/somyamoonat/Crochet-Website",
     "featured": true,
-    "placeholder": false
+    "placeholder": false,
+    "liveUrl": "https://crochetdiaryy.vercel.app/"
   },
   {
     "slug": "moon-sweepers",
