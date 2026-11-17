@@ -57,13 +57,14 @@
     ],
     "images": [
       {
-        "src": "/projects/sign-to-voice-preview.webp",
-        "alt": "Sign Language Interpreter landmark tracking and real-time voice translation pipeline"
+        "src": "/projects/sign-to-voice-1794892536325.png",
+        "alt": "Sign Language Interpreter — Real-Time ASL to Voice Engine application screenshot"
       }
     ],
     "githubUrl": "https://github.com/somyamoonat/Sign-to-Voice-",
     "featured": true,
-    "placeholder": false
+    "placeholder": false,
+    "liveUrl": "https://signtovoice.vercel.app/"
   },
   {
     "slug": "the-crochet-diaryy",
