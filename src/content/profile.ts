@@ -298,18 +298,33 @@ export const profileData: Profile = {
 
   experience: [
     {
-      role: "Software & Machine Learning Projects",
-      organization: "Independent Development",
+      role: "Full-Stack & Machine Learning Systems Developer",
+      organization: "Independent Development & Open Source",
       period: "2024 — Present",
       location: "Bengaluru, KA / Remote",
       type: "Work",
       summary:
-        "Designing, building, and deploying computer vision pipelines, full-stack applications, and automated document generation tools.",
+        "Designing, building, and deploying client-side computer vision pipelines, full-stack Next.js applications, and automated document generation tools.",
       bullets: [
+        "Architected Sign-to-Voice, an accessibility computer vision engine running real-time ASL hand gesture tracking and speech synthesis over Wasm and WebGL at 60 FPS with sub-20ms latency.",
         "Engineered ReceiptSorter, an offline-first vision document extraction application processing invoices via local open-weight models and persistent SQLite.",
-        "Architected Sign-to-Voice, an accessibility computer vision engine running real-time ASL hand gesture tracking and speech synthesis over Wasm and WebGL at 60 FPS.",
-        "Developed The Crochet Diaryy, a production full-stack e-commerce platform using Next.js 15 App Router, Prisma ORM, PostgreSQL, and Razorpay checkout.",
+        "Developed The Crochet Diaryy, a production full-stack e-commerce platform using Next.js 15 App Router, Prisma ORM, PostgreSQL, and Razorpay checkout with webhook reconciliation.",
         "Programmed Moon Sweepers, an incremental mobile automation game built in Godot 4 and GDScript with custom touch mechanics.",
+      ],
+      placeholder: false,
+    },
+    {
+      role: "Computer Vision & Dataset Annotation Specialist",
+      organization: "Spatial Vision Research & Curation",
+      period: "2025",
+      location: "Bengaluru, KA",
+      type: "Research",
+      summary:
+        "Curated, verified, and audited large-scale spatial computer vision datasets for object detection and boundary segmentation pipelines.",
+      bullets: [
+        "Curated and labeled 1,000+ spatial images with precise 2D bounding boxes and polygon masks for object recognition models.",
+        "Engineered defensive Python data pre-processing scripts using OpenCV and NumPy for coordinate normalization and format conversion (YOLO/JSON).",
+        "Conducted strict Quality Assurance (QA) audits across image datasets to eliminate annotation drift and reduce false positives in downstream models.",
       ],
       placeholder: false,
     },
@@ -319,10 +334,10 @@ export const profileData: Profile = {
     {
       institution: "Bosscoder School of Technology (Partnered with S-VYASA)",
       degree: "Bachelor of Technology (B.Tech) - Computer Science (AI & Machine Learning)",
-      period: "Aug 2026 — Present",
+      period: "2024 — Present",
       location: "Bengaluru, KA",
       notes:
-        "Relevant Coursework: Data Structures & Algorithms, Foundations of AI & Machine Learning, Matrix Computations, Python Programming, Object-Oriented Programming.",
+        "Relevant Coursework: Data Structures & Algorithms, Foundations of AI & Machine Learning, Matrix Computations, Python Programming, Object-Oriented Programming, Database Management Systems.",
       placeholder: false,
     },
   ],

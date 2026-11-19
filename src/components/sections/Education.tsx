@@ -69,9 +69,31 @@ export function Education() {
                     </div>
 
                     {edu.notes && (
-                      <p className="text-xs sm:text-sm text-text-secondary leading-relaxed pt-2 border-t border-border-hairline max-w-[65ch]">
-                        {edu.notes}
-                      </p>
+                      <div className="pt-3 border-t border-border-hairline space-y-2.5">
+                        <span className="font-mono text-[10px] uppercase tracking-wider text-text-muted block">
+                          Core Academic Coursework:
+                        </span>
+                        <div className="flex flex-wrap gap-1.5">
+                          {edu.notes
+                            .replace(/^Relevant Coursework:\s*/i, "")
+                            .split(",")
+                            .map((s) => s.trim().replace(/\.$/, ""))
+                            .filter(Boolean)
+                            .map((course) => (
+                              <motion.span
+                                key={course}
+                                whileHover={
+                                  shouldReduceMotion
+                                    ? undefined
+                                    : { y: -1, scale: 1.02 }
+                                }
+                                className="font-mono text-[10px] text-text-secondary bg-surface-subtle border border-border-hairline px-2 py-0.5 rounded-2xs hover:border-accent hover:text-accent transition-colors cursor-default"
+                              >
+                                {course}
+                              </motion.span>
+                            ))}
+                        </div>
+                      </div>
                     )}
                   </motion.div>
                 </FadeIn>
