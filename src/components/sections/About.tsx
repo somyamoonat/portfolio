@@ -43,10 +43,19 @@ export function About() {
     const file = e.target.files?.[0];
     if (!file) return;
 
+    const storedPin =
+      localStorage.getItem("portfolio_admin_pin") ||
+      localStorage.getItem("admin_pin");
+    const pin = storedPin || prompt("Enter Administrative PIN:");
+    if (!pin) {
+      setUploading(false);
+      setUploadStatus(null);
+      return;
+    }
+
     setUploading(true);
     setUploadStatus("Uploading portrait...");
 
-    const pin = localStorage.getItem("admin_pin") || "somya";
     const formData = new FormData();
     formData.append("file", file);
     formData.append("slug", "portrait");

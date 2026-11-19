@@ -262,7 +262,7 @@ export function ProjectManager({ isOpen, onClose, embedded = false }: ProjectMan
     })
       .then((res) => {
         if (res.status === 401) {
-          setPinError("Incorrect PIN. (Default: somya)");
+          setPinError("Invalid administrative PIN.");
         } else {
           localStorage.setItem("portfolio_admin_pin", pin.trim());
           setIsUnlocked(true);
@@ -516,7 +516,7 @@ export function ProjectManager({ isOpen, onClose, embedded = false }: ProjectMan
                 <form onSubmit={handleUnlock} className="space-y-4 max-w-xs mx-auto text-left">
                   <div>
                     <label className="block font-mono text-[11px] uppercase tracking-wider text-text-muted mb-1.5">
-                      Admin Passkey (Default: somya)
+                      Administrative Passkey
                     </label>
                     <input
                       type="password"

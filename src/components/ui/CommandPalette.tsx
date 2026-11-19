@@ -130,20 +130,6 @@ export function CommandPalette({
         handleClose();
       },
     },
-    {
-      id: "action-admin",
-      category: "Actions",
-      title: "Project CMS & Photo Manager",
-      subtitle: "In-App Admin: edit photos, projects, and cover shots",
-      badge: "ADMIN",
-      shortcut: "⌘⇧E",
-      action: () => {
-        handleClose();
-        setTimeout(() => {
-          window.dispatchEvent(new CustomEvent("open-project-manager"));
-        }, 150);
-      },
-    },
 
     // --- Navigation Sections ---
     {
