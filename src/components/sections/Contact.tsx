@@ -224,6 +224,7 @@ export function Contact() {
                               transition: { type: "spring", stiffness: 400, damping: 25 },
                             }
                         }
+                        whileTap={shouldReduceMotion ? undefined : { scale: 0.97 }}
                         href={socials.github.url}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -244,6 +245,7 @@ export function Contact() {
                               transition: { type: "spring", stiffness: 400, damping: 25 },
                             }
                         }
+                        whileTap={shouldReduceMotion ? undefined : { scale: 0.97 }}
                         href={socials.linkedin.url}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -264,6 +266,7 @@ export function Contact() {
                               transition: { type: "spring", stiffness: 400, damping: 25 },
                             }
                         }
+                        whileTap={shouldReduceMotion ? undefined : { scale: 0.97 }}
                         href={socials.x.url}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -284,6 +287,7 @@ export function Contact() {
                               transition: { type: "spring", stiffness: 400, damping: 25 },
                             }
                         }
+                        whileTap={shouldReduceMotion ? undefined : { scale: 0.97 }}
                         href={socials.leetcode.url}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -304,6 +308,7 @@ export function Contact() {
                               transition: { type: "spring", stiffness: 400, damping: 25 },
                             }
                         }
+                        whileTap={shouldReduceMotion ? undefined : { scale: 0.97 }}
                         href={socials.codechef.url}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -324,6 +329,7 @@ export function Contact() {
                               transition: { type: "spring", stiffness: 400, damping: 25 },
                             }
                         }
+                        whileTap={shouldReduceMotion ? undefined : { scale: 0.97 }}
                         href={socials.codeforces.url}
                         target="_blank"
                         rel="noopener noreferrer"

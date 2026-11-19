@@ -8,6 +8,7 @@ import { Container, Section, Heading } from "@/components/primitives";
 import { DevPlaceholderBadge } from "@/components/ui/DevPlaceholderBadge";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { GitHubProjectsArchive } from "@/components/sections/GitHubProjectsArchive";
+import { ArchitectureConsole } from "@/components/sections/ArchitectureConsole";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 
 export function SelectedWork() {
@@ -214,23 +215,29 @@ export function SelectedWork() {
                         ))}
                       </div>
 
-                      {/* Direct External Project Action Buttons */}
+                      {/* Direct External Project Action Buttons with Spring Dynamics */}
                       <div className="flex flex-wrap items-center gap-2.5 pt-2">
                         {project.liveUrl && (
-                          <a
+                          <motion.a
+                            whileHover={shouldReduceMotion ? undefined : { y: -2, scale: 1.02 }}
+                            whileTap={shouldReduceMotion ? undefined : { scale: 0.96 }}
+                            transition={{ type: "spring", stiffness: 450, damping: 25 }}
                             href={project.liveUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider bg-accent text-white hover:bg-accent/90 rounded-xs transition-colors shadow-xs focus-visible:outline-2 focus-visible:outline-accent font-medium cursor-pointer"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider bg-accent text-white hover:bg-accent-hover rounded-xs transition-colors shadow-xs focus-visible:outline-2 focus-visible:outline-accent font-medium cursor-pointer"
                             title={`Open live app for ${project.title}`}
                           >
                             <span>Live App</span>
                             <span aria-hidden="true">↗</span>
-                          </a>
+                          </motion.a>
                         )}
 
                         {project.githubUrl && (
-                          <a
+                          <motion.a
+                            whileHover={shouldReduceMotion ? undefined : { y: -2, scale: 1.02 }}
+                            whileTap={shouldReduceMotion ? undefined : { scale: 0.96 }}
+                            transition={{ type: "spring", stiffness: 450, damping: 25 }}
                             href={project.githubUrl}
                             target="_blank"
                             rel="noopener noreferrer"
@@ -242,7 +249,7 @@ export function SelectedWork() {
                             </svg>
                             <span>GitHub</span>
                             <span aria-hidden="true" className="text-text-muted">↗</span>
-                          </a>
+                          </motion.a>
                         )}
 
                         <Link
@@ -286,6 +293,9 @@ export function SelectedWork() {
 
         {/* Real-Time Live GitHub Projects Archive Stream */}
         <GitHubProjectsArchive />
+
+        {/* Interactive Architecture & Code Logic Console */}
+        <ArchitectureConsole />
       </Container>
     </Section>
   );

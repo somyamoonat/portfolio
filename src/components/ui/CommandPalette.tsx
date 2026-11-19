@@ -169,6 +169,17 @@ export function CommandPalette({
       },
     },
     {
+      id: "nav-architecture",
+      category: "Navigation",
+      title: "01.B / Architecture & Code Console",
+      subtitle: "Inspect real WebAssembly, SQLite, and Next.js 15 route snippets",
+      badge: "CODE",
+      action: () => {
+        handleClose();
+        router.push("/#work");
+      },
+    },
+    {
       id: "nav-about",
       category: "Navigation",
       title: "02 / About & Philosophy",

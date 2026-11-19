@@ -1,14 +1,83 @@
 "use client";
 
+import { useState, useRef, useSyncExternalStore } from "react";
 import Image from "next/image";
 import { profileData } from "@/content/profile";
 import { Container, Section, Heading } from "@/components/primitives";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { motion, useReducedMotion } from "motion/react";
 
+function subscribePortrait(callback: () => void) {
+  window.addEventListener("portrait-updated", callback);
+  window.addEventListener("storage", callback);
+  return () => {
+    window.removeEventListener("portrait-updated", callback);
+    window.removeEventListener("storage", callback);
+  };
+}
+
+function getPortraitSnapshot(): string | undefined {
+  if (typeof window === "undefined") return profileData.personal.photo;
+  return localStorage.getItem("somya_portrait_photo") || profileData.personal.photo;
+}
+
+function getServerPortraitSnapshot(): string | undefined {
+  return profileData.personal.photo;
+}
+
 export function About() {
   const { personal } = profileData;
   const shouldReduceMotion = useReducedMotion();
+
+  const photoUrl = useSyncExternalStore(
+    subscribePortrait,
+    getPortraitSnapshot,
+    getServerPortraitSnapshot
+  );
+
+  const [uploading, setUploading] = useState(false);
+  const [uploadStatus, setUploadStatus] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handlePhotoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploading(true);
+    setUploadStatus("Uploading portrait...");
+
+    const pin = localStorage.getItem("admin_pin") || "somya";
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("slug", "portrait");
+    formData.append("pin", pin);
+
+    try {
+      const res = await fetch("/api/admin/upload", {
+        method: "POST",
+        headers: {
+          "x-admin-pin": pin,
+        },
+        body: formData,
+      });
+
+      const data = await res.json();
+      if (data.success && data.url) {
+        localStorage.setItem("somya_portrait_photo", data.url);
+        window.dispatchEvent(new Event("portrait-updated"));
+        setUploadStatus("Saved to portrait!");
+        setTimeout(() => setUploadStatus(null), 2500);
+      } else {
+        setUploadStatus(data.error || "Failed to upload");
+        setTimeout(() => setUploadStatus(null), 3500);
+      }
+    } catch {
+      setUploadStatus("Network error uploading photo");
+      setTimeout(() => setUploadStatus(null), 3500);
+    } finally {
+      setUploading(false);
+    }
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -72,8 +141,19 @@ export function About() {
                       transition: { type: "spring", stiffness: 350, damping: 22 },
                     }
               }
-              className="relative group cursor-default"
+              className="relative group cursor-pointer"
+              onClick={() => fileInputRef.current?.click()}
+              title="Click to change or upload personal portrait photo"
             >
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                onChange={handlePhotoUpload}
+                className="hidden"
+                aria-label="Upload personal portrait photo"
+              />
+
               {/* Subtle offset hairline accent frame */}
               <div
                 aria-hidden="true"
@@ -82,14 +162,22 @@ export function About() {
 
               {/* Main portrait container with 4:5 aspect ratio */}
               <div className="relative aspect-[4/5] w-full border border-border-strong glass-card overflow-hidden corner-ticks flex flex-col justify-between p-6 sm:p-8">
-                {personal.photo ? (
-                  <Image
-                    src={personal.photo}
-                    alt={`Portrait of ${personal.name}`}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 420px"
-                    className="object-cover object-center grayscale contrast-105 transition-transform duration-300 group-hover:scale-102"
-                  />
+                {photoUrl ? (
+                  <>
+                    <Image
+                      src={photoUrl}
+                      alt={`Portrait of ${personal.name}`}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 420px"
+                      className="object-cover object-center grayscale contrast-105 transition-transform duration-300 group-hover:scale-102"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-surface/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-end justify-between p-4 font-mono text-[10px] uppercase tracking-wider text-text-primary">
+                      <span className="bg-surface/90 border border-border-hairline px-2 py-1">
+                        {uploading ? "Uploading..." : "Click to Change Photo"}
+                      </span>
+                      <span className="text-accent">Upload ↗</span>
+                    </div>
+                  </>
                 ) : (
                   /* Refined Typographic Portrait when no image is supplied */
                   <>
@@ -109,10 +197,12 @@ export function About() {
                       </span>
                     </div>
 
-                    {/* Bottom Technical Caption */}
+                    {/* Bottom Technical Caption & Upload Hint */}
                     <div className="pt-4 border-t border-border-hairline font-mono text-[10px] uppercase tracking-wider text-text-muted flex items-center justify-between">
-                      <span>{personal.primaryRole}</span>
-                      <span className="text-text-secondary">2026</span>
+                      <span>{uploadStatus ? uploadStatus : personal.primaryRole}</span>
+                      <span className="text-accent group-hover:underline">
+                        {uploading ? "Saving..." : "[Add Photo]"}
+                      </span>
                     </div>
                   </>
                 )}

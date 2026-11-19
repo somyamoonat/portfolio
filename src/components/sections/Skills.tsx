@@ -154,6 +154,110 @@ export function Skills() {
             ))}
           </AnimatePresence>
         </motion.div>
+
+        {/* Competitive Programming & Algorithmic Problem Solving Registry */}
+        <FadeIn delay={0.1}>
+          <div className="mt-12 pt-8 border-t border-border-hairline">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+              <div>
+                <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-text-muted mb-1">
+                  <span className="text-accent font-semibold">[05.B / DSA REGISTRY]</span>
+                  <span className="text-border-subtle">•</span>
+                  <span>Competitive Problem Solving</span>
+                </div>
+                <h3 className="font-serif text-xl sm:text-2xl text-text-primary">
+                  Algorithmic Practice & Platforms
+                </h3>
+              </div>
+              <p className="font-mono text-xs text-text-muted max-w-sm">
+                Active problem solving focused on optimized time/space complexity, invariant design, and clean data structure implementations.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {/* LeetCode */}
+              <motion.a
+                whileHover={shouldReduceMotion ? undefined : { y: -2, scale: 1.015 }}
+                whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                href={profileData.socials.leetcode?.url || "https://leetcode.com/u/somya_moonat/"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-4 border border-border-hairline hover:border-accent glass-card flex flex-col justify-between rounded-xs transition-colors group cursor-pointer"
+              >
+                <div>
+                  <div className="flex items-center justify-between font-mono text-xs text-text-muted mb-2">
+                    <span className="text-accent font-semibold">LEETCODE</span>
+                    <span className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-text-primary">↗</span>
+                  </div>
+                  <div className="font-mono text-sm font-medium text-text-primary">
+                    @{profileData.socials.leetcode?.handle || "somya_moonat"}
+                  </div>
+                  <p className="text-xs text-text-secondary mt-1">
+                    Arrays, Trees, Graphs, Two-Pointers, and Dynamic Programming.
+                  </p>
+                </div>
+                <div className="pt-3 mt-3 border-t border-border-hairline/60 font-mono text-[10px] text-text-muted uppercase tracking-wider">
+                  Verified Profile ↗
+                </div>
+              </motion.a>
+
+              {/* Codeforces */}
+              <motion.a
+                whileHover={shouldReduceMotion ? undefined : { y: -2, scale: 1.015 }}
+                whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                href={profileData.socials.codeforces?.url || "https://codeforces.com/profile/somyamoonat22"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-4 border border-border-hairline hover:border-accent glass-card flex flex-col justify-between rounded-xs transition-colors group cursor-pointer"
+              >
+                <div>
+                  <div className="flex items-center justify-between font-mono text-xs text-text-muted mb-2">
+                    <span className="text-accent font-semibold">CODEFORCES</span>
+                    <span className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-text-primary">↗</span>
+                  </div>
+                  <div className="font-mono text-sm font-medium text-text-primary">
+                    @{profileData.socials.codeforces?.handle || "somyamoonat22"}
+                  </div>
+                  <p className="text-xs text-text-secondary mt-1">
+                    Rated competitive rounds, mathematical logic, and graph theory.
+                  </p>
+                </div>
+                <div className="pt-3 mt-3 border-t border-border-hairline/60 font-mono text-[10px] text-text-muted uppercase tracking-wider">
+                  Verified Profile ↗
+                </div>
+              </motion.a>
+
+              {/* CodeChef */}
+              <motion.a
+                whileHover={shouldReduceMotion ? undefined : { y: -2, scale: 1.015 }}
+                whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                href={profileData.socials.codechef?.url || "https://www.codechef.com/users/somya_moonat"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-4 border border-border-hairline hover:border-accent glass-card flex flex-col justify-between rounded-xs transition-colors group cursor-pointer"
+              >
+                <div>
+                  <div className="flex items-center justify-between font-mono text-xs text-text-muted mb-2">
+                    <span className="text-accent font-semibold">CODECHEF</span>
+                    <span className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-text-primary">↗</span>
+                  </div>
+                  <div className="font-mono text-sm font-medium text-text-primary">
+                    @{profileData.socials.codechef?.handle || "somya_moonat"}
+                  </div>
+                  <p className="text-xs text-text-secondary mt-1">
+                    Algorithmic contests, data structures, and edge-case verification.
+                  </p>
+                </div>
+                <div className="pt-3 mt-3 border-t border-border-hairline/60 font-mono text-[10px] text-text-muted uppercase tracking-wider">
+                  Verified Profile ↗
+                </div>
+              </motion.a>
+            </div>
+          </div>
+        </FadeIn>
       </Container>
     </Section>
   );
