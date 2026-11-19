@@ -205,6 +205,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-canvas text-text-primary antialiased font-sans">
+        <div className="film-grain" aria-hidden="true" />
         {children}
       </body>
     </html>

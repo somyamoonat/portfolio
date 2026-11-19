@@ -5,26 +5,44 @@ import { profileData } from "@/content/profile";
 import { useState, useEffect, useRef } from "react";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { ProjectManager } from "@/components/admin/ProjectManager";
-import { motion, AnimatePresence, useReducedMotion } from "motion/react";
+import { CommandPalette } from "@/components/ui/CommandPalette";
+import { motion, AnimatePresence, useReducedMotion, useScroll, useSpring } from "motion/react";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hoveredNav, setHoveredNav] = useState<string | null>(null);
   const [projectManagerOpen, setProjectManagerOpen] = useState(false);
+  const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
 
-  useEffect(() => {
-    const handleOpen = () => setProjectManagerOpen(true);
-    window.addEventListener("open-project-manager", handleOpen);
+  // Scroll depth tracking for editorial progress hairline rule
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 400,
+    damping: 35,
+    restDelta: 0.001,
+  });
 
-    // Secret shortcut: Cmd+Shift+E or Ctrl+Shift+E
+  useEffect(() => {
+    const handleOpenAdmin = () => setProjectManagerOpen(true);
+    const handleOpenCmd = () => setCommandPaletteOpen(true);
+
+    window.addEventListener("open-project-manager", handleOpenAdmin);
+    window.addEventListener("open-command-palette", handleOpenCmd);
+
+    // Global Keyboard Shortcuts:
+    // Cmd+K / Ctrl+K -> Command Palette
+    // Cmd+Shift+E / Ctrl+Shift+E -> Project Manager / Admin
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.shiftKey && (e.key === "E" || e.key === "e")) {
         e.preventDefault();
         setProjectManagerOpen((prev) => !prev);
+      } else if ((e.metaKey || e.ctrlKey) && (e.key === "k" || e.key === "K")) {
+        e.preventDefault();
+        setCommandPaletteOpen((prev) => !prev);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
@@ -38,7 +56,8 @@ export function Header() {
     }
 
     return () => {
-      window.removeEventListener("open-project-manager", handleOpen);
+      window.removeEventListener("open-project-manager", handleOpenAdmin);
+      window.removeEventListener("open-command-palette", handleOpenCmd);
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
@@ -164,12 +183,27 @@ export function Header() {
             ))}
           </nav>
 
-          <div className="border-l border-border-hairline pl-4 flex items-center gap-3">
+          <div className="border-l border-border-hairline pl-4 flex items-center gap-2.5">
+            <button
+              type="button"
+              onClick={() => setCommandPaletteOpen(true)}
+              className="group font-mono text-[11px] text-text-muted hover:text-text-primary px-2 py-1 rounded-xs border border-border-hairline hover:border-border-subtle bg-surface-subtle/50 transition-colors inline-flex items-center gap-1.5 focus-visible:outline-2 focus-visible:outline-accent cursor-pointer min-h-[30px]"
+              aria-label="Search portfolio and quick actions (Cmd + K)"
+              title="Quick Search & Commands (⌘K / Ctrl+K)"
+            >
+              <span className="text-[10px] text-text-muted group-hover:text-text-secondary transition-colors">
+                Search
+              </span>
+              <kbd className="px-1 py-0.2 rounded-2xs bg-surface border border-border-subtle text-[10px] font-mono leading-none text-text-secondary group-hover:text-accent group-hover:border-accent/40 transition-colors">
+                ⌘K
+              </kbd>
+            </button>
+
             <a
               href={profileData.contact.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono text-[11px] uppercase tracking-wider text-text-primary hover:text-accent border border-border-hairline hover:border-accent bg-surface-subtle/60 px-2.5 py-1 transition-colors inline-flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-accent"
+              className="font-mono text-[11px] uppercase tracking-wider text-text-primary hover:text-accent border border-border-hairline hover:border-accent bg-surface-subtle/60 px-2.5 py-1 transition-colors inline-flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-accent min-h-[30px]"
               aria-label="View or download resume (opens in new tab)"
             >
               <span>Resume</span>
@@ -180,7 +214,18 @@ export function Header() {
         </div>
 
         {/* Mobile menu trigger */}
-        <div className="flex sm:hidden items-center gap-3">
+        <div className="flex sm:hidden items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setCommandPaletteOpen(true)}
+            className="font-mono text-[11px] text-text-muted hover:text-text-primary px-2 py-1 rounded-xs border border-border-hairline bg-surface-subtle/50 transition-colors inline-flex items-center gap-1 min-h-[44px] cursor-pointer"
+            aria-label="Open command search"
+          >
+            <span className="text-[10px]">Search</span>
+            <kbd className="px-1 py-0.5 rounded-2xs bg-surface border border-border-subtle text-[9px] font-mono text-text-secondary">
+              ⌘K
+            </kbd>
+          </button>
           <ThemeToggle />
           <motion.button
             ref={triggerRef}
@@ -269,10 +314,23 @@ export function Header() {
         )}
       </AnimatePresence>
 
+      {/* Editorial reading progress hairline rule */}
+      <motion.div
+        style={{ scaleX }}
+        className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-accent origin-left pointer-events-none z-50"
+        aria-hidden="true"
+      />
+
       {/* Global In-App Project Manager Drawer */}
       <ProjectManager
         isOpen={projectManagerOpen}
         onClose={() => setProjectManagerOpen(false)}
+      />
+
+      {/* Global Developer Command Palette */}
+      <CommandPalette
+        isOpen={commandPaletteOpen}
+        onClose={() => setCommandPaletteOpen(false)}
       />
     </header>
   );
